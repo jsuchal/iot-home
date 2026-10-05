@@ -45,21 +45,55 @@
 - 2x merače teploty flashnute z BTHome na Zigbee  
   - [https\://pvvx.github.io/ATC\_MiThermometer/TelinkMiFlasher.html](https://pvvx.github.io/ATC_MiThermometer/TelinkMiFlasher.html)
 
+## Verzia 3.0 – ďalšie lokálne zariadenia
+
+Inventár potvrdený podľa zariadení v Home Assistante; chýbajúce ceny ešte treba doplniť.
+
+- 5× IKEA INSPELNING smart zásuvka (Zigbee/ZHA)
+- 5× Aqara Light Switch H2 EU (2 Buttons, 1 Channel; WS-K07D, v HA `lumi.switch.agl009`; Zigbee/ZHA).
+- 2× IKEA TRADFRI farebná žiarovka E27, 806 lm (Zigbee/ZHA)
+- 1× IKEA ORMANÄS LED pás (Zigbee/ZHA)
+- 1× IKEA PARASOLL senzor dverí/okna (Zigbee/ZHA)
+- 1× IKEA BADRING senzor úniku vody (Zigbee/ZHA)
+- 1× IKEA VALLHORN pohybový senzor (Zigbee/ZHA)
+- 1× IKEA SOMRIG tlačidlo (Zigbee/ZHA)
+- 2× IKEA STYRBAR (v HA Remote Control N2; Zigbee/ZHA)
+- 1× Shelly 3EM-63T Gen3 na meranie spotreby elektriny (v HA Shelly 3EM-63 Gen3; lokálna integrácia Shelly); nahradil pôvodný Shelly EM.
+- Umývačka Bosch SMV4EVX08E (zatiaľ Home Connect a závislosť od cloudu; lokálnu alternatívu treba vyskúšať).
+- Klimatizácia Samsung WINDFREE 3,5 kW COMFORT S2 (zatiaľ SmartThings a závislosť od cloudu; lokálnu alternatívu treba vyskúšať).
+- Robotický vysávač Roborock s [Valetudo](https://valetudo.cloud/) (lokálne cez MQTT, po rekonštrukcii bytu).
+- 2× vodomer Techem MK Radio 4 (studená a teplá voda; vo wmbusmeters ovládač `mkradio4`): okrem šifrovaných vysielajú aj nešifrované údaje, ktoré HA číta cez W-MBus/MQTT.
+
+Živý obraz pre e-ink displej zostáva v prevádzke. Lovelace Kindle Screensaver je v HA nainštalovaný, ale momentálne sa nepoužíva; hľadám lokálnu náhradu za Živý obraz.
+
+Tailscale na prístup zvonku a Google Drive na zálohy zatiaľ zostávajú vedomými cloudovými výnimkami. Cieľom je, aby domáce ovládanie fungovalo lokálne aj bez internetu; vzdialený prístup a záloha mimo domácnosti môžu vyžadovať externú infraštruktúru.
+
 # Software
 
 - [https\://www\.home-assistant.io/](https://www.home-assistant.io/)  
   - Addons  
     - Prístup z inetu \- [https\://tailscale.com/](https://tailscale.com/) (zadarmo), netreba nikde otvarat porty \+ ma addon do HA  
-    - [https\://github.com/wmbusmeters/wmbusmeters-ha-addon](https://github.com/wmbusmeters/wmbusmeters-ha-addon) \- citanie radiovych signalov (napr. Pomerove merace v panelakoch)  
+    - [https\://github.com/wmbusmeters/wmbusmeters-ha-addon](https://github.com/wmbusmeters/wmbusmeters-ha-addon) \- čítanie rádiových signálov z pomerových meračov tepla a vodomerov Techem v paneláku
       - Potrebuje [https\://www\.home-assistant.io/integrations/mqtt](https://www.home-assistant.io/integrations/mqtt)  
     - ZHA \- [https\://www\.home-assistant.io/integrations/zha/](https://www.home-assistant.io/integrations/zha/)  
     - [https\://github.com/hassio-addons/addon-ssh](https://github.com/hassio-addons/addon-ssh)  
 - [https\://zivyobraz.eu/](https://zivyobraz.eu/) \- aj firmware od nich  
 - ESPHome na laskakit creva IKEA vindrikning  
   - Zdrojaky [https\://github.com/jsuchal/iot-home](https://github.com/jsuchal/iot-home)
+- [Valetudo](https://valetudo.cloud/) – lokálne ovládanie robotického vysávača Roborock cez MQTT.
 
 # TODOs
 
+- Verzia 3.0 – lokálna prevádzka bez závislosti od cloudu (po inventúre v HA):
+  - [x] Overiť odčítanie vodomerov Techem: nešifrované údaje sú dostupné a fungujú v HA bez získavania šifrovacieho kľúča.
+  - [x] Spísať zariadenia a integrácie z HA; rozlíšiť lokálne zariadenia a známe cloudové výnimky.
+  - [ ] Bosch SMV4EVX08E: vyskúšať [Home Connect Local](https://github.com/chris-mc1/homeconnect_local_hass) namiesto cloudovej integrácie Home Connect. Kompatibilita a funkcie na tomto modeli ešte nie sú overené; na prvotné nastavenie integrácia vyžaduje Home Connect účet a stiahnutie profilu so šifrovacím kľúčom. Otestovať prevádzku bez internetu až po nastavení.
+  - [ ] Samsung WINDFREE 3,5 kW COMFORT S2: overiť kompatibilitu s [ESPHome Samsung HVAC Bus](https://docs.samsung-hvac.aran.net.tr/wiki/), potom kúpiť potrebný HW (napr. ESP32 a RS-485 adaptér, až po overení zbernice) a zapojiť/otestovať lokálne ovládanie namiesto SmartThings. Zatiaľ nič nie je nainštalované.
+  - [x] Roborock s [Valetudo](https://valetudo.cloud/) ovládať lokálne cez MQTT (po rekonštrukcii bytu).
+  - [x] Lokálne alternatívy pre väčšinu zariadení sú nasadené; otvorené výnimky Bosch a Samsung sú uvedené vyššie.
+  - [ ] Nájsť a otestovať lokálnu náhradu za Živý obraz na e-ink displeji (napr. ESPHome + lokálny dashboard/generovanie obrázka). Živý obraz zatiaľ zostáva; Lovelace Kindle Screensaver je nainštalovaný, ale nepoužíva sa.
+  - [ ] Preskúmať alternatívu ku Google Drive zálohám bez straty zálohy mimo domácnosti; pridať obnoviteľnú lokálnu zálohu a otestovať obnovu. Google Drive zatiaľ ponechať.
+  - [ ] Doplniť samostatné meranie spotreby elektriny varnej dosky v HA: doska je zapojená na dve fázy, preveriť použitie ďalšieho Shelly 3EM-63T Gen3 a miesto v rozvádzači.
 - Zálohovanie  
   - ~~ESPhome zdrojáky na github~~  
 - Security  
@@ -67,15 +101,15 @@
     - separé AP z RPI3?  
     - Vlan? Iot jail  
     - Kewo?  
-- ESPHome \+ lovelace dashboard namiesto zivy obraz?
+- Lokálny e-ink displej namiesto [Živého obrazu](https://zivyobraz.eu/) – pozri TODO verzie 3.0 vyššie.
 
 ## Kúpiť
 
 - ~~Krátky ethernet kábel \- na centrálu~~  
 - ~~Shelly EM~~  
 - ~~Anténu / mbus stick na merače tepla/vody~~  
-- IKEA senzor na dvere [https\://www\.ikea.com/sk/sk/p/parasoll-senzor-na-dvere-okno-inteligentne-biela-80504308/](https://www.ikea.com/sk/sk/p/parasoll-senzor-na-dvere-okno-inteligentne-biela-80504308/)  
-- 2x IKEA farebna do detskej https\://www\.ikea.com/sk/sk/p/tradfri-ziarovka-led-e14-806-lumenov-bezdrotovy-stmievatelny-farebne-a-biele-spektrum-gula-opalova-biela-80547464/
+- ~~IKEA senzor na dvere [https\://www\.ikea.com/sk/sk/p/parasoll-senzor-na-dvere-okno-inteligentne-biela-80504308/](https://www.ikea.com/sk/sk/p/parasoll-senzor-na-dvere-okno-inteligentne-biela-80504308/)~~
+- ~~2× IKEA farebné žiarovky~~ (verzia 3.0; podľa HA sú to E27, nie pôvodne plánované E14)
 
 ## Done
 
@@ -121,11 +155,17 @@
 - ~~Inštalácia home companion app na mobil~~  
 - Best practices pre automation/zasuvky/meranie/vselico?
 
+# Tipy
+
+- Aqara Light Switch H2 EU (2 Buttons, 1 Channel) má okrem ovládania relé aj programovateľné druhé tlačidlo a dlhé podržanie. V Home Assistante cez ZHA sa tieto akcie dajú použiť ako spúšťače automatizácií: napríklad druhým tlačidlom rozsvietiť svetlo inde v byte alebo dlhým stlačením zmeniť farbu žiarovky. Automatizácie vyžadujú bežiaci HA.
+- Tip na vodomery: pripojiť USB SDR prijímač, porovnať zachytené telegramy s údajmi na vlastných vodomeroch a nechať si pomôcť s identifikáciou a vizualizáciou dát. V telegramoch sa môžu skrývať aj historické odpočty. [Ako som to skúšal s pomocou AI](https://x.com/jsuchal/status/2103961888686047471).
+
 # Gotchas
 
+- Pre programovateľné akcie Aqara H2 bolo potrebné pridať vlastný ZHA quirk; postup a skúsenosť s fungovaním sú v [diskusii k PR #4141](https://github.com/zigpy/zha-device-handlers/pull/4141#issuecomment-4320272080). Bez quirku nemusia byť akcie druhého tlačidla a dlhého stlačenia v HA dostupné.
 - ESPHome po restarte smart plug bol nastaveny, ze sa vypne, prehodil som firmware na to aby sa zapol vzdy (nevypinal umyvacku). Pre agatu zase vhodny restore na predchadzajuci stav a default off.  
-- Techem Radio3 merace vody posielaju s presnostou 1m3 a vzdy cely den vysielaju len stav z polnoci prechadzajuceho dna. Merat sa s tym viac neda, v byt dava zmysel sledovat tyzdenne alebo mesacne spotreby.  
-- Techem Radio4 merace vody su zasifrovane, vraj sa da poziadat o kluc, ale zatial mi na supporte na to nikto nereaguje pozitivne.  
+- Vodomery Techem MK Radio 4 (`mkradio4`) reportujú stav raz denne, v prírastkoch po 0,1 m³ (100 litrov). Na sledovanie priebežnej drobnej spotreby sa preto nehodia; zmysel má skôr týždenná alebo mesačná spotreba.
+- Vodomery Techem vysielajú aj nešifrované údaje. Šifrované telegramy stále môžu existovať, ale na funkčné odčítanie v HA netreba získavať kľúč.
 - Ziarovky na dialkove ovladanie su super, ale pokial mate “fyzicke” vypinace na stene, tak po vypnuti je smart ovladanie logicky mrtve :) \- treba riesit cez smart vypinace \= rozbabrat elektriku  
 - Zigbee je super (mesh), ale kedze sa viaze na centralu (u mna HA), tak pokial sa vypne centrala, tak si nikto nezasvieti doma (naproti priamemu parovaniu ziarovka \- ovladac).  
   - Toto sa da fixnut tak, ze sa vytvoria clusters a direct binding cez ZHA nastavit priamo.  
@@ -152,6 +192,17 @@
 | **Verzia 2.0** |  |  |  |
 | Centrála | UMAX U-BOX N41 (deal na bazosi, pasivne chladenie, SSD, dostatok USB portov)[https\://www\.umax.cz/umax-u-box-n41/](https://www.umax.cz/umax-u-box-n41/) | 1ks | 103 |
 | ZigBee dongle | [https\://www\.home-assistant.io/connectzbt1/](https://www.home-assistant.io/connectzbt1/) (dar od kamosa) | 1ks | \- |
+| **Verzia 3.0** |  |  |  |
+| Inteligentné zásuvky | IKEA INSPELNING (9,99 €/ks) | 5 ks | 49,95 € |
+| Vypínače | Aqara Light Switch H2 EU, WS-K07D (37,79 €/ks) | 5 ks | 188,95 € |
+| Farebné žiarovky | IKEA TRÅDFRI E27 806 lm (13,35 €/ks) | 2 ks | 26,70 € |
+| LED pásik | IKEA ORMANÄS 4 m | 1 ks | 25,65 € |
+| Senzor dverí/okna | IKEA PARASOLL | 1 ks | 8,19 € |
+| Senzor úniku vody | IKEA BADRING | 1 ks | 8,19 € |
+| Pohybový senzor | IKEA VALLHORN | 1 ks | 8,19 € |
+| Tlačidlo | IKEA SOMRIG | 1 ks | 5,10 € |
+| Diaľkové ovládače | IKEA STYRBAR (10,25 €/ks) | 2 ks | 20,50 € |
+| Meranie elektriny | Shelly 3EM-63T Gen3 | 1 ks | 77,19 € |
 
 # Prílohy
 
