@@ -1,0 +1,4 @@
+# ESPHome credentials and generated build artifacts
+secrets.yaml
+.esphome/
+*.swp
