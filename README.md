@@ -174,7 +174,7 @@ Tailscale na prístup zvonku a Google Drive na zálohy zatiaľ zostávajú vedom
 
 # Rozpočet
 
-| Prístroj | Položka | Množstvo | Celková cena |
+| Prístroj | Položka | Množstvo | Celková cena (€) |
 | :---- | :---- | :---- | ----: |
 | **Verzia 1.0** |  |  |  |
 | Meranie a ovládanie spotreby elektriny | Gosund EP2 smart plug [https\://www\.alza.sk/gosund-wifi-smart-plug-ep2-2-pack-d6733245.htm](https://www.alza.sk/gosund-wifi-smart-plug-ep2-2-pack-d6733245.htm) (bola akcia za 21e) | 2ks | 21 |
@@ -193,16 +193,16 @@ Tailscale na prístup zvonku a Google Drive na zálohy zatiaľ zostávajú vedom
 | Centrála | UMAX U-BOX N41 (deal na bazosi, pasivne chladenie, SSD, dostatok USB portov)[https\://www\.umax.cz/umax-u-box-n41/](https://www.umax.cz/umax-u-box-n41/) | 1ks | 103 |
 | ZigBee dongle | [https\://www\.home-assistant.io/connectzbt1/](https://www.home-assistant.io/connectzbt1/) (dar od kamosa) | 1ks | \- |
 | **Verzia 3.0** |  |  |  |
-| Inteligentné zásuvky | IKEA INSPELNING (9,99 €/ks) | 5 ks | 49,95 € |
-| Vypínače | Aqara Light Switch H2 EU, WS-K07D (37,79 €/ks) | 5 ks | 188,95 € |
-| Farebné žiarovky | IKEA TRÅDFRI E27 806 lm (13,35 €/ks) | 2 ks | 26,70 € |
-| LED pásik | IKEA ORMANÄS 4 m | 1 ks | 25,65 € |
-| Senzor dverí/okna | IKEA PARASOLL | 1 ks | 8,19 € |
-| Senzor úniku vody | IKEA BADRING | 1 ks | 8,19 € |
-| Pohybový senzor | IKEA VALLHORN | 1 ks | 8,19 € |
-| Tlačidlo | IKEA SOMRIG | 1 ks | 5,10 € |
-| Diaľkové ovládače | IKEA STYRBAR (10,25 €/ks) | 2 ks | 20,50 € |
-| Meranie elektriny | Shelly 3EM-63T Gen3 | 1 ks | 77,19 € |
+| Inteligentné zásuvky | IKEA INSPELNING | 5 ks | 49,95 |
+| Vypínače | Aqara Light Switch H2 EU, WS-K07D | 5 ks | 188,95 |
+| Farebné žiarovky | IKEA TRÅDFRI E27 806 lm | 2 ks | 26,70 |
+| LED pásik | IKEA ORMANÄS 4 m | 1 ks | 25,65 |
+| Senzor dverí/okna | IKEA PARASOLL | 1 ks | 8,19 |
+| Senzor úniku vody | IKEA BADRING | 1 ks | 8,19 |
+| Pohybový senzor | IKEA VALLHORN | 1 ks | 8,19 |
+| Tlačidlo | IKEA SOMRIG | 1 ks | 5,10 |
+| Diaľkové ovládače | IKEA STYRBAR | 2 ks | 20,50 |
+| Meranie elektriny | Shelly 3EM-63T Gen3 | 1 ks | 77,19 |
 
 # Prílohy
 
