@@ -13,7 +13,19 @@
 
 # Obrázky
 
-![][image1]![][image2]
+## Home Assistant
+
+Prehľad domácnosti:
+
+![Prehľad domácnosti v Home Assistante](images/home-assistant-dashboard.png)
+
+Spotreba elektriny:
+
+![Energetický dashboard v Home Assistante](images/energy-dashboard.png)
+
+## Živý obraz
+
+![E-ink displej so Živým obrazom](images/zivy-obraz.png)
 
 # HW
 
@@ -230,7 +242,3 @@ Tailscale na prístup zvonku a Google Drive na zálohy zatiaľ zostávajú vedom
        ssid: "\${plug\_name} Fallback Hotspot"  
        password: "nbusr123"  
 8. Po uploade nového firmware (odporúčam upload spakovaný gzip, keď to hlási málo miesta) Home Assistant normálne detekuje nové zariadenie, zadáte API key a hotovo.
-
-[image1]: <images/image1.png>
-
-[image2]: <images/image2.png>
