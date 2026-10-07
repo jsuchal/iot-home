@@ -1,0 +1,456 @@
+diff --git a/.github/workflows/PIO_build.yml b/.github/workflows/PIO_build.yml
+index 45f871c..dd52745 100644
+--- a/.github/workflows/PIO_build.yml
++++ b/.github/workflows/PIO_build.yml
+@@ -7,6 +7,16 @@ on:
+     branches: [main]
+ 
+ jobs:
++  endpoint-validation:
++    name: Test server endpoint input validation
++    runs-on: ubuntu-latest
++    steps:
++      - uses: actions/checkout@v3
++      - name: Run host-side validation tests
++        run: |
++          c++ -std=c++11 -Wall -Wextra -Werror tests/endpoint_validation_test.cpp -o /tmp/endpoint-validation-test
++          /tmp/endpoint-validation-test
++
+   clang-format-check:
+     name: Check C++ code formatting
+     runs-on: ubuntu-latest
+diff --git a/README.md b/README.md
+index 14794bc..439045e 100644
+--- a/README.md
++++ b/README.md
+@@ -98,3 +98,42 @@ Attribution—Noncommercial—Share Alike
+ ✖ | Commercial Use  
+ ✖ | Free Cultural Works  
+ ✖ | Meets Open Definition
++
++## Configuring a compatible image server
++
++The Wi-Fi configuration portal includes **Server hostname or IPv4**, **Server port**
++and **Endpoint path** fields. They are saved together in NVS and survive deep sleep,
++restarts and power cycles. Existing devices with no saved endpoint keep using
++`cdn.zivyobraz.eu`, `/index.php` and the build's default port (443 for HTTPS, 80 for HTTP).
++Leaving a field blank restores its default. Invalid input keeps the previous saved
++endpoint; the firmware reports the error on serial output.
++
++Enter a hostname or IPv4 address without a scheme, credentials or port. Enter the
++port separately (1–65535). The path must start with `/` and must not contain a query
++string or fragment; the firmware adds `?timestampCheck=1` or `?timestampCheck=0`.
++IPv6 addresses are not supported by these settings.
++
++For example, a local image service could use host `192.168.1.10`, port `8080` and
++path `/eink/image`. To use plain HTTP, build with the existing `-DUSE_CLIENT_HTTP`
++flag; transport selection remains a build-time setting. Selecting port 80 in an
++HTTPS build does not switch it to HTTP. Use plain HTTP only on a trusted local
++network: the device key and telemetry are sent without encryption.
++
++The endpoint must implement the existing image protocol: accept POST requests
++with device JSON and `X-API-Key`, return `200 OK` with the appropriate image bytes,
++and provide `Timestamp` and `PreciseSleep` headers. Preserve header capitalization
++because the current firmware parser is case-sensitive. `Timestamp` should change
++when the rendered image changes. Serving a PNG file through HA's static directory
++alone does not implement this protocol. This setting changes the image endpoint;
++it does not change separately supplied OTA URLs.
++
++To reopen the configuration portal on boards with the extra button, use the
++existing long-press Wi-Fi reset. This preserves the endpoint and device API key.
++No existing TLS verification behavior is changed by this feature.
++
++Host-side input validation tests can be run without an ESP32 toolchain:
++
++```sh
++c++ -std=c++11 -Wall -Wextra -Werror tests/endpoint_validation_test.cpp -o /tmp/endpoint-validation-test
++/tmp/endpoint-validation-test
++```
+diff --git a/src/http_client.cpp b/src/http_client.cpp
+index 27130ee..2760e61 100644
+--- a/src/http_client.cpp
++++ b/src/http_client.cpp
+@@ -6,11 +6,11 @@
+ #include "logger.h"
+ #include "state_manager.h"
+ #include "wireless.h"
++#include "endpoint_validation.h"
+ 
+ #include <HTTPUpdate.h>
+ 
+ // External configuration
+-extern const char *host;
+ extern const char *firmware;
+ 
+ // Timeouts for HTTP operations
+@@ -18,7 +18,8 @@ static constexpr uint32_t TOTAL_TIMEOUT_MS = 30000;
+ static constexpr uint32_t IDLE_TIMEOUT_MS = 5000;
+ 
+ HttpClient::HttpClient()
+-    : m_sleepDuration(StateManager::DEFAULT_SLEEP_SECONDS),
++    : m_endpoint(ServerConfig::load()),
++      m_sleepDuration(StateManager::DEFAULT_SLEEP_SECONDS),
+       m_serverTimestamp(0),
+       m_displayRotation(0),
+       m_hasRotation(false),
+@@ -89,15 +90,22 @@ void HttpClient::buildJsonPayload()
+ 
+ bool HttpClient::sendRequest(bool timestampCheck)
+ {
++  if (!EndpointValidation::validHost(m_endpoint.host.c_str()) || !m_endpoint.port ||
++      !EndpointValidation::validPath(m_endpoint.path.c_str()))
++  {
++    Logger::log<Logger::Level::ERROR, Logger::Topic::HTTP>("Invalid stored server endpoint\n");
++    return false;
++  }
++
+   // Build JSON payload (only built once, cached for subsequent requests)
+   buildJsonPayload();
+ 
+-  Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("Connecting to: {}\n", host);
++  Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("Connecting to: {}:{}\n", m_endpoint.host, m_endpoint.port);
+ 
+   // Try to connect with retries
+   for (uint8_t attempt = 0; attempt < 3; attempt++)
+   {
+-    if (m_client.connect(host, CONNECTION_PORT))
++    if (m_client.connect(m_endpoint.host.c_str(), m_endpoint.port))
+       break;
+ 
+     Logger::log<Logger::Level::ERROR, Logger::Topic::HTTP>("Connection failed, retrying... {}/3\n", attempt + 1);
+@@ -113,8 +121,8 @@ bool HttpClient::sendRequest(bool timestampCheck)
+   }
+ 
+   // Send HTTP/HTTPS POST request with JSON body
+-  Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("Sending POST to: {}{}/index.php\n", CONNECTION_URL_PREFIX,
+-                                                         host);
++  Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("Sending POST to: {}{}:{}{}\n", CONNECTION_URL_PREFIX,
++                                                         m_endpoint.host, m_endpoint.port, m_endpoint.path);
+ 
+   // Pretty print JSON payload for device info
+   String prettyJson;
+@@ -122,14 +130,19 @@ bool HttpClient::sendRequest(bool timestampCheck)
+   Logger::log<Logger::Level::INFO, Logger::Topic::HTTP>("JSON Payload:\n{}\n", prettyJson);
+ 
+   // Build URL with timestampCheck query parameter
+-  String url = "/index.php?timestampCheck=";
++  String url = m_endpoint.path + "?timestampCheck=";
+   url += timestampCheck ? "1" : "0";
+ 
+   // Send HTTP request using multiple print() calls to avoid allocating one large heap String
+   m_client.print("POST ");
+   m_client.print(url);
+   m_client.print(" HTTP/1.1\r\nHost: ");
+-  m_client.print(host);
++  m_client.print(m_endpoint.host);
++  if (m_endpoint.port != CONNECTION_PORT)
++  {
++    m_client.print(":");
++    m_client.print(m_endpoint.port);
++  }
+   m_client.print("\r\nX-API-Key: ");
+   m_client.print(Utils::getStoredAPIKey());
+   m_client.print("\r\nContent-Type: application/json\r\nContent-Length: ");
+diff --git a/src/http_client.h b/src/http_client.h
+index 7754ae7..ae62b0b 100644
+--- a/src/http_client.h
++++ b/src/http_client.h
+@@ -16,6 +16,8 @@
+   #define CONNECTION_URL_PREFIX "https://"
+ #endif
+ 
++#include "server_config.h"
++
+ #include <Arduino.h>
+ #include <ArduinoJson.h>
+ #include <WiFi.h>
+@@ -76,6 +78,8 @@ private:
+   WiFiClientSecure m_client;
+ #endif
+ 
++  ServerConfig::Endpoint m_endpoint;
++
+   // Server response data
+   uint64_t m_sleepDuration;
+   uint64_t m_serverTimestamp;
+diff --git a/src/main.cpp b/src/main.cpp
+index 3db52d1..af0a69a 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -40,7 +40,6 @@
+ ///////////////////////////////////////////////
+ 
+ extern const String serverName = "zivyobraz.eu";
+-const char *host = "cdn.zivyobraz.eu";
+ const char *firmware = "3.2";
+ const String wifiPassword = "zivyobraz";
+ const String urlWiki = "https://wiki.zivyobraz.eu";
+diff --git a/src/wireless.cpp b/src/wireless.cpp
+index 1e104a0..d757f4e 100644
+--- a/src/wireless.cpp
++++ b/src/wireless.cpp
+@@ -2,6 +2,9 @@
+ 
+ #include "improv_handler.h"
+ #include "logger.h"
++#include "server_config.h"
++#include "endpoint_validation.h"
++#include "state_manager.h"
+ 
+ #include <array>
+ #include <esp_wifi.h>
+@@ -14,6 +17,11 @@ extern const char *const NVS_NAMESPACE;
+ static WiFiManager wm;
+ static Preferences prefs;
+ static bool configPortalActive = false;
++static WiFiManagerParameter serverHost("server_host", "Server hostname or IPv4 (no scheme)", "",
++                                       EndpointValidation::MAX_HOST_LENGTH);
++static WiFiManagerParameter serverPort("server_port", "Server port", "", 5, "type=\"number\" min=\"1\" max=\"65535\"");
++static WiFiManagerParameter serverPath("server_path", "Endpoint path (no query string)", "",
++                                       EndpointValidation::MAX_PATH_LENGTH);
+ 
+ namespace Wireless
+ {
+@@ -155,6 +163,23 @@ void init(const String &hostname, const String &password, void (*callback)())
+   wm.setSaveConfigCallback(saveConfigCallback);
+ #endif
+ 
++  const auto endpoint = ServerConfig::load();
++  serverHost.setValue(endpoint.host.c_str(), EndpointValidation::MAX_HOST_LENGTH);
++  serverPort.setValue(String(endpoint.port).c_str(), 5);
++  serverPath.setValue(endpoint.path.c_str(), EndpointValidation::MAX_PATH_LENGTH);
++  wm.addParameter(&serverHost);
++  wm.addParameter(&serverPort);
++  wm.addParameter(&serverPath);
++  wm.setSaveParamsCallback(
++    []()
++    {
++      if (!ServerConfig::save(serverHost.getValue(), serverPort.getValue(), serverPath.getValue()))
++        Logger::log<Logger::Level::ERROR, Logger::Topic::WIFI>(
++          "Invalid server endpoint or NVS write failed; endpoint not saved\n");
++      else
++        StateManager::setTimestamp(0); // Fetch an image from the newly selected server.
++    });
++
+   // Start autoConnect (non-blocking)
+   if (wm.autoConnect(hostname.c_str(), password.c_str()))
+     Logger::log<Logger::Topic::WIFI>("Connected to WiFi\n");
+diff --git a/src/endpoint_validation.h b/src/endpoint_validation.h
+new file mode 100644
+index 0000000..84c7abb
+--- /dev/null
++++ b/src/endpoint_validation.h
+@@ -0,0 +1,74 @@
++#ifndef ENDPOINT_VALIDATION_H
++#define ENDPOINT_VALIDATION_H
++
++#include <cstddef>
++#include <cstdint>
++#include <cstring>
++
++namespace EndpointValidation
++{
++constexpr size_t MAX_HOST_LENGTH = 253;
++constexpr size_t MAX_PATH_LENGTH = 191;
++
++inline bool validHost(const char *host)
++{
++  if (!host || !*host || std::strlen(host) > MAX_HOST_LENGTH)
++    return false;
++  size_t labelLength = 0;
++  char previous = '.';
++  for (const char *p = host; *p; ++p)
++  {
++    const char c = *p;
++    const bool alphanumeric = (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9');
++    if (c == '.')
++    {
++      if (!labelLength || previous == '-')
++        return false;
++      labelLength = 0;
++    }
++    else
++    {
++      if (!alphanumeric && c != '-')
++        return false;
++      if ((!labelLength && c == '-') || ++labelLength > 63)
++        return false;
++    }
++    previous = c;
++  }
++  return labelLength != 0 && previous != '-';
++}
++
++inline bool parsePort(const char *text, uint16_t &port)
++{
++  if (!text || !*text)
++    return false;
++  uint32_t value = 0;
++  for (const char *p = text; *p; ++p)
++  {
++    if (*p < '0' || *p > '9')
++      return false;
++    value = value * 10 + (*p - '0');
++    if (value > 65535)
++      return false;
++  }
++  if (!value)
++    return false;
++  port = static_cast<uint16_t>(value);
++  return true;
++}
++
++inline bool validPath(const char *path)
++{
++  if (!path || path[0] != '/' || std::strlen(path) > MAX_PATH_LENGTH)
++    return false;
++  for (const char *p = path; *p; ++p)
++  {
++    const unsigned char c = static_cast<unsigned char>(*p);
++    if (c <= 32 || c >= 127 || c == '?' || c == '#' || c == '\\' || c == '"' || c == '<' || c == '>')
++      return false;
++  }
++  return true;
++}
++} // namespace EndpointValidation
++
++#endif
+diff --git a/src/server_config.h b/src/server_config.h
+new file mode 100644
+index 0000000..de118c1
+--- /dev/null
++++ b/src/server_config.h
+@@ -0,0 +1,21 @@
++#ifndef SERVER_CONFIG_H
++#define SERVER_CONFIG_H
++
++#include <Arduino.h>
++#include <cstdint>
++
++namespace ServerConfig
++{
++struct Endpoint
++{
++  String host;
++  uint16_t port;
++  String path;
++};
++
++// Empty portal fields reset their individual values to the built-in defaults.
++Endpoint load();
++bool save(String host, String port, String path);
++} // namespace ServerConfig
++
++#endif
+diff --git a/src/server_config.cpp b/src/server_config.cpp
+new file mode 100644
+index 0000000..cf82154
+--- /dev/null
++++ b/src/server_config.cpp
+@@ -0,0 +1,65 @@
++#include "server_config.h"
++
++#include "endpoint_validation.h"
++#include <ArduinoJson.h>
++#include <Preferences.h>
++
++extern const char *const NVS_NAMESPACE;
++
++namespace ServerConfig
++{
++static const char *DEFAULT_HOST = "cdn.zivyobraz.eu";
++static const char *DEFAULT_PATH = "/index.php";
++#ifdef USE_CLIENT_HTTP
++static constexpr uint16_t DEFAULT_PORT = 80;
++#else
++static constexpr uint16_t DEFAULT_PORT = 443;
++#endif
++
++Endpoint load()
++{
++  Endpoint endpoint{DEFAULT_HOST, DEFAULT_PORT, DEFAULT_PATH};
++  Preferences prefs;
++  if (!prefs.begin(NVS_NAMESPACE, true))
++    return endpoint;
++  const String stored = prefs.getString("server_endpoint", "");
++  prefs.end();
++  JsonDocument doc;
++  if (!stored.isEmpty() && !deserializeJson(doc, stored))
++  {
++    endpoint.host = doc["host"].as<String>();
++    endpoint.port = doc["port"].as<uint16_t>();
++    endpoint.path = doc["path"].as<String>();
++  }
++  return endpoint;
++}
++
++bool save(String host, String port, String path)
++{
++  host.trim();
++  port.trim();
++  path.trim();
++  if (host.isEmpty())
++    host = DEFAULT_HOST;
++  if (path.isEmpty())
++    path = DEFAULT_PATH;
++  uint16_t portNumber = DEFAULT_PORT;
++  if (!EndpointValidation::validHost(host.c_str()) || !EndpointValidation::validPath(path.c_str()) ||
++      (!port.isEmpty() && !EndpointValidation::parsePort(port.c_str(), portNumber)))
++    return false;
++
++  Preferences prefs;
++  if (!prefs.begin(NVS_NAMESPACE))
++    return false;
++  JsonDocument doc;
++  doc["host"] = host;
++  doc["port"] = portNumber;
++  doc["path"] = path;
++  String encoded;
++  serializeJson(doc, encoded);
++  // One NVS value keeps host, port and path together across power loss.
++  const bool saved = prefs.putString("server_endpoint", encoded) != 0;
++  prefs.end();
++  return saved;
++}
++} // namespace ServerConfig
+diff --git a/tests/endpoint_validation_test.cpp b/tests/endpoint_validation_test.cpp
+new file mode 100644
+index 0000000..5619161
+--- /dev/null
++++ b/tests/endpoint_validation_test.cpp
+@@ -0,0 +1,35 @@
++#include "../src/endpoint_validation.h"
++#include <cassert>
++#include <string>
++
++int main()
++{
++  using namespace EndpointValidation;
++  for (const char *host : {"cdn.zivyobraz.eu", "homeassistant.local", "192.168.1.10", "ha", "my-server.local"})
++    assert(validHost(host));
++  for (const char *host : {"", "http://ha", "ha:8123", "user@ha", "ha/path", "ha\r\nInjected", "-ha", "ha-", ".ha",
++                           "ha.", "ha..local", "[::1]"})
++    assert(!validHost(host));
++  assert(!validHost(std::string(64, 'a').c_str()));
++  assert(!validHost(
++    (std::string(63, 'a') + "." + std::string(63, 'a') + "." + std::string(63, 'a') + "." + std::string(63, 'a'))
++      .c_str()));
++  assert(!validHost(nullptr));
++
++  uint16_t port = 0;
++  assert(parsePort("80", port) && port == 80);
++  assert(parsePort("8123", port) && port == 8123);
++  assert(parsePort("65535", port) && port == 65535);
++  for (const char *text : {"", "0", "65536", "-1", "+80", "80x", "80\r\n", "999999999999999999"})
++    assert(!parsePort(text, port));
++  assert(!parsePort(nullptr, port));
++
++  for (const char *path : {"/", "/index.php", "/api/eink/image", "/my%20image"})
++    assert(validPath(path));
++  for (const char *path :
++       {"", "index.php", "//ha?x=y", "/image#fragment", "/with space", "/a\r\nInjected", "/a\\b", "/\"", "/<x>"})
++    assert(!validPath(path));
++  assert(validPath(("/" + std::string(MAX_PATH_LENGTH - 1, 'a')).c_str()));
++  assert(!validPath(("/" + std::string(MAX_PATH_LENGTH, 'a')).c_str()));
++  assert(!validPath(nullptr));
++}

@@ -1,0 +1,14 @@
+{
+  "device_key": "12345678",
+  "title": "IoT doma",
+  "timezone": "Europe/Bratislava",
+  "sleep_seconds": 1800,
+  "refresh_seconds": 300,
+  "update_times": [],
+  "ha_url": "http://homeassistant.local:8123",
+  "metrics": [
+    {"entity_id": "sensor.outdoor_temperature", "label": "Vonku"},
+    {"entity_id": "sensor.indoor_temperature", "label": "Doma"},
+    {"entity_id": "sensor.co2", "label": "CO₂"}
+  ]
+}

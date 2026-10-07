@@ -82,6 +82,8 @@ Tailscale na prístup zvonku a Google Drive na zálohy zatiaľ zostávajú vedom
 
 # Software
 
+- [Lokálny e-ink endpoint pre Home Assistant](eink-ha/README.md) – add-on alebo samostatný server kompatibilný s pôvodným firmware Živého obrazu; pripravené na testovanie na displeji.
+
 - [https\://www\.home-assistant.io/](https://www.home-assistant.io/)  
   - Addons  
     - Prístup z inetu \- [https\://tailscale.com/](https://tailscale.com/) (zadarmo), netreba nikde otvarat porty \+ ma addon do HA  

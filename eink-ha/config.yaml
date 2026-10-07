@@ -1,0 +1,41 @@
+name: Lokálny e-ink dashboard
+version: "0.2.0"
+slug: eink_ha
+description: Lokálny obrázkový endpoint pre firmware Živého obrazu
+url: https://github.com/jsuchal/iot-home
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+homeassistant_api: true
+ports:
+  8080/tcp: 8080
+ports_description:
+  8080/tcp: Obrázkový endpoint pre ESP32
+options:
+  device_key: ""
+  title: IoT doma
+  timezone: Europe/Bratislava
+  sleep_seconds: 1800
+  refresh_seconds: 300
+  update_times: []
+  metrics:
+    - entity_id: sensor.outdoor_temperature
+      label: Vonku
+    - entity_id: sensor.indoor_temperature
+      label: Doma
+    - entity_id: sensor.co2
+      label: CO₂
+schema:
+  device_key: password
+  title: str
+  timezone: str
+  sleep_seconds: int(60,86400)
+  refresh_seconds: int(1,86400)
+  update_times:
+    - match(^(?:[01][0-9]|2[0-3]):[0-5][0-9]$)
+  metrics:
+    - entity_id: str
+      label: str

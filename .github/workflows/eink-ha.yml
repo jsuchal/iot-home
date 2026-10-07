@@ -1,0 +1,26 @@
+name: E-ink HA endpoint
+
+on:
+  push:
+    branches: [main]
+    paths: ["eink-ha/**", "repository.yaml", ".github/workflows/eink-ha.yml"]
+  pull_request:
+    paths: ["eink-ha/**", "repository.yaml", ".github/workflows/eink-ha.yml"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo env DEBIAN_FRONTEND=noninteractive apt-get install -y fonts-dejavu-core tzdata
+          python -m pip install -r eink-ha/requirements.txt
+      - name: Test protocol and Home Assistant client
+        run: python -m unittest discover -s eink-ha/tests -v
+      - name: Build add-on container
+        run: docker build -t iot-home-eink:ci eink-ha
