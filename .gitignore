@@ -2,3 +2,8 @@
 secrets.yaml
 .esphome/
 *.swp
+
+# Local OpenCode config (Home Assistant MCP token) – never commit
+opencode.json
+opencode.jsonc
+.opencode/
