@@ -71,7 +71,7 @@ Inventár potvrdený podľa zariadení v Home Assistante; chýbajúce ceny ešte
 - 1× IKEA SOMRIG tlačidlo (Zigbee/ZHA)
 - 2× IKEA STYRBAR (v HA Remote Control N2; Zigbee/ZHA)
 - 1× Shelly 3EM-63T Gen3 na meranie spotreby elektriny (v HA Shelly 3EM-63 Gen3; lokálna integrácia Shelly); nahradil pôvodný Shelly EM.
-- Umývačka Bosch SMV4EVX08E (zatiaľ Home Connect a závislosť od cloudu; lokálnu alternatívu treba vyskúšať).
+- Umývačka Bosch SMV4EVX08E — lokálne cez [Home Connect Local](https://github.com/vemboy200/homeconnect_local_hass) (HACS, fork), priamo po LAN bez cloudu; cloudová integrácia Home Connect aj cloudové pripojenie na spotrebiči sú vypnuté.
 - Klimatizácia Samsung WINDFREE 3,5 kW COMFORT S2 (zatiaľ SmartThings a závislosť od cloudu; lokálnu alternatívu treba vyskúšať).
 - Robotický vysávač Roborock s [Valetudo](https://valetudo.cloud/) (lokálne cez MQTT, po rekonštrukcii bytu).
 - 2× vodomer Techem MK Radio 4 (studená a teplá voda; vo wmbusmeters ovládač `mkradio4`): okrem šifrovaných vysielajú aj nešifrované údaje, ktoré HA číta cez W-MBus/MQTT.
@@ -93,16 +93,17 @@ Tailscale na prístup zvonku a Google Drive na zálohy zatiaľ zostávajú vedom
 - ESPHome na laskakit creva IKEA vindrikning  
   - Zdrojaky [https\://github.com/jsuchal/iot-home](https://github.com/jsuchal/iot-home)
 - [Valetudo](https://valetudo.cloud/) – lokálne ovládanie robotického vysávača Roborock cez MQTT.
+- [Home Connect Local](https://github.com/vemboy200/homeconnect_local_hass) (HACS, fork) – lokálne ovládanie umývačky Bosch SMV4EVX08E priamo po LAN; cloudová integrácia Home Connect odstránená.
 
 # TODOs
 
 - Verzia 3.0 – lokálna prevádzka bez závislosti od cloudu (po inventúre v HA):
   - [x] Overiť odčítanie vodomerov Techem: nešifrované údaje sú dostupné a fungujú v HA bez získavania šifrovacieho kľúča.
   - [x] Spísať zariadenia a integrácie z HA; rozlíšiť lokálne zariadenia a známe cloudové výnimky.
-  - [ ] Bosch SMV4EVX08E: vyskúšať [Home Connect Local](https://github.com/chris-mc1/homeconnect_local_hass) namiesto cloudovej integrácie Home Connect. Kompatibilita a funkcie na tomto modeli ešte nie sú overené; na prvotné nastavenie integrácia vyžaduje Home Connect účet a stiahnutie profilu so šifrovacím kľúčom. Otestovať prevádzku bez internetu až po nastavení.
+  - [x] Bosch SMV4EVX08E: nasadené [Home Connect Local](https://github.com/vemboy200/homeconnect_local_hass) (fork, HACS) namiesto cloudovej integrácie Home Connect; cloudová integrácia odstránená a cloudové pripojenie na samotnej umývačke vypnuté (`Allow Cloud Connection` off). Profil (openHAB) stiahnutý cez [Home Connect Profile Downloader](https://github.com/bruestel/homeconnect-profile-downloader); umývačka má rezervovanú IP v DHCP. Ešte otestovať prevádzku bez internetu.
   - [ ] Samsung WINDFREE 3,5 kW COMFORT S2: overiť kompatibilitu s [ESPHome Samsung HVAC Bus](https://docs.samsung-hvac.aran.net.tr/wiki/), potom kúpiť potrebný HW (napr. ESP32 a RS-485 adaptér, až po overení zbernice) a zapojiť/otestovať lokálne ovládanie namiesto SmartThings. Zatiaľ nič nie je nainštalované.
   - [x] Roborock s [Valetudo](https://valetudo.cloud/) ovládať lokálne cez MQTT (po rekonštrukcii bytu).
-  - [x] Lokálne alternatívy pre väčšinu zariadení sú nasadené; otvorené výnimky Bosch a Samsung sú uvedené vyššie.
+  - [x] Lokálne alternatívy pre väčšinu zariadení sú nasadené; otvorená výnimka zostáva Samsung (uvedená vyššie), Bosch je už lokálne.
   - [ ] Nájsť a otestovať lokálnu náhradu za Živý obraz na e-ink displeji (napr. ESPHome + lokálny dashboard/generovanie obrázka). Živý obraz zatiaľ zostáva; Lovelace Kindle Screensaver je nainštalovaný, ale nepoužíva sa.
   - [ ] Preskúmať alternatívu ku Google Drive zálohám bez straty zálohy mimo domácnosti; pridať obnoviteľnú lokálnu zálohu a otestovať obnovu. Google Drive zatiaľ ponechať.
   - [ ] Doplniť samostatné meranie spotreby elektriny varnej dosky v HA: doska je zapojená na dve fázy, preveriť použitie ďalšieho Shelly 3EM-63T Gen3 a miesto v rozvádzači.
@@ -178,6 +179,7 @@ Tailscale na prístup zvonku a Google Drive na zálohy zatiaľ zostávajú vedom
 - ESPHome po restarte smart plug bol nastaveny, ze sa vypne, prehodil som firmware na to aby sa zapol vzdy (nevypinal umyvacku). Pre agatu zase vhodny restore na predchadzajuci stav a default off.  
 - Vodomery Techem MK Radio 4 (`mkradio4`) reportujú stav raz denne, v prírastkoch po 0,1 m³ (100 litrov). Na sledovanie priebežnej drobnej spotreby sa preto nehodia; zmysel má skôr týždenná alebo mesačná spotreba.
 - Vodomery Techem vysielajú aj nešifrované údaje. Šifrované telegramy stále môžu existovať, ale na funkčné odčítanie v HA netreba získavať kľúč.
+- Umývačka Bosch (Home Connect) **neodpovedá na multicast mDNS** – na dotaz odpovie len priamo (unicast). HA auto-discovery ju preto nenájde a treba zadať IP ručne + rezervovať ju v DHCP. Ostatné zariadenia v sieti (Shelly, ESPHome, telefón, vysávač) multicast mDNS zvládajú.
 - Ziarovky na dialkove ovladanie su super, ale pokial mate “fyzicke” vypinace na stene, tak po vypnuti je smart ovladanie logicky mrtve :) \- treba riesit cez smart vypinace \= rozbabrat elektriku  
 - Zigbee je super (mesh), ale kedze sa viaze na centralu (u mna HA), tak pokial sa vypne centrala, tak si nikto nezasvieti doma (naproti priamemu parovaniu ziarovka \- ovladac).  
   - Toto sa da fixnut tak, ze sa vytvoria clusters a direct binding cez ZHA nastavit priamo.  
