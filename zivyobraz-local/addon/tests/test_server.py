@@ -1,4 +1,7 @@
 import http.client
+import contextlib
+import ssl
+from datetime import datetime, timedelta, timezone
 import io
 import json
 from pathlib import Path
@@ -37,6 +40,39 @@ class ProtocolTests(unittest.TestCase):
         connection.close()
         return result
 
+    def preview(self, path="/image.png"):
+        connection = http.client.HTTPConnection(*self.server.server_address, timeout=5)
+        connection.request("GET", path)
+        response = connection.getresponse()
+        result = response.status, dict(response.getheaders()), response.read()
+        connection.close()
+        return result
+
+    def test_direct_preview_opt_in_and_exact_frame_bytes(self):
+        self.assertEqual(self.preview()[0], 404)
+        self.options["preview_enabled"] = True
+        self.assertEqual(self.preview()[0], 404)
+        frame = self.request(1)
+        with patch.object(self.server.images, "render", side_effect=AssertionError("GET must not regenerate")):
+            status, headers, image = self.preview()
+        self.assertEqual(status, 200)
+        self.assertEqual(image, frame[2])
+        self.assertEqual(headers["Content-Type"], "image/png")
+        self.assertEqual(headers["Cache-Control"], "no-store")
+        self.assertNotIn("PreciseSleep", headers)
+        self.assertNotIn("Timestamp", headers)
+        self.assertEqual(self.preview("/data/options.json")[0], 404)
+        self.options["preview_enabled"] = False
+        self.assertEqual(self.preview()[0], 404)
+
+    def test_failed_or_unauthenticated_requests_preserve_preview(self):
+        self.options["preview_enabled"] = True
+        image = self.request(0)[2]
+        self.assertEqual(self.request(1, key="bad")[0], 401)
+        with patch.object(self.server.images, "render", side_effect=OSError):
+            self.assertEqual(self.request(1)[0], 502)
+        self.assertEqual(self.preview()[2], image)
+
     def test_both_checks_return_same_complete_image_and_headers(self):
         first = self.request(1)
         second = self.request(0)
@@ -58,6 +94,56 @@ class ProtocolTests(unittest.TestCase):
     def test_authentication(self):
         self.assertEqual(self.request(1, key="bad")[0], 401)
         self.assertEqual(self.request(1, key="")[0], 401)
+
+    def test_client_tls_and_reset_errors_have_no_traceback(self):
+        for error in (ssl.SSLError(1, "certificate unknown"), BrokenPipeError(), ConnectionResetError()):
+            with contextlib.redirect_stderr(io.StringIO()) as stderr, \
+                 self.assertLogs("zivyobraz", level="DEBUG") as captured:
+                try:
+                    raise error
+                except type(error):
+                    self.server.handle_error(None, ("192.0.2.9", 5000))
+            self.assertEqual(stderr.getvalue(), "")  # No socketserver traceback dump.
+            self.assertFalse(any("failed:" in line for line in captured.output))
+        with contextlib.redirect_stderr(io.StringIO()) as stderr, \
+             self.assertLogs("zivyobraz", level="WARNING") as captured:
+            try:
+                raise ValueError("boom")
+            except ValueError:
+                self.server.handle_error(None, ("192.0.2.9", 5000))
+        self.assertIn("request from 192.0.2.9 failed: ValueError", captured.output[0])
+        self.assertEqual(stderr.getvalue(), "")
+
+    def test_schedule_sleep_header_does_not_change_image_timestamp(self):
+        first = self.request(1)
+        self.options["update_mode"] = "daily"
+        with patch("server.sleep_seconds", return_value=18000):
+            second = self.request(1)
+        self.assertEqual(second[1]["PreciseSleep"], "18000")
+        self.assertEqual(first[1]["Timestamp"], second[1]["Timestamp"])
+        self.assertEqual(first[2], second[2])
+
+    def test_live_weather_both_checks_and_outage_timestamp(self):
+        self.options.update(image_source="homeassistant", weather_entity="weather.forecast_home",
+                            forecast_type="hourly", forecast_step_hours="1", rotation="90", timezone="Europe/Prague", update_mode="daily")
+        self.server.images = Images(self.options)
+        state = {"state": "sunny", "attributes": {"temperature": 11.1, "temperature_unit": "°C", "humidity": 80}}
+        forecast = [{"datetime": (datetime.now(timezone.utc) + timedelta(hours=n)).isoformat(),
+                     "temperature": 15, "condition": "sunny"} for n in (1, 2, 3)]
+        response = {"service_response": {"weather.forecast_home": {"forecast": forecast}}}
+        with patch("weather.api", side_effect=[state, response]):
+            first, second = self.request(0), self.request(1)
+        self.assertEqual(first[0], 200)
+        self.assertEqual(second[0], 200)
+        self.assertEqual(first[2], second[2])
+        self.assertEqual(Image.open(io.BytesIO(first[2])).size, (800, 480))
+        self.assertNotIn("Rotate", first[1])
+        self.assertTrue(60 <= int(first[1]["PreciseSleep"]) <= 86400)
+        self.server.images.weather.checked = None
+        with patch("weather.api", side_effect=OSError):
+            stale = self.request(1)
+        self.assertEqual(stale[0], 200)
+        self.assertNotEqual(first[1]["Timestamp"], stale[1]["Timestamp"])
 
     def test_invalid_requests(self):
         for display in ({}, {"width": 0, "height": 480, "colorType": "3C"},
@@ -83,8 +169,34 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(status, 502)
         self.assertNotIn("Timestamp", headers)
 
+    def test_rotation_90_keeps_native_dimensions_and_changes_timestamp(self):
+        _, first_headers, _ = self.request(1)
+        self.options["rotation"] = "90"
+        status, headers, data = self.request(1)
+        self.assertEqual(status, 200)
+        image = Image.open(io.BytesIO(data))
+        self.assertEqual(image.size, (800, 480))
+        self.assertEqual(set(image.getdata()), {(0, 0, 0), (255, 255, 255), (255, 0, 0)})
+        self.assertNotEqual(first_headers["Timestamp"], headers["Timestamp"])
+        self.assertNotIn("Rotate", headers)  # Keep direct streaming, not firmware rotation.
+
 
 class SourceTests(unittest.TestCase):
+    def test_all_quarter_turns_are_lossless_and_counterclockwise(self):
+        for angle in (0, 90, 180, 270):
+            size = (8, 12) if angle in (90, 270) else (12, 8)
+            source = Image.new("RGB", size, "white")
+            source.putpixel((0, 0), (255, 0, 0))
+            source.putpixel((size[0] - 1, 0), (0, 0, 0))
+            images = Images({"image_source": "test", "accent": "red", "rotation": str(angle)})
+            with patch.object(images, "source", return_value=source) as get_source:
+                data, _ = images.render(12, 8)
+                get_source.assert_called_once_with(size)
+            result = Image.open(io.BytesIO(data))
+            expected = source.rotate(angle, expand=True)
+            self.assertEqual(result.size, (12, 8))
+            self.assertEqual(list(result.getdata()), list(expected.getdata()))
+
     def test_file_restricted_to_share(self):
         images = Images({"image_source": "file", "image_file": "/etc/passwd", "accent": "red"})
         with self.assertRaises(ValueError):

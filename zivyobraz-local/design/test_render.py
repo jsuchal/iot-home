@@ -20,6 +20,12 @@ class DesignTests(unittest.TestCase):
         image = components.render({"demo": True})
         self.assertEqual(image.size, (800, 480))
 
+    def test_portrait_geometry_and_palette(self):
+        data = json.loads(Path(__file__).with_name("demo.json").read_text())
+        image = Components("/usr/share/fonts/truetype/dejavu", portrait=True).render(data)
+        self.assertEqual(image.size, (480, 800))
+        self.assertEqual(set(image.getdata()), {(255, 255, 255), (0, 0, 0), (255, 0, 0)})
+
 
 if __name__ == "__main__":
     unittest.main()

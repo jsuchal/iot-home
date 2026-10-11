@@ -113,6 +113,40 @@ HA API token, Supervisor API ani host networking. `/share` je iba na čítanie.
   RGB PNG bez interlacingu. Po zmene konfigurácie reštartuj add-on.
 - Chybný zdroj vráti 502 bez timestampu, nie úspešný náhradný obrázok.
 
+### Reálne počasie a plánovanie (add-on 0.3.0)
+
+Add-on podporuje `image_source: homeassistant`,
+`weather_entity: weather.forecast_home` a `forecast_type: hourly|daily`.
+Získava skutočné dáta cez interný Core API proxy (vyžaduje nové
+`homeassistant_api` oprávnenie), nie cez token uložený v Gite/options.
+Pri výpadku označí posledný uložený snapshot ako zastaraný; bez dát vráti 502.
+
+`update_mode: daily` používa `update_times: ["06:00", "09:00", "12:00", "15:00", "18:00"]`.
+Alternatíva `window` používa `window_start`, `window_end` a
+`window_interval_minutes`; pôvodný `interval` používa `sleep_seconds`.
+`timezone: Europe/Prague` zohľadňuje DST. Ide o relatívne plánovanie cez
+PreciseSleep s odchýlkou spracovania/hodín, nie o presný absolútny budík.
+Podrobnosti, oprávnenia a výpadkové správanie sú v [addon/DOCS.md](addon/DOCS.md).
+Na HA je nasadená verzia 0.3.6 s `layout: weatherman`: aktuálne počasie,
+tri 3-hodinové termíny (dážď alebo vietor, pri bezvetrí prázdne) a tri
+nasledujúce dni. Červené zvýraznenie
+má nastaviteľné prahy <0/>28 °C, >40 km/h a >10 mm/deň; nejde o oficiálne
+meteorologické výstrahy. Súborová statická skúška bola ukončená.
+Oba POST varianty a priamy `/image.png` boli overené na HA s rovnakým
+PNG a Timestamp. Fyzický rámik prevezme novú verziu pri ďalšom prebudení;
+po nasadení 0.3.0 zatiaľ nebol vykonaný USB reštart ani fyzické potvrdenie.
+Nové zmeny nie sú commitnuté podľa pokynu používateľa.
+
+### Orientácia na výšku (add-on 0.1.1)
+
+`rotation: "90"` otočí hotový obraz o 90° proti smeru hodinových ručičiek.
+Kompozícia najprv prebieha v logických 480×800 a až potom sa bezstratovo otočí
+na fyzických 800×480 pre firmware. Pre vlastný súbor/URL používaj portrétny
+480×800 zdroj. Zabudovaný test sa v tejto orientácii vykresľuje portrétne.
+Default `"0"` zostáva bezo zmeny; možné sú aj `"180"` a `"270"`.
+Server neposiela hlavičku Rotate, takže funguje pôvodný direct streaming,
+bez nového flashovania či zmeny kódu firmwaru. Po zmene options reštartuj add-on.
+
 ## Protokol a curl dôkazy
 
 POST `/index.php?timestampCheck=0|1`, `X-API-Key`, JSON `display.width`,

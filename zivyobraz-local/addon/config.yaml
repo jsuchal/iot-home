@@ -1,5 +1,5 @@
 name: Živý obraz Local
-version: "0.1.0"
+version: "0.3.6"
 slug: zivyobraz_local
 description: Local HTTPS image endpoint for Živý obraz firmware 3.2
 arch:
@@ -9,6 +9,8 @@ arch:
 startup: application
 boot: auto
 init: false
+homeassistant_api: true
+webui: "https://[HOST]:[PORT:8443]/image.png"
 ports:
   8443/tcp: 8443
 ports_description:
@@ -17,15 +19,45 @@ map:
   - share:ro
 options:
   api_key: ""
-  image_source: test
-  image_url: ""
-  image_file: /share/zivyobraz/image.png
-  accent: red
-  sleep_seconds: 360
+  image_source: homeassistant
+  layout: weatherman
+  display_mode: light
+  rotation: "90"
+  weather_entity: weather.forecast_home
+  forecast_type: hourly
+  forecast_step_hours: "3"
+  weather_stale_minutes: 120
+  timezone: Europe/Prague
+  update_mode: daily
+  update_times:
+    - "06:00"
+    - "09:00"
+    - "12:00"
+    - "15:00"
+    - "18:00"
+  preview_enabled: false
+  cold_below_c: 0
+  hot_above_c: 28
+  wind_above_kmh: 40
+  rain_above_mm_day: 10
+  rain_above_mm_hour: 4
 schema:
   api_key: password
-  image_source: list(test|url|file)
-  image_url: str
-  image_file: str
-  accent: list(red|yellow)
-  sleep_seconds: int(60,86400)
+  image_source: list(test|url|file|homeassistant)
+  layout: list(classic|weatherman)
+  display_mode: list(dark|light)
+  rotation: list(0|90|180|270)
+  weather_entity: str
+  forecast_type: list(hourly|daily)
+  forecast_step_hours: list(1|3)
+  weather_stale_minutes: int(1,10080)
+  timezone: str
+  update_mode: list(interval|daily|window)
+  update_times:
+    - str
+  preview_enabled: bool
+  cold_below_c: float(-80,60)
+  hot_above_c: float(-80,60)
+  wind_above_kmh: float(0,300)
+  rain_above_mm_day: float(0,1000)
+  rain_above_mm_hour: float(0,100)

@@ -21,25 +21,50 @@ python3 -m unittest discover -s zivyobraz-local/design -v
 
 Vyžaduje Pillow a systémové DejaVu fonty (`fonts-dejavu-core` v Debian/Ubuntu).
 Výstup `preview.png` je 800×480 RGB PNG s iba tromi farbami.
+Pre rámik na výšku:
+
+```sh
+python3 zivyobraz-local/design/render.py --portrait --output zivyobraz-local/design/preview-portrait.png
+```
+
+`preview-portrait.png` je logický 480×800 obrázok, ktorý je určený na čítanie
+v portrétnej orientácii. V add-one ho použi so serverovou `rotation: "90"`;
+add-on potom odošle fyzické 800×480 PNG otočené 90° proti smeru hodinových
+ručičiek. Nenastavuj súčasne firmware `Rotate`, aby sa rotácia nezdvojila.
 **Všetky hodnoty v `demo.json` sú vymyslené, nie údaje z domácnosti ani počasia.**
+
+Kresliace komponenty sú spoločné s add-onom v `addon/components.py`;
+`design/render.py` je iba lokálne CLI. Reálny HA zdroj v add-one ich napĺňa
+živými dátami, no tento CLI naďalej iba kreslí poskytnutý JSON snapshot.
 Náhľad má zámerne viditeľné označenie `UKÁŽKA · NIE ŽIVÉ ÚDAJE`.
 
-PNG možno použiť ako súborový zdroj existujúceho add-onu. Renderer zatiaľ
-nie je zapojený do jeho runtime: v1 zostáva statický obrázok/URL/test.
-Pred napojením na živé dáta treba zvoliť konkrétne HA entity, zdroj predpovede,
-miesto, časové pásmo a pravidlá zastaraných/nedostupných údajov.
-Používateľ vybral ako prvú živú verziu **počasie + predpoveď**. Pri prvom priamom
-MCP dotaze `GetLiveContext(domain="weather")` nebola sprístupnená žiadna
-weather entita. Používateľ ju následne sprístupnil: MCP už vracia **Forecast Home**
-a aktuálny stav/teplotu/vlhkosť. Presné entity_id ani hodinová/denná predpoveď
-v tomto výsledku nie sú; MCP neponúka nástroj na `weather.get_forecasts`.
-Živý renderer bude potrebovať read-only prístup k tejto HA službe (napr. cez
-HA add-on API), nie vymyslené hodnoty alebo odhadnuté entity_id.
-Údaj o čase musí znamenať čas **zdrojových dát**, nie každý HTTP request,
-inak by sa timestamp menil a displej zbytočne prekresľoval.
+## Tmavý Weatherman dizajn
 
-Odporúčaný začiatok: aktualizácia 15–30 minút, skoršia pri dôležitom upozornení;
-nepoužívať minútové hodiny. Tento 3-farebný panel pri teste refreshoval ~17 s.
-Generovanie v HA add-one môže byť lokálne; met.no alebo iný internetový zdroj
-počasia však nie je plne offline. Vypadnutý internet nesmie blokovať domáce
-merania a posledné dáta majú byť označené ako zastarané.
+`weatherman_preview.py` používa presne rovnaký renderer ako add-on:
+`addon/weatherman.py`. Nunito a Material Design Icons sú voľne licencované
+alternatívy; binárky, atribúcia a licencie sú v `addon/assets/`.
+Nepoužívame komerčný Gotham Rounded ani prevzatý ESPHome YAML.
+
+Renderer zobrazuje aktuálne počasie, tri 3-hodinové predpovede s vetrom
+a tri nasledujúce dni. Nulové zrážky ani dátumy dní sa nezobrazujú.
+Porovnáva nezaokrúhlené údaje s nastaviteľnými prahmi a zachováva
+označenie zastaraných údajov aj bez času aktualizácie na obrázku.
+Všetok text zostáva v kalibrovanej ploche X30..450/Y70..730.
+
+Pre lokálny náhľad poskytnutého display JSON:
+
+```sh
+python3 zivyobraz-local/design/weatherman_preview.py --data /path/to/display.json --output /path/to/preview.png
+```
+
+CLI nikdy nenačítava HA samo. Pri modelových dátach nastav `demo: true`,
+aby bol veľký nadpis **UKÁŽKA**. Pred nasadením boli na fyzickom paneli
+skúšané statické snapshoty; verzia 0.3.0 podporuje živý runtime cez existujúce
+HA API oprávnenie, vrátane `weather.get_forecasts` pre hourly aj daily.
+Externý poskytovateľ počasia môže vyžadovať internet; pri výpadku sa používa
+posledný úspešný označený snapshot. Zvolený plán je 06:00/09:00/12:00/15:00/18:00,
+nie minútové obnovy.
+
+Pridaj `--mode light` pre čierny text na bielom pozadí, alebo `--mode dark`
+pre tmavú verziu. V light režime ostávajú červené zvýraznenia červené;
+v dark režime sa červená mapuje na bielu (slabý kontrast na čiernom).
