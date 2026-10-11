@@ -1,0 +1,161 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+[INFO   ][SYSTEM ] Starting firmware for Zivy Obraz service
+[INFO   ][SENSOR ] Fresh boot - resetting detection
+[redacted private configuration line]
+[INFO   ][SENSOR ] Detected and cached: SHT4X
+[redacted private configuration line]
+[INFO   ][WIFI   ] Fast connect successful in 1420 ms
+[INFO   ][WIFI   ] Send c over USB within 3 seconds to open server configuration portal
+*wm:Starting Web Portal 
+[INFO   ][WIFI   ] Server portal: http://192.168.1.111/param (USB initiated, closes after save or 120s)
+[INFO   ][HTTP   ] Connecting to: https://192.168.1.196:8443
+[INFO   ][HTTP   ] JSON Payload:
+{
+  "fwVersion": "3.2",
+  "apiVersion": "3.2",
+  "buildDate": "20261011",
+  "board": "ESPink_V2",
+  "system": {
+    "cpuTemp": 33.88889,
+    "resetReason": "poweron",
+    "vccVoltage": 4.233217
+  },
+  "network": {
+[redacted private configuration line]
+    "rssi": -60,
+[redacted private configuration line]
+    "apRetries": 0,
+    "ipAddress": "192.168.1.111"
+  },
+  "display": {
+    "type": "GDEY075Z08",
+    "width": 800,
+    "height": 480,
+    "colorType": "3C"
+  },
+  "sensors": [
+    {
+      "type": "SHT4X",
+      "temp": 22.05196,
+      "hum": 49
+    }
+  ]
+}
+[INFO   ][HTTP   ] Request sent
+[INFO   ][HEADER ] Timestamp now: 1767206305
+[INFO   ][HEADER ] Precise Sleep in seconds: 60
+[INFO   ][HTTP   ] Headers received
+[INFO   ][IMAGE  ] Update available, downloading...
+[INFO   ][IMAGE  ] Using direct streaming mode
+[WARNING][STREAM ] Reducing row buffer: 240 -> 129 rows (heap limited)
+[INFO   ][STREAM ] Manager initialized in direct mode
+[INFO   ][IMAGE  ] PNG Processing (direct streaming mode)
+[INFO   ][HTTP   ] Bytes read 2906, pixels processed 384000
+[INFO   ][HTTP   ] Loaded in 2357 ms
+[INFO   ][WIFI   ] WiFi turned off
+[INFO   ][SYSTEM ] Going to sleep for (seconds): 41 (compensated by 19 seconds)
+ets Jul 29 2019 12:21:46
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+[INFO   ][SYSTEM ] Starting firmware for Zivy Obraz service
+[INFO   ][SENSOR ] Wake from deep sleep - using cached sensor: SHT4X
+[redacted private configuration line]
+[INFO   ][WIFI   ] Fast connect successful in 1520 ms
+[INFO   ][HTTP   ] Connecting to: https://192.168.1.196:8443
+[INFO   ][HTTP   ] JSON Payload:
+{
+  "fwVersion": "3.2",
+  "apiVersion": "3.2",
+  "buildDate": "20261011",
+  "board": "ESPink_V2",
+  "system": {
+    "cpuTemp": 33.88889,
+    "resetReason": "deepsleep",
+    "vccVoltage": 4.247369
+  },
+  "network": {
+[redacted private configuration line]
+    "rssi": -59,
+[redacted private configuration line]
+    "apRetries": 0,
+    "ipAddress": "192.168.1.111",
+    "lastDownloadDuration": 2390
+  },
+  "display": {
+    "type": "GDEY075Z08",
+    "width": 800,
+    "height": 480,
+    "colorType": "3C",
+    "lastRefreshDuration": 17453
+  },
+  "sensors": [
+    {
+      "type": "SHT4X",
+      "temp": 22.01991,
+      "hum": 49
+    }
+  ]
+}
+[INFO   ][HTTP   ] Request sent
+[INFO   ][HEADER ] Timestamp now: 1767206305
+[INFO   ][HEADER ] Precise Sleep in seconds: 60
+[INFO   ][HTTP   ] Headers received
+[INFO   ][HTTP   ] No screen reload, still at current timestamp: 1767206305
+[INFO   ][IMAGE  ] No update needed
+[INFO   ][SYSTEM ] Going to sleep for (seconds): 60 (compensated by 0 seconds)
+ets Jul 29 2019 12:21:46
+
+rst:0x5 (DEEPSLEEP_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+[INFO   ][SYSTEM ] Starting firmware for Zivy Obraz service
+[INFO   ][SENSOR ] Wake from deep sleep - using cached sensor: SHT4X
+[redacted private configuration line]
+[WARNING][WIFI   ] Fast connect failed after 4000 ms, invalidating cache
+[INFO   ][WIFI   ] Connecting...
+*wm:AutoConnect 
+*wm:Connect Wifi, ATTEMPT # 1 of 5
+[redacted private configuration line]
+*wm:Connect Wifi, ATTEMPT # 2 of 5
+[redacted private configuration line]
+E (10919) wifi:sta is connecting, return error
+[  5459][E][WiFiSTA.cpp:317] begin(): connect failed! 0x3007
+*wm:Connect Wifi, ATTEMPT # 3 of 5
+[redacted private configuration line]
+E (11571) wifi:sta is connecting, return error
+[  6111][E][WiFiSTA.cpp:317] begin(): connect failed! 0x3007
+*wm:Connect Wifi, ATTEMPT # 4 of 5
+[redacted private configuration line]
+E (12091) wifi:sta is connecting, return error
+[  6630][E][WiFiSTA.cpp:317] begin(): connect failed! 0x3007
+*wm:Connect Wifi, ATTEMPT # 5 of 5
+[redacted private configuration line]
+E (12609) wifi:sta is connecting, return error
+[  7149][E][WiFiSTA.cpp:317] begin(): connect failed! 0x3007
+*wm:AutoConnect: FAILED for  2831 ms
+[redacted private configuration line]
+*wm:AP IP address: 192.168.4.1
+[redacted private configuration line]
+*wm:Starting Web Portal 
+[INFO   ][WIFI   ] Config portal started (non-blocking)

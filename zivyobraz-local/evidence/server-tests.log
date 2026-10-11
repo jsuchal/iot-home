@@ -1,0 +1,17 @@
+test_authentication (test_server.ProtocolTests.test_authentication) ... request rejected: invalid API key
+request rejected: invalid API key
+ok
+test_both_checks_return_same_complete_image_and_headers (test_server.ProtocolTests.test_both_checks_return_same_complete_image_and_headers) ... ok
+test_image_source_failure_is_not_a_successful_timestamp (test_server.ProtocolTests.test_image_source_failure_is_not_a_successful_timestamp) ... image generation failed: OSError
+ok
+test_invalid_requests (test_server.ProtocolTests.test_invalid_requests) ... ok
+test_scaling_and_yellow (test_server.ProtocolTests.test_scaling_and_yellow) ... ok
+test_file_changes_timestamp_and_composites_transparency (test_server.SourceTests.test_file_changes_timestamp_and_composites_transparency) ... ok
+test_file_restricted_to_share (test_server.SourceTests.test_file_restricted_to_share) ... ok
+test_requires_api_key (test_server.SourceTests.test_requires_api_key) ... ok
+test_url_cached_and_no_key_forwarded (test_server.SourceTests.test_url_cached_and_no_key_forwarded) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.634s
+
+OK

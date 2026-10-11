@@ -1,0 +1,12 @@
+The firmware in firmware/ originates from MultiTricker/zivyobraz-fw v3.2
+(https://github.com/MultiTricker/zivyobraz-fw), commit
+6d0af579ddf4b1ff85debad7dcfefab6449633ac, by its original authors.
+Its original LICENSE and attribution are preserved.
+
+Firmware modifications, the independent local add-on, tools and design code
+in this directory are licensed under Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0):
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode
+Copyright 2026 the contributors to jsuchal/iot-home.
+
+Bundled third-party libraries retain their respective licenses and notices.

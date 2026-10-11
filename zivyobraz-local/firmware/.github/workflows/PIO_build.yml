@@ -1,0 +1,58 @@
+name: Zivy obraz CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  clang-format-check:
+    name: Check C++ code formatting
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/main'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+
+      - name: Check formatting
+        run: |
+          echo "Checking C++ code formatting..."
+          FORMAT_ISSUES=0
+          while read -r file; do
+            if ! clang-format "$file" | diff -u --label "$file (current)" --label "$file (formatted)" "$file" - ; then
+              FORMAT_ISSUES=1
+            fi
+          done < <(find src -name '*.cpp' -o -name '*.h' -not -path 'src/fonts/*')
+
+          if [ "$FORMAT_ISSUES" = "1" ]; then
+            echo "Formatting issues found!"
+            exit 1
+          fi
+          echo "All files are properly formatted!"
+
+  build-project:
+    name: Compile firmware binaries
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/pip
+            ~/.platformio/.cache
+          key: ${{ runner.os }}-pio
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Install PlatformIO Core
+        run: pip install --upgrade platformio
+
+      - name: Compile firmware binaries
+        run: pio run

@@ -1,0 +1,373 @@
+#include "sensor.h"
+
+#include "board.h"
+#include "logger.h"
+#include "state_manager.h"
+
+#ifdef SENSOR
+
+  // SHT40/41/45
+  #include <SensirionI2cSht4x.h>
+static SensirionI2cSht4x sht4;
+
+  // SCD40/41
+  #include "SparkFun_SCD4x_Arduino_Library.h"
+static SCD4x SCD4(SCD4x_SENSOR_SCD41);
+
+  // BME280
+  #include <Adafruit_BME280.h>
+  #include <Adafruit_Sensor.h>
+static Adafruit_BME280 bme;
+
+  // STCC4
+  #include <SensirionI2cStcc4.h>
+static SensirionI2cStcc4 stcc4;
+
+// Store detected sensor type in RTC memory (persists through deep sleep)
+RTC_DATA_ATTR SensorType detectedSensor = SensorType::NONE;
+RTC_DATA_ATTR uint8_t detectedSht4xAddress = 0;
+
+Sensor &Sensor::getInstance()
+{
+  static Sensor instance;
+  return instance;
+}
+
+void Sensor::init()
+{
+  ResetReason reason = Board::getResetReason();
+
+  // Reset sensor detection on power-on or hardware reset
+  if (reason == ResetReason::POWERON || reason == ResetReason::EXT)
+  {
+    Logger::log<Logger::Topic::SENS>("Fresh boot - resetting detection\n");
+    detectedSensor = SensorType::NONE;
+    m_detectedSensor = SensorType::NONE;
+    detectedSht4xAddress = 0;
+  }
+  else if (reason == ResetReason::DEEPSLEEP)
+  {
+    m_detectedSensor = detectedSensor;
+    m_sht4xAddress = detectedSht4xAddress;
+    Logger::log<Logger::Topic::SENS>("Wake from deep sleep - using cached sensor: {}\n", getSensorTypeStr());
+  }
+
+  // Detect sensor if not already known
+  if (m_detectedSensor == SensorType::NONE)
+  {
+    m_detectedSensor = detectSensor();
+    detectedSensor = m_detectedSensor;
+    detectedSht4xAddress = m_sht4xAddress;
+
+    if (m_detectedSensor != SensorType::NONE)
+      Logger::log<Logger::Topic::SENS>("Detected and cached: {}\n", getSensorTypeStr());
+    else
+      Logger::log<Logger::Topic::SENS>("No sensor found\n");
+  }
+}
+
+SensorType Sensor::detectSensor()
+{
+  // End any previous Wire session to ensure clean state after deep sleep
+  // epdiy uses the same I2C driver; do not delete it.
+  #if !defined(SVERIO_PAPERBOARD_EPDIY)
+  Wire.end();
+    #if (defined PIN_SDA) && (defined PIN_SCL)
+  Wire.begin(PIN_SDA, PIN_SCL);
+    #else
+  Wire.begin();
+    #endif
+  #endif
+
+  SensorType found = SensorType::NONE;
+
+  // One address check could take about 1 second instead of few ms, if there is no sensor or I2C issue
+  // so break the loop at SHTx scan in that case to avoid long boot times (and skip checking other sensors)
+  constexpr unsigned long SCAN_TIMEOUT_MS = 500;
+  const unsigned long scanStart = millis();
+  bool timeout = false;
+
+  // Check for SHT40 OR SHT41 OR SHT45 (scan addresses)
+  const uint8_t sht4xAddrs[] = {0x44, 0x45, 0x46};
+  for (uint8_t addr : sht4xAddrs)
+  {
+    sht4.begin(Wire, addr);
+    uint32_t serialNumber = 0;
+    if (sht4.serialNumber(serialNumber) == 0)
+    {
+      m_sht4xAddress = addr;
+      Logger::log<Logger::Level::INFO, Logger::Topic::SENS>("SHT4x FOUND, SN: {}\n", serialNumber);
+      found = SensorType::SHT4X;
+      break;
+    }
+
+    if (millis() - scanStart > SCAN_TIMEOUT_MS)
+    {
+      Logger::log<Logger::Topic::SENS>(
+        "Sensor scan timeout (>{} ms) during SHT4x scan, skipping remaining addresses and sensors\n", SCAN_TIMEOUT_MS);
+      timeout = true;
+      break;
+    }
+  }
+
+  // Got SHT4x?
+  if (found != SensorType::NONE || timeout)
+  {
+    // Already found SHT4x or timeout, skip other sensors
+  }
+  // Check for BME280
+  else if (bme.begin())
+  {
+    Logger::log<Logger::Level::INFO, Logger::Topic::SENS>("BME280 FOUND\n");
+    found = SensorType::BME280;
+  }
+  // Check for SCD40 OR SCD41
+  else if (SCD4.begin(false, true, false))
+  {
+    Logger::log<Logger::Level::INFO, Logger::Topic::SENS>("SCD4x FOUND\n");
+    found = SensorType::SCD4X;
+  }
+  // Check for STCC4
+  else
+  {
+    stcc4.begin(Wire, STCC4_I2C_ADDR_64);
+    uint32_t productId;
+    uint64_t serialNumber;
+    if (stcc4.getProductId(productId, serialNumber) == 0)
+    {
+      Logger::log<Logger::Level::INFO, Logger::Topic::SENS>("STCC4 FOUND, SN: {}\n", serialNumber);
+      found = SensorType::STCC4;
+    }
+  }
+
+  return found;
+}
+
+bool Sensor::readSensorsVal(float &sen_temp, int &sen_humi, int &sen_pres)
+{
+  if (m_detectedSensor == SensorType::NONE)
+  {
+    Logger::log<Logger::Topic::SENS>("No sensor detected\n");
+    return false;
+  }
+
+  // End any previous Wire session to ensure clean state after deep sleep
+  // epdiy uses the same I2C driver; do not delete it.
+  #if !defined(SVERIO_PAPERBOARD_EPDIY)
+  Wire.end();
+    #if (defined PIN_SDA) && (defined PIN_SCL)
+  Wire.begin(PIN_SDA, PIN_SCL);
+    #else
+  Wire.begin();
+    #endif
+  #endif
+
+  bool ret = false;
+
+  switch (m_detectedSensor)
+  {
+    case SensorType::SHT4X:
+      ret = readSHT4X(sen_temp, sen_humi);
+      break;
+
+    case SensorType::BME280:
+      ret = readBME280(sen_temp, sen_humi, sen_pres);
+      break;
+
+    case SensorType::SCD4X:
+      ret = readSCD4X(sen_temp, sen_humi, sen_pres);
+      break;
+
+    case SensorType::STCC4:
+      ret = readSTCC4(sen_temp, sen_humi, sen_pres);
+      break;
+
+    default:
+      Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("Unknown sensor type\n");
+      break;
+  }
+
+  if (!ret)
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("Failed to read sensor data\n");
+
+  return ret;
+}
+
+bool Sensor::readSHT4X(float &sen_temp, int &sen_humi)
+{
+  sht4.begin(Wire, m_sht4xAddress);
+  sht4.softReset();
+  delay(10);
+
+  float temperature = 0.0f;
+  float humidity = 0.0f;
+  if (sht4.measureLowestPrecision(temperature, humidity) != 0)
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("SHT4x read failed\n");
+    return false;
+  }
+
+  sen_temp = temperature;
+  sen_humi = static_cast<int>(humidity);
+  return true;
+}
+
+bool Sensor::readBME280(float &sen_temp, int &sen_humi, int &sen_pres)
+{
+  if (!bme.begin())
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("BME280 not responding\n");
+    return false;
+  }
+
+  sen_temp = bme.readTemperature();
+  sen_humi = bme.readHumidity();
+  sen_pres = bme.readPressure() / 100.0F;
+  return true;
+}
+
+bool Sensor::readSCD4X(float &sen_temp, int &sen_humi, int &sen_pres)
+{
+  if (!SCD4.begin(false, true, false))
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("SCD4x not responding\n");
+    return false;
+  }
+
+  SCD4.measureSingleShot();
+
+  unsigned long scd4xStart = millis();
+  while (SCD4.readMeasurement() == false) // wait for a new data (approx 30s)
+  {
+    if (millis() - scd4xStart > 60000)
+    {
+      Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("SCD4x measurement timed out\n");
+      return false;
+    }
+    Logger::log<Logger::Topic::SENS>("Waiting for first measurement...\n");
+    delay(1000);
+  }
+
+  sen_temp = SCD4.getTemperature();
+  sen_humi = SCD4.getHumidity();
+  sen_pres = SCD4.getCO2();
+  return true;
+}
+
+bool Sensor::readSTCC4(float &sen_temp, int &sen_humi, int &sen_pres)
+{
+  stcc4.begin(Wire, STCC4_I2C_ADDR_64);
+
+  uint32_t productId;
+  uint64_t serialNumber;
+  int16_t error = stcc4.getProductId(productId, serialNumber);
+
+  if (error != 0)
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("STCC4 not responding\n");
+    return false;
+  }
+
+  stcc4.exitSleepMode(); // Ensure sensor is awake (optional safety measure)
+  delay(50);
+
+  // Warmup to get rid of the 390 ppm start value
+  error = stcc4.startContinuousMeasurement();
+  if (error)
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("STCC4 failed to start continuous measurement\n");
+    return false;
+  }
+
+  Logger::log<Logger::Topic::SENS>("Waiting 30s to warmup STCC4\n");
+  delay(30 * 1000);
+  Logger::log<Logger::Topic::SENS>("STCC4 warmup complete\n");
+
+  error = stcc4.stopContinuousMeasurement();
+  if (error)
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("STCC4 failed to stop continuous measurement\n");
+    return false;
+  }
+
+  // Perform single shot measurement
+  error = stcc4.measureSingleShot();
+  if (error != 0)
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("STCC4 single shot measurement failed\n");
+    return false;
+  }
+
+  // Wait for measurement to complete (typical ~5 seconds for STCC4)
+  delay(5000);
+
+  // Temporary variables to hold raw sensor data
+  int16_t temp_cpo2;
+  float temp_temp;
+  float temp_humidity;
+  uint16_t sensorStatus;
+
+  // Read measurement
+  error = stcc4.readMeasurement(temp_cpo2, temp_temp, temp_humidity, sensorStatus);
+  if (error != 0)
+  {
+    Logger::log<Logger::Level::ERROR, Logger::Topic::SENS>("STCC4 readMeasurement error code: {}\n", error);
+    return false;
+  }
+
+  // Put sensor to sleep to reduce power draw until deep sleep
+  stcc4.enterSleepMode();
+
+  // Assign to output variables
+  sen_temp = temp_temp;
+  sen_humi = (int)temp_humidity;
+  sen_pres = temp_cpo2;
+  return true;
+}
+
+SensorType Sensor::getSensorType() const { return m_detectedSensor; }
+
+const char *Sensor::getSensorTypeStr() const
+{
+  switch (m_detectedSensor)
+  {
+    case SensorType::NONE:
+      return "NONE";
+    case SensorType::SHT4X:
+      return "SHT4X";
+    case SensorType::BME280:
+      return "BME280";
+    case SensorType::SCD4X:
+      return "SCD4X";
+    case SensorType::STCC4:
+      return "STCC4";
+    default:
+      return "UNKNOWN";
+  }
+}
+
+SensorData Sensor::getSensorData()
+{
+  SensorData data = {nullptr, 0.0f, 0, 0, false, false, false};
+
+  float temperature;
+  int humidity;
+  int pressure = 0;
+
+  if (readSensorsVal(temperature, humidity, pressure))
+  {
+    data.type = getSensorTypeStr();
+    data.temperature = temperature;
+    data.humidity = humidity;
+    data.pressureOrCO2 = pressure;
+    data.isPressure = (m_detectedSensor == SensorType::BME280);
+    // Only BME280, SCD4X, and STCC4 have a third measurement
+    data.hasThirdMeasurement = (m_detectedSensor == SensorType::BME280 || m_detectedSensor == SensorType::SCD4X ||
+                                m_detectedSensor == SensorType::STCC4);
+    data.isValid = true;
+  }
+
+  return data;
+}
+
+#endif // SENSOR

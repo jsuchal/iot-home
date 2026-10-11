@@ -1,0 +1,2655 @@
+Processing espink (board: esp32dev; framework: arduino; platform: espressif32)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (6.11.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 47 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/espink/src/board.cpp.o
+Compiling .pio/build/espink/src/display.cpp.o
+Compiling .pio/build/espink/src/epdiy_gxepd2_bridge.cpp.o
+Compiling .pio/build/espink/src/http_client.cpp.o
+Compiling .pio/build/espink/src/image_handler.cpp.o
+Compiling .pio/build/espink/src/improv_handler.cpp.o
+Compiling .pio/build/espink/src/logger.cpp.o
+Compiling .pio/build/espink/src/main.cpp.o
+Compiling .pio/build/espink/src/pixel_packer.cpp.o
+Compiling .pio/build/espink/src/sensor.cpp.o
+Compiling .pio/build/espink/src/server_config.cpp.o
+Compiling .pio/build/espink/src/state_manager.cpp.o
+Compiling .pio/build/espink/src/streaming_handler.cpp.o
+Compiling .pio/build/espink/src/utils.cpp.o
+Compiling .pio/build/espink/src/wireless.cpp.o
+Building .pio/build/espink/bootloader.bin
+Generating partitions .pio/build/espink/partitions.bin
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 1 ELF section
+Successfully created esp32 image.
+Compiling .pio/build/espink/libe04/SPI/SPI.cpp.o
+Compiling .pio/build/espink/libcda/Wire/Wire.cpp.o
+Compiling .pio/build/espink/libacd/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/espink/libacd/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/espink/libacd/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Archiving .pio/build/espink/libe04/libSPI.a
+Indexing .pio/build/espink/libe04/libSPI.a
+Compiling .pio/build/espink/libacd/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/espink/lib1b7/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/espink/lib1b7/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/espink/lib1b7/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/espink/lib1b7/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/espink/libb2a/GxEPD2/GxEPD2_EPD.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_102.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+Archiving .pio/build/espink/libcda/libWire.a
+Indexing .pio/build/espink/libcda/libWire.a
+Archiving .pio/build/espink/libacd/libAdafruit BusIO.a
+Indexing .pio/build/espink/libacd/libAdafruit BusIO.a
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_1248.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_154.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_260.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+Archiving .pio/build/espink/lib1b7/libAdafruit GFX Library.a
+Indexing .pio/build/espink/lib1b7/libAdafruit GFX Library.a
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_371.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_420.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_583.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_750.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/it8951/GxEPD2_it60.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+Compiling .pio/build/espink/libb2a/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFi.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiAP.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/espink/lib98d/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/espink/lib900/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+Archiving .pio/build/espink/libb2a/libGxEPD2.a
+Compiling .pio/build/espink/lib900/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+Compiling .pio/build/espink/libe24/Sensirion Core/SensirionCrc.cpp.o
+Compiling .pio/build/espink/libe24/Sensirion Core/SensirionErrors.cpp.o
+Indexing .pio/build/espink/libb2a/libGxEPD2.a
+Compiling .pio/build/espink/libe24/Sensirion Core/SensirionI2CCommunication.cpp.o
+Compiling .pio/build/espink/libe24/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Compiling .pio/build/espink/libe24/Sensirion Core/SensirionRxFrame.cpp.o
+Archiving .pio/build/espink/lib98d/libWiFi.a
+Compiling .pio/build/espink/libe24/Sensirion Core/SensirionShdlcCommunication.cpp.o
+Compiling .pio/build/espink/libe24/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+Indexing .pio/build/espink/lib98d/libWiFi.a
+Compiling .pio/build/espink/lib187/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Compiling .pio/build/espink/lib974/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+Compiling .pio/build/espink/lib1e4/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/espink/libe24/libSensirion Core.a
+Archiving .pio/build/espink/lib900/libImprov WiFi Library.a
+Indexing .pio/build/espink/lib900/libImprov WiFi Library.a
+Indexing .pio/build/espink/libe24/libSensirion Core.a
+Compiling .pio/build/espink/lib86d/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+Archiving .pio/build/espink/lib974/libAdafruit Unified Sensor.a
+Archiving .pio/build/espink/lib187/libSensirion I2C SHT4x.a
+Indexing .pio/build/espink/lib974/libAdafruit Unified Sensor.a
+Indexing .pio/build/espink/lib187/libSensirion I2C SHT4x.a
+Compiling .pio/build/espink/lib5ab/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/espink/lib1c4/pngle/miniz.c.o
+Compiling .pio/build/espink/lib1c4/pngle/pngle.c.o
+Compiling .pio/build/espink/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+Archiving .pio/build/espink/lib1e4/libAdafruit BME280 Library.a
+Indexing .pio/build/espink/lib1e4/libAdafruit BME280 Library.a
+Compiling .pio/build/espink/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Compiling .pio/build/espink/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Archiving .pio/build/espink/lib86d/libSparkFun SCD4x Arduino Library.a
+Archiving .pio/build/espink/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/espink/lib86d/libSparkFun SCD4x Arduino Library.a
+Indexing .pio/build/espink/lib00a/libQRCodeGenerator.a
+Compiling .pio/build/espink/liba5c/WiFiClientSecure/ssl_client.cpp.o
+Archiving .pio/build/espink/lib5ab/libSensirion I2C STCC4.a
+Archiving .pio/build/espink/lib1c4/libpngle.a
+Indexing .pio/build/espink/lib5ab/libSensirion I2C STCC4.a
+Indexing .pio/build/espink/lib1c4/libpngle.a
+Compiling .pio/build/espink/lib7f9/HTTPClient/HTTPClient.cpp.o
+Compiling .pio/build/espink/lib1ba/Update/HttpsOTAUpdate.cpp.o
+Compiling .pio/build/espink/lib1ba/Update/Updater.cpp.o
+Compiling .pio/build/espink/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/espink/liba5c/libWiFiClientSecure.a
+Indexing .pio/build/espink/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/espink/lib2e4/Preferences/Preferences.cpp.o
+Compiling .pio/build/espink/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/espink/lib1ba/libUpdate.a
+Indexing .pio/build/espink/lib1ba/libUpdate.a
+Compiling .pio/build/espink/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+Compiling .pio/build/espink/libdf8/FS/FS.cpp.o
+Archiving .pio/build/espink/lib7f9/libHTTPClient.a
+Archiving .pio/build/espink/lib2b3/libDNSServer.a
+Archiving .pio/build/espink/lib2e4/libPreferences.a
+Indexing .pio/build/espink/lib7f9/libHTTPClient.a
+Archiving .pio/build/espink/lib394/libHTTPUpdate.a
+Indexing .pio/build/espink/lib2b3/libDNSServer.a
+Compiling .pio/build/espink/libdf8/FS/vfs_api.cpp.o
+Indexing .pio/build/espink/lib2e4/libPreferences.a
+Indexing .pio/build/espink/lib394/libHTTPUpdate.a
+Compiling .pio/build/espink/lib25e/WebServer/Parsing.cpp.o
+Compiling .pio/build/espink/lib25e/WebServer/WebServer.cpp.o
+Compiling .pio/build/espink/lib25e/WebServer/detail/mimetable.cpp.o
+Compiling .pio/build/espink/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/espink/lib6c4/libESPmDNS.a
+Indexing .pio/build/espink/lib6c4/libESPmDNS.a
+Compiling .pio/build/espink/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/FunctionalInterrupt.cpp.o
+Archiving .pio/build/espink/libdf8/libFS.a
+Indexing .pio/build/espink/libdf8/libFS.a
+Compiling .pio/build/espink/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-adc.c.o
+Archiving .pio/build/espink/lib25e/libWebServer.a
+Indexing .pio/build/espink/lib25e/libWebServer.a
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/espink/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/espink/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/espink/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/espink/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/espink/FrameworkArduino/main.cpp.o
+Compiling .pio/build/espink/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/espink/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/espink/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/espink/libFrameworkArduino.a
+Indexing .pio/build/espink/libFrameworkArduino.a
+Archiving .pio/build/espink/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/espink/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/espink/firmware.elf
+Retrieving maximum program size .pio/build/espink/firmware.elf
+Checking size .pio/build/espink/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  16.1% (used 52612 bytes from 327680 bytes)
+Flash: [========= ]  92.4% (used 1210889 bytes from 1310720 bytes)
+Building .pio/build/espink/firmware.bin
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 27 ELF sections
+Successfully created esp32 image.
+========================= [SUCCESS] Took 14.59 seconds =========================
+
+Processing espink_v3 (board: esp32-s3-devkitc-1; framework: arduino; platform: espressif32)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.11.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 48 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- SparkFun MAX1704x Fuel Gauge Arduino Library @ 1.0.4
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/espink_v3/src/board.cpp.o
+Compiling .pio/build/espink_v3/src/display.cpp.o
+Compiling .pio/build/espink_v3/src/epdiy_gxepd2_bridge.cpp.o
+Compiling .pio/build/espink_v3/src/http_client.cpp.o
+Compiling .pio/build/espink_v3/src/image_handler.cpp.o
+Compiling .pio/build/espink_v3/src/improv_handler.cpp.o
+Compiling .pio/build/espink_v3/src/logger.cpp.o
+Compiling .pio/build/espink_v3/src/main.cpp.o
+Compiling .pio/build/espink_v3/src/pixel_packer.cpp.o
+Compiling .pio/build/espink_v3/src/sensor.cpp.o
+Compiling .pio/build/espink_v3/src/server_config.cpp.o
+Compiling .pio/build/espink_v3/src/state_manager.cpp.o
+Compiling .pio/build/espink_v3/src/streaming_handler.cpp.o
+Compiling .pio/build/espink_v3/src/utils.cpp.o
+Compiling .pio/build/espink_v3/src/wireless.cpp.o
+Building .pio/build/espink_v3/bootloader.bin
+Generating partitions .pio/build/espink_v3/partitions.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/espink_v3/libe04/SPI/SPI.cpp.o
+Compiling .pio/build/espink_v3/libcda/Wire/Wire.cpp.o
+Compiling .pio/build/espink_v3/libb7b/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/espink_v3/libb7b/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/espink_v3/libb7b/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Archiving .pio/build/espink_v3/libe04/libSPI.a
+Compiling .pio/build/espink_v3/libb7b/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Indexing .pio/build/espink_v3/libe04/libSPI.a
+Compiling .pio/build/espink_v3/libba9/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/espink_v3/libba9/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Archiving .pio/build/espink_v3/libcda/libWire.a
+Indexing .pio/build/espink_v3/libcda/libWire.a
+Compiling .pio/build/espink_v3/libba9/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/espink_v3/libba9/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/GxEPD2_EPD.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_102.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+Archiving .pio/build/espink_v3/libb7b/libAdafruit BusIO.a
+Indexing .pio/build/espink_v3/libb7b/libAdafruit BusIO.a
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_1248.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_154.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_260.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+Archiving .pio/build/espink_v3/libba9/libAdafruit GFX Library.a
+Indexing .pio/build/espink_v3/libba9/libAdafruit GFX Library.a
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_371.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_420.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_583.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_750.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/it8951/GxEPD2_it60.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+Compiling .pio/build/espink_v3/libb65/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFi.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiAP.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/espink_v3/lib98d/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/espink_v3/lib77f/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+Archiving .pio/build/espink_v3/libb65/libGxEPD2.a
+Compiling .pio/build/espink_v3/lib77f/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+Compiling .pio/build/espink_v3/lib6dc/Sensirion Core/SensirionCrc.cpp.o
+Compiling .pio/build/espink_v3/lib6dc/Sensirion Core/SensirionErrors.cpp.o
+Indexing .pio/build/espink_v3/libb65/libGxEPD2.a
+Compiling .pio/build/espink_v3/lib6dc/Sensirion Core/SensirionI2CCommunication.cpp.o
+Compiling .pio/build/espink_v3/lib6dc/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Compiling .pio/build/espink_v3/lib6dc/Sensirion Core/SensirionRxFrame.cpp.o
+Compiling .pio/build/espink_v3/lib6dc/Sensirion Core/SensirionShdlcCommunication.cpp.o
+Compiling .pio/build/espink_v3/lib6dc/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+Compiling .pio/build/espink_v3/libf54/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Compiling .pio/build/espink_v3/libd52/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+Archiving .pio/build/espink_v3/lib98d/libWiFi.a
+Indexing .pio/build/espink_v3/lib98d/libWiFi.a
+Compiling .pio/build/espink_v3/lib818/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/espink_v3/lib77f/libImprov WiFi Library.a
+Archiving .pio/build/espink_v3/lib6dc/libSensirion Core.a
+Indexing .pio/build/espink_v3/lib77f/libImprov WiFi Library.a
+Indexing .pio/build/espink_v3/lib6dc/libSensirion Core.a
+Compiling .pio/build/espink_v3/libd59/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+Archiving .pio/build/espink_v3/libd52/libAdafruit Unified Sensor.a
+Archiving .pio/build/espink_v3/libf54/libSensirion I2C SHT4x.a
+Indexing .pio/build/espink_v3/libf54/libSensirion I2C SHT4x.a
+Indexing .pio/build/espink_v3/libd52/libAdafruit Unified Sensor.a
+Compiling .pio/build/espink_v3/liba95/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/espink_v3/libe9d/pngle/miniz.c.o
+Compiling .pio/build/espink_v3/libe9d/pngle/pngle.c.o
+Compiling .pio/build/espink_v3/libc01/SparkFun MAX1704x Fuel Gauge Arduino Library/SparkFun_MAX1704x_Fuel_Gauge_Arduino_Library.cpp.o
+Archiving .pio/build/espink_v3/lib818/libAdafruit BME280 Library.a
+Indexing .pio/build/espink_v3/lib818/libAdafruit BME280 Library.a
+Compiling .pio/build/espink_v3/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+Compiling .pio/build/espink_v3/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Archiving .pio/build/espink_v3/liba95/libSensirion I2C STCC4.a
+Archiving .pio/build/espink_v3/libe9d/libpngle.a
+Archiving .pio/build/espink_v3/libd59/libSparkFun SCD4x Arduino Library.a
+Compiling .pio/build/espink_v3/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Indexing .pio/build/espink_v3/libe9d/libpngle.a
+Indexing .pio/build/espink_v3/libd59/libSparkFun SCD4x Arduino Library.a
+Indexing .pio/build/espink_v3/liba95/libSensirion I2C STCC4.a
+Compiling .pio/build/espink_v3/liba5c/WiFiClientSecure/ssl_client.cpp.o
+Archiving .pio/build/espink_v3/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/espink_v3/lib00a/libQRCodeGenerator.a
+Compiling .pio/build/espink_v3/lib7f9/HTTPClient/HTTPClient.cpp.o
+Archiving .pio/build/espink_v3/libc01/libSparkFun MAX1704x Fuel Gauge Arduino Library.a
+Indexing .pio/build/espink_v3/libc01/libSparkFun MAX1704x Fuel Gauge Arduino Library.a
+Compiling .pio/build/espink_v3/lib1ba/Update/HttpsOTAUpdate.cpp.o
+Compiling .pio/build/espink_v3/lib1ba/Update/Updater.cpp.o
+Compiling .pio/build/espink_v3/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/espink_v3/liba5c/libWiFiClientSecure.a
+Indexing .pio/build/espink_v3/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/espink_v3/lib2e4/Preferences/Preferences.cpp.o
+Compiling .pio/build/espink_v3/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/espink_v3/lib1ba/libUpdate.a
+Indexing .pio/build/espink_v3/lib1ba/libUpdate.a
+Compiling .pio/build/espink_v3/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+Compiling .pio/build/espink_v3/libdf8/FS/FS.cpp.o
+Archiving .pio/build/espink_v3/lib394/libHTTPUpdate.a
+Archiving .pio/build/espink_v3/lib7f9/libHTTPClient.a
+Indexing .pio/build/espink_v3/lib394/libHTTPUpdate.a
+Compiling .pio/build/espink_v3/libdf8/FS/vfs_api.cpp.o
+Indexing .pio/build/espink_v3/lib7f9/libHTTPClient.a
+Archiving .pio/build/espink_v3/lib2e4/libPreferences.a
+Indexing .pio/build/espink_v3/lib2e4/libPreferences.a
+Compiling .pio/build/espink_v3/lib25e/WebServer/Parsing.cpp.o
+Archiving .pio/build/espink_v3/lib2b3/libDNSServer.a
+Compiling .pio/build/espink_v3/lib25e/WebServer/WebServer.cpp.o
+Indexing .pio/build/espink_v3/lib2b3/libDNSServer.a
+Compiling .pio/build/espink_v3/lib25e/WebServer/detail/mimetable.cpp.o
+Compiling .pio/build/espink_v3/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/espink_v3/lib6c4/libESPmDNS.a
+Indexing .pio/build/espink_v3/lib6c4/libESPmDNS.a
+Compiling .pio/build/espink_v3/FrameworkArduino/Esp.cpp.o
+Archiving .pio/build/espink_v3/libdf8/libFS.a
+Indexing .pio/build/espink_v3/libdf8/libFS.a
+Compiling .pio/build/espink_v3/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/USBCDC.cpp.o
+Archiving .pio/build/espink_v3/lib25e/libWebServer.a
+Compiling .pio/build/espink_v3/FrameworkArduino/USBMSC.cpp.o
+Indexing .pio/build/espink_v3/lib25e/libWebServer.a
+Compiling .pio/build/espink_v3/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/main.cpp.o
+Compiling .pio/build/espink_v3/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/espink_v3/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/espink_v3/libFrameworkArduino.a
+Indexing .pio/build/espink_v3/libFrameworkArduino.a
+Archiving .pio/build/espink_v3/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/espink_v3/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/espink_v3/firmware.elf
+Retrieving maximum program size .pio/build/espink_v3/firmware.elf
+Checking size .pio/build/espink_v3/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  15.6% (used 51260 bytes from 327680 bytes)
+Flash: [========= ]  87.5% (used 1146585 bytes from 1310720 bytes)
+Building .pio/build/espink_v3/firmware.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 15.54 seconds =========================
+
+Processing es3ink (board: esp32-s3-devkitc-1; framework: arduino; platform: espressif32)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.11.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 48 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- Adafruit NeoPixel @ 1.15.5
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/es3ink/src/board.cpp.o
+Compiling .pio/build/es3ink/src/display.cpp.o
+Compiling .pio/build/es3ink/src/epdiy_gxepd2_bridge.cpp.o
+Compiling .pio/build/es3ink/src/http_client.cpp.o
+Compiling .pio/build/es3ink/src/image_handler.cpp.o
+Compiling .pio/build/es3ink/src/improv_handler.cpp.o
+Compiling .pio/build/es3ink/src/logger.cpp.o
+Compiling .pio/build/es3ink/src/main.cpp.o
+Compiling .pio/build/es3ink/src/pixel_packer.cpp.o
+Compiling .pio/build/es3ink/src/sensor.cpp.o
+Compiling .pio/build/es3ink/src/server_config.cpp.o
+Compiling .pio/build/es3ink/src/state_manager.cpp.o
+Compiling .pio/build/es3ink/src/streaming_handler.cpp.o
+Compiling .pio/build/es3ink/src/utils.cpp.o
+Compiling .pio/build/es3ink/src/wireless.cpp.o
+Building .pio/build/es3ink/bootloader.bin
+Generating partitions .pio/build/es3ink/partitions.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/es3ink/libe04/SPI/SPI.cpp.o
+Compiling .pio/build/es3ink/libcda/Wire/Wire.cpp.o
+Compiling .pio/build/es3ink/lib09b/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Archiving .pio/build/es3ink/libe04/libSPI.a
+Indexing .pio/build/es3ink/libe04/libSPI.a
+Compiling .pio/build/es3ink/lib09b/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/es3ink/lib09b/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/es3ink/lib09b/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/es3ink/lib75a/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/es3ink/lib75a/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/es3ink/lib75a/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Archiving .pio/build/es3ink/libcda/libWire.a
+Indexing .pio/build/es3ink/libcda/libWire.a
+Compiling .pio/build/es3ink/lib75a/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/GxEPD2_EPD.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_102.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_1248.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+Archiving .pio/build/es3ink/lib09b/libAdafruit BusIO.a
+Indexing .pio/build/es3ink/lib09b/libAdafruit BusIO.a
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_154.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_260.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+Archiving .pio/build/es3ink/lib75a/libAdafruit GFX Library.a
+Indexing .pio/build/es3ink/lib75a/libAdafruit GFX Library.a
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_371.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_420.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_583.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_750.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/it8951/GxEPD2_it60.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+Compiling .pio/build/es3ink/lib197/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFi.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiAP.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/es3ink/lib98d/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/es3ink/libb0a/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+Archiving .pio/build/es3ink/lib197/libGxEPD2.a
+Compiling .pio/build/es3ink/libb0a/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+Indexing .pio/build/es3ink/lib197/libGxEPD2.a
+Compiling .pio/build/es3ink/lib590/Sensirion Core/SensirionCrc.cpp.o
+Compiling .pio/build/es3ink/lib590/Sensirion Core/SensirionErrors.cpp.o
+Compiling .pio/build/es3ink/lib590/Sensirion Core/SensirionI2CCommunication.cpp.o
+Compiling .pio/build/es3ink/lib590/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Archiving .pio/build/es3ink/lib98d/libWiFi.a
+Compiling .pio/build/es3ink/lib590/Sensirion Core/SensirionRxFrame.cpp.o
+Compiling .pio/build/es3ink/lib590/Sensirion Core/SensirionShdlcCommunication.cpp.o
+Indexing .pio/build/es3ink/lib98d/libWiFi.a
+Compiling .pio/build/es3ink/lib590/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+Compiling .pio/build/es3ink/lib196/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Compiling .pio/build/es3ink/lib702/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+Compiling .pio/build/es3ink/lib9f7/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/es3ink/libb0a/libImprov WiFi Library.a
+Archiving .pio/build/es3ink/lib590/libSensirion Core.a
+Indexing .pio/build/es3ink/lib590/libSensirion Core.a
+Indexing .pio/build/es3ink/libb0a/libImprov WiFi Library.a
+Compiling .pio/build/es3ink/lib2b7/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+Archiving .pio/build/es3ink/lib702/libAdafruit Unified Sensor.a
+Archiving .pio/build/es3ink/lib196/libSensirion I2C SHT4x.a
+Indexing .pio/build/es3ink/lib702/libAdafruit Unified Sensor.a
+Indexing .pio/build/es3ink/lib196/libSensirion I2C SHT4x.a
+Compiling .pio/build/es3ink/lib008/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/es3ink/lib668/pngle/miniz.c.o
+Compiling .pio/build/es3ink/lib668/pngle/pngle.c.o
+Compiling .pio/build/es3ink/lib8d4/Adafruit NeoPixel/Adafruit_NeoPixel.cpp.o
+Archiving .pio/build/es3ink/lib9f7/libAdafruit BME280 Library.a
+Indexing .pio/build/es3ink/lib9f7/libAdafruit BME280 Library.a
+Compiling .pio/build/es3ink/lib8d4/Adafruit NeoPixel/Adafruit_Neopixel_RP2.cpp.o
+Compiling .pio/build/es3ink/lib8d4/Adafruit NeoPixel/esp.c.o
+Compiling .pio/build/es3ink/lib8d4/Adafruit NeoPixel/esp8266.c.o
+Compiling .pio/build/es3ink/lib8d4/Adafruit NeoPixel/kendyte_k210.c.o
+Archiving .pio/build/es3ink/lib2b7/libSparkFun SCD4x Arduino Library.a
+Compiling .pio/build/es3ink/lib8d4/Adafruit NeoPixel/psoc6.c.o
+Indexing .pio/build/es3ink/lib2b7/libSparkFun SCD4x Arduino Library.a
+Archiving .pio/build/es3ink/lib668/libpngle.a
+Indexing .pio/build/es3ink/lib668/libpngle.a
+Archiving .pio/build/es3ink/lib008/libSensirion I2C STCC4.a
+Indexing .pio/build/es3ink/lib008/libSensirion I2C STCC4.a
+Compiling .pio/build/es3ink/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+Compiling .pio/build/es3ink/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Archiving .pio/build/es3ink/lib8d4/libAdafruit NeoPixel.a
+Compiling .pio/build/es3ink/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Indexing .pio/build/es3ink/lib8d4/libAdafruit NeoPixel.a
+Compiling .pio/build/es3ink/liba5c/WiFiClientSecure/ssl_client.cpp.o
+Compiling .pio/build/es3ink/lib7f9/HTTPClient/HTTPClient.cpp.o
+Archiving .pio/build/es3ink/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/es3ink/lib00a/libQRCodeGenerator.a
+Compiling .pio/build/es3ink/lib1ba/Update/HttpsOTAUpdate.cpp.o
+Compiling .pio/build/es3ink/lib1ba/Update/Updater.cpp.o
+Compiling .pio/build/es3ink/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/es3ink/liba5c/libWiFiClientSecure.a
+Indexing .pio/build/es3ink/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/es3ink/lib2e4/Preferences/Preferences.cpp.o
+Compiling .pio/build/es3ink/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/es3ink/lib1ba/libUpdate.a
+Indexing .pio/build/es3ink/lib1ba/libUpdate.a
+Compiling .pio/build/es3ink/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+Compiling .pio/build/es3ink/libdf8/FS/FS.cpp.o
+Archiving .pio/build/es3ink/lib2e4/libPreferences.a
+Archiving .pio/build/es3ink/lib394/libHTTPUpdate.a
+Archiving .pio/build/es3ink/lib2b3/libDNSServer.a
+Archiving .pio/build/es3ink/lib7f9/libHTTPClient.a
+Indexing .pio/build/es3ink/lib394/libHTTPUpdate.a
+Indexing .pio/build/es3ink/lib2e4/libPreferences.a
+Indexing .pio/build/es3ink/lib2b3/libDNSServer.a
+Compiling .pio/build/es3ink/libdf8/FS/vfs_api.cpp.o
+Indexing .pio/build/es3ink/lib7f9/libHTTPClient.a
+Compiling .pio/build/es3ink/lib25e/WebServer/Parsing.cpp.o
+Compiling .pio/build/es3ink/lib25e/WebServer/WebServer.cpp.o
+Compiling .pio/build/es3ink/lib25e/WebServer/detail/mimetable.cpp.o
+Compiling .pio/build/es3ink/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/es3ink/lib6c4/libESPmDNS.a
+Indexing .pio/build/es3ink/lib6c4/libESPmDNS.a
+Compiling .pio/build/es3ink/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/FunctionalInterrupt.cpp.o
+Archiving .pio/build/es3ink/libdf8/libFS.a
+Indexing .pio/build/es3ink/libdf8/libFS.a
+Compiling .pio/build/es3ink/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/USBCDC.cpp.o
+Archiving .pio/build/es3ink/lib25e/libWebServer.a
+Compiling .pio/build/es3ink/FrameworkArduino/USBMSC.cpp.o
+Indexing .pio/build/es3ink/lib25e/libWebServer.a
+Compiling .pio/build/es3ink/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/main.cpp.o
+Compiling .pio/build/es3ink/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/es3ink/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/es3ink/libFrameworkArduino.a
+Indexing .pio/build/es3ink/libFrameworkArduino.a
+Archiving .pio/build/es3ink/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/es3ink/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/es3ink/firmware.elf
+Retrieving maximum program size .pio/build/es3ink/firmware.elf
+Checking size .pio/build/es3ink/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  15.6% (used 50956 bytes from 327680 bytes)
+Flash: [========  ]  85.0% (used 1114069 bytes from 1310720 bytes)
+Building .pio/build/es3ink/firmware.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 15.65 seconds =========================
+
+Processing MakerBadge (board: featheresp32-s2; framework: arduino; platform: espressif32)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/featheresp32-s2.html
+PLATFORM: Espressif 32 (6.11.0) > Adafruit ESP32-S2 Feather Development Board
+HARDWARE: ESP32S2 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s2 @ 8.4.0+2021r2-patch5
+Warning! An extra UF2 bootloader image is already added!
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 47 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/MakerBadge/FrameworkArduinoVariant/variant.cpp.o
+Compiling .pio/build/MakerBadge/src/board.cpp.o
+Compiling .pio/build/MakerBadge/src/display.cpp.o
+Compiling .pio/build/MakerBadge/src/epdiy_gxepd2_bridge.cpp.o
+Compiling .pio/build/MakerBadge/src/http_client.cpp.o
+Compiling .pio/build/MakerBadge/src/image_handler.cpp.o
+Compiling .pio/build/MakerBadge/src/improv_handler.cpp.o
+Compiling .pio/build/MakerBadge/src/logger.cpp.o
+Compiling .pio/build/MakerBadge/src/main.cpp.o
+Compiling .pio/build/MakerBadge/src/pixel_packer.cpp.o
+Compiling .pio/build/MakerBadge/src/sensor.cpp.o
+Compiling .pio/build/MakerBadge/src/server_config.cpp.o
+Compiling .pio/build/MakerBadge/src/state_manager.cpp.o
+Compiling .pio/build/MakerBadge/src/streaming_handler.cpp.o
+Compiling .pio/build/MakerBadge/src/utils.cpp.o
+Compiling .pio/build/MakerBadge/src/wireless.cpp.o
+Generating partitions .pio/build/MakerBadge/partitions.bin
+Compiling .pio/build/MakerBadge/libe04/SPI/SPI.cpp.o
+Compiling .pio/build/MakerBadge/libcda/Wire/Wire.cpp.o
+Compiling .pio/build/MakerBadge/lib9bc/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/MakerBadge/lib9bc/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/MakerBadge/lib9bc/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/MakerBadge/lib9bc/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/MakerBadge/lib3a7/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Archiving .pio/build/MakerBadge/libe04/libSPI.a
+Indexing .pio/build/MakerBadge/libe04/libSPI.a
+Compiling .pio/build/MakerBadge/lib3a7/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/MakerBadge/lib3a7/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/MakerBadge/lib3a7/Adafruit GFX Library/glcdfont.c.o
+Archiving .pio/build/MakerBadge/libcda/libWire.a
+Indexing .pio/build/MakerBadge/libcda/libWire.a
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/GxEPD2_EPD.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_102.cpp.o
+Archiving .pio/build/MakerBadge/lib9bc/libAdafruit BusIO.a
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+Indexing .pio/build/MakerBadge/lib9bc/libAdafruit BusIO.a
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_1248.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_154.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_260.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Archiving .pio/build/MakerBadge/lib3a7/libAdafruit GFX Library.a
+Indexing .pio/build/MakerBadge/lib3a7/libAdafruit GFX Library.a
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_371.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_420.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_583.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_750.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/it8951/GxEPD2_it60.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+Compiling .pio/build/MakerBadge/libdef/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFi.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiAP.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/MakerBadge/lib98d/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/MakerBadge/libf18/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+Archiving .pio/build/MakerBadge/libdef/libGxEPD2.a
+Compiling .pio/build/MakerBadge/libf18/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+Compiling .pio/build/MakerBadge/lib7c2/Sensirion Core/SensirionCrc.cpp.o
+Compiling .pio/build/MakerBadge/lib7c2/Sensirion Core/SensirionErrors.cpp.o
+Indexing .pio/build/MakerBadge/libdef/libGxEPD2.a
+Compiling .pio/build/MakerBadge/lib7c2/Sensirion Core/SensirionI2CCommunication.cpp.o
+Compiling .pio/build/MakerBadge/lib7c2/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Compiling .pio/build/MakerBadge/lib7c2/Sensirion Core/SensirionRxFrame.cpp.o
+Archiving .pio/build/MakerBadge/lib98d/libWiFi.a
+Compiling .pio/build/MakerBadge/lib7c2/Sensirion Core/SensirionShdlcCommunication.cpp.o
+Indexing .pio/build/MakerBadge/lib98d/libWiFi.a
+Compiling .pio/build/MakerBadge/lib7c2/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+Compiling .pio/build/MakerBadge/libb14/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Compiling .pio/build/MakerBadge/libc7c/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+Compiling .pio/build/MakerBadge/lib71b/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/MakerBadge/libf18/libImprov WiFi Library.a
+Archiving .pio/build/MakerBadge/lib7c2/libSensirion Core.a
+Indexing .pio/build/MakerBadge/libf18/libImprov WiFi Library.a
+Indexing .pio/build/MakerBadge/lib7c2/libSensirion Core.a
+Compiling .pio/build/MakerBadge/lib88f/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+Archiving .pio/build/MakerBadge/libc7c/libAdafruit Unified Sensor.a
+Archiving .pio/build/MakerBadge/libb14/libSensirion I2C SHT4x.a
+Indexing .pio/build/MakerBadge/libc7c/libAdafruit Unified Sensor.a
+Indexing .pio/build/MakerBadge/libb14/libSensirion I2C SHT4x.a
+Compiling .pio/build/MakerBadge/lib636/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/MakerBadge/libe12/pngle/miniz.c.o
+Compiling .pio/build/MakerBadge/libe12/pngle/pngle.c.o
+Compiling .pio/build/MakerBadge/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+Compiling .pio/build/MakerBadge/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Archiving .pio/build/MakerBadge/lib71b/libAdafruit BME280 Library.a
+Compiling .pio/build/MakerBadge/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Indexing .pio/build/MakerBadge/lib71b/libAdafruit BME280 Library.a
+Compiling .pio/build/MakerBadge/liba5c/WiFiClientSecure/ssl_client.cpp.o
+Compiling .pio/build/MakerBadge/lib7f9/HTTPClient/HTTPClient.cpp.o
+Archiving .pio/build/MakerBadge/lib636/libSensirion I2C STCC4.a
+Archiving .pio/build/MakerBadge/lib88f/libSparkFun SCD4x Arduino Library.a
+Archiving .pio/build/MakerBadge/libe12/libpngle.a
+Indexing .pio/build/MakerBadge/lib636/libSensirion I2C STCC4.a
+Archiving .pio/build/MakerBadge/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/MakerBadge/lib88f/libSparkFun SCD4x Arduino Library.a
+Indexing .pio/build/MakerBadge/libe12/libpngle.a
+Indexing .pio/build/MakerBadge/lib00a/libQRCodeGenerator.a
+Compiling .pio/build/MakerBadge/lib1ba/Update/HttpsOTAUpdate.cpp.o
+Compiling .pio/build/MakerBadge/lib1ba/Update/Updater.cpp.o
+Compiling .pio/build/MakerBadge/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/MakerBadge/liba5c/libWiFiClientSecure.a
+Indexing .pio/build/MakerBadge/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/MakerBadge/lib2e4/Preferences/Preferences.cpp.o
+Compiling .pio/build/MakerBadge/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/MakerBadge/lib1ba/libUpdate.a
+Indexing .pio/build/MakerBadge/lib1ba/libUpdate.a
+Compiling .pio/build/MakerBadge/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+Compiling .pio/build/MakerBadge/libdf8/FS/FS.cpp.o
+Archiving .pio/build/MakerBadge/lib394/libHTTPUpdate.a
+Archiving .pio/build/MakerBadge/lib2e4/libPreferences.a
+Indexing .pio/build/MakerBadge/lib394/libHTTPUpdate.a
+Archiving .pio/build/MakerBadge/lib2b3/libDNSServer.a
+Indexing .pio/build/MakerBadge/lib2e4/libPreferences.a
+Archiving .pio/build/MakerBadge/lib7f9/libHTTPClient.a
+Indexing .pio/build/MakerBadge/lib2b3/libDNSServer.a
+Indexing .pio/build/MakerBadge/lib7f9/libHTTPClient.a
+Compiling .pio/build/MakerBadge/libdf8/FS/vfs_api.cpp.o
+Compiling .pio/build/MakerBadge/lib25e/WebServer/Parsing.cpp.o
+Compiling .pio/build/MakerBadge/lib25e/WebServer/WebServer.cpp.o
+Compiling .pio/build/MakerBadge/lib25e/WebServer/detail/mimetable.cpp.o
+Compiling .pio/build/MakerBadge/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/MakerBadge/lib6c4/libESPmDNS.a
+Indexing .pio/build/MakerBadge/lib6c4/libESPmDNS.a
+Compiling .pio/build/MakerBadge/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/FunctionalInterrupt.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/Stream.cpp.o
+Archiving .pio/build/MakerBadge/libdf8/libFS.a
+Indexing .pio/build/MakerBadge/libdf8/libFS.a
+Compiling .pio/build/MakerBadge/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-bt.c.o
+Archiving .pio/build/MakerBadge/lib25e/libWebServer.a
+Indexing .pio/build/MakerBadge/lib25e/libWebServer.a
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/main.cpp.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/MakerBadge/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/MakerBadge/libFrameworkArduino.a
+Indexing .pio/build/MakerBadge/libFrameworkArduino.a
+Archiving .pio/build/MakerBadge/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/MakerBadge/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/MakerBadge/firmware.elf
+Retrieving maximum program size .pio/build/MakerBadge/firmware.elf
+Checking size .pio/build/MakerBadge/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  17.7% (used 58040 bytes from 327680 bytes)
+Flash: [========  ]  77.6% (used 1118566 bytes from 1441792 bytes)
+Building .pio/build/MakerBadge/firmware.bin
+esptool.py v4.5.1
+Creating esp32s2 image...
+Merged 2 ELF sections
+Successfully created esp32s2 image.
+========================= [SUCCESS] Took 15.08 seconds =========================
+
+Processing seeedstudio_xiao_esp32c3 (board: seeed_xiao_esp32c3; framework: arduino; platform: espressif32)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/seeed_xiao_esp32c3.html
+PLATFORM: Espressif 32 (6.11.0) > Seeed Studio XIAO ESP32C3
+HARDWARE: ESP32C3 160MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-builtin, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 47 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/board.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/display.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/epdiy_gxepd2_bridge.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/http_client.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/image_handler.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/improv_handler.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/logger.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/main.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/pixel_packer.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/sensor.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/server_config.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/state_manager.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/streaming_handler.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/utils.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/src/wireless.cpp.o
+Building .pio/build/seeedstudio_xiao_esp32c3/bootloader.bin
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Generating partitions .pio/build/seeedstudio_xiao_esp32c3/partitions.bin
+esptool.py v4.5.1
+Creating esp32c3 image...
+Merged 1 ELF section
+Successfully created esp32c3 image.
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcda/Wire/Wire.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libe04/SPI/SPI.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcd1/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcd1/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libcda/libWire.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libcda/libWire.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcd1/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcd1/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libe04/libSPI.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libe04/libSPI.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libfc8/Adafruit GFX Library/Adafruit_GFX.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libfc8/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libfc8/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libfc8/Adafruit GFX Library/glcdfont.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/GxEPD2_EPD.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libcd1/libAdafruit BusIO.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_102.cpp.o
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libcd1/libAdafruit BusIO.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_1248.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_154.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_260.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libfc8/libAdafruit GFX Library.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libfc8/libAdafruit GFX Library.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_371.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_420.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_583.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_750.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/it8951/GxEPD2_it60.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib8a6/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFi.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiAP.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiClient.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiGeneric.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiMulti.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiSTA.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiScan.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiServer.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib98d/WiFi/WiFiUdp.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib661/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib8a6/libGxEPD2.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib661/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcb1/Sensirion Core/SensirionCrc.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcb1/Sensirion Core/SensirionErrors.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib8a6/libGxEPD2.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcb1/Sensirion Core/SensirionI2CCommunication.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcb1/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcb1/Sensirion Core/SensirionRxFrame.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcb1/Sensirion Core/SensirionShdlcCommunication.cpp.o
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libcb1/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib981/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib98d/libWiFi.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib98d/libWiFi.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib5b3/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libbe0/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib661/libImprov WiFi Library.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libcb1/libSensirion Core.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib661/libImprov WiFi Library.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libcb1/libSensirion Core.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib3f3/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib981/libSensirion I2C SHT4x.a
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib5b3/libAdafruit Unified Sensor.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib981/libSensirion I2C SHT4x.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib5b3/libAdafruit Unified Sensor.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib1be/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib0ef/pngle/miniz.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib0ef/pngle/pngle.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libbe0/libAdafruit BME280 Library.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libbe0/libAdafruit BME280 Library.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/liba5c/WiFiClientSecure/ssl_client.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib3f3/libSparkFun SCD4x Arduino Library.a
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib0ef/libpngle.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib3f3/libSparkFun SCD4x Arduino Library.a
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib0ef/libpngle.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib00a/libQRCodeGenerator.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib7f9/HTTPClient/HTTPClient.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib1be/libSensirion I2C STCC4.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib1be/libSensirion I2C STCC4.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib1ba/Update/HttpsOTAUpdate.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib1ba/Update/Updater.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/liba5c/libWiFiClientSecure.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Indexing .pio/build/seeedstudio_xiao_esp32c3/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib2e4/Preferences/Preferences.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib1ba/libUpdate.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib1ba/libUpdate.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libdf8/FS/FS.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/libdf8/FS/vfs_api.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib25e/WebServer/Parsing.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib2b3/libDNSServer.a
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib2e4/libPreferences.a
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib394/libHTTPUpdate.a
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib7f9/libHTTPClient.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib2e4/libPreferences.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib2b3/libDNSServer.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib394/libHTTPUpdate.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib7f9/libHTTPClient.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib25e/WebServer/WebServer.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib25e/WebServer/detail/mimetable.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib6c4/libESPmDNS.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib6c4/libESPmDNS.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/Esp.cpp.o
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libdf8/libFS.a
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libdf8/libFS.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/FunctionalInterrupt.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/HWCDC.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/IPAddress.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/IPv6Address.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/MD5Builder.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/Stream.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/StreamString.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/USB.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/USBCDC.cpp.o
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/USBMSC.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/WMath.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/WString.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/base64.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/cbuf.cpp.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib25e/libWebServer.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib25e/libWebServer.a
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-adc.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-bt.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-cpu.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-dac.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-gpio.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-i2c-slave.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-i2c.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-ledc.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-matrix.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-misc.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-rgb-led.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-rmt.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-sigmadelta.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-spi.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-time.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-timer.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-touch.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/esp32-hal-uart.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/libb64/cdecode.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/libb64/cencode.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/main.cpp.o
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/stdlib_noniso.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/wiring_pulse.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Compiling .pio/build/seeedstudio_xiao_esp32c3/FrameworkArduino/wiring_shift.c.o
+<command-line>: warning: "DISPLAY_TYPE" redefined
+<command-line>: note: this is the location of the previous definition
+Archiving .pio/build/seeedstudio_xiao_esp32c3/libFrameworkArduino.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/libFrameworkArduino.a
+Archiving .pio/build/seeedstudio_xiao_esp32c3/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/seeedstudio_xiao_esp32c3/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/seeedstudio_xiao_esp32c3/firmware.elf
+Retrieving maximum program size .pio/build/seeedstudio_xiao_esp32c3/firmware.elf
+Checking size .pio/build/seeedstudio_xiao_esp32c3/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [===       ]  27.4% (used 89852 bytes from 327680 bytes)
+Flash: [========= ]  86.4% (used 1132416 bytes from 1310720 bytes)
+Building .pio/build/seeedstudio_xiao_esp32c3/firmware.bin
+esptool.py v4.5.1
+Creating esp32c3 image...
+Merged 4 ELF sections
+Successfully created esp32c3 image.
+========================= [SUCCESS] Took 12.97 seconds =========================
+
+Processing sverio_paperboard_spi (board: esp32-s3-devkitc-1; framework: arduino; platform: espressif32)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.11.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 47 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/sverio_paperboard_spi/src/board.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/display.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/epdiy_gxepd2_bridge.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/http_client.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/image_handler.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/improv_handler.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/logger.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/main.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/pixel_packer.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/sensor.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/server_config.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/state_manager.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/streaming_handler.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/utils.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/src/wireless.cpp.o
+Building .pio/build/sverio_paperboard_spi/bootloader.bin
+Generating partitions .pio/build/sverio_paperboard_spi/partitions.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/sverio_paperboard_spi/libe04/SPI/SPI.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/libcda/Wire/Wire.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/liba25/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/libe04/libSPI.a
+Indexing .pio/build/sverio_paperboard_spi/libe04/libSPI.a
+Compiling .pio/build/sverio_paperboard_spi/liba25/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/liba25/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/liba25/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib0bb/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib0bb/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/libcda/libWire.a
+Indexing .pio/build/sverio_paperboard_spi/libcda/libWire.a
+Compiling .pio/build/sverio_paperboard_spi/lib0bb/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib0bb/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/GxEPD2_EPD.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_102.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_1248.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/liba25/libAdafruit BusIO.a
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+Indexing .pio/build/sverio_paperboard_spi/liba25/libAdafruit BusIO.a
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_154.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_260.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib0bb/libAdafruit GFX Library.a
+Indexing .pio/build/sverio_paperboard_spi/lib0bb/libAdafruit GFX Library.a
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_371.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_420.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_583.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_750.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/it8951/GxEPD2_it60.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib412/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFi.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiAP.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib98d/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/libbaf/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib412/libGxEPD2.a
+Compiling .pio/build/sverio_paperboard_spi/libbaf/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+Indexing .pio/build/sverio_paperboard_spi/lib412/libGxEPD2.a
+Compiling .pio/build/sverio_paperboard_spi/lib6e3/Sensirion Core/SensirionCrc.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib6e3/Sensirion Core/SensirionErrors.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib6e3/Sensirion Core/SensirionI2CCommunication.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib6e3/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib6e3/Sensirion Core/SensirionRxFrame.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib6e3/Sensirion Core/SensirionShdlcCommunication.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib6e3/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib70c/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib98d/libWiFi.a
+Indexing .pio/build/sverio_paperboard_spi/lib98d/libWiFi.a
+Compiling .pio/build/sverio_paperboard_spi/lib743/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib6e3/libSensirion Core.a
+Indexing .pio/build/sverio_paperboard_spi/lib6e3/libSensirion Core.a
+Compiling .pio/build/sverio_paperboard_spi/lib656/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/libbaf/libImprov WiFi Library.a
+Indexing .pio/build/sverio_paperboard_spi/libbaf/libImprov WiFi Library.a
+Compiling .pio/build/sverio_paperboard_spi/liba14/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib743/libAdafruit Unified Sensor.a
+Archiving .pio/build/sverio_paperboard_spi/lib70c/libSensirion I2C SHT4x.a
+Indexing .pio/build/sverio_paperboard_spi/lib743/libAdafruit Unified Sensor.a
+Indexing .pio/build/sverio_paperboard_spi/lib70c/libSensirion I2C SHT4x.a
+Compiling .pio/build/sverio_paperboard_spi/lib709/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib967/pngle/miniz.c.o
+Compiling .pio/build/sverio_paperboard_spi/lib967/pngle/pngle.c.o
+Compiling .pio/build/sverio_paperboard_spi/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+Compiling .pio/build/sverio_paperboard_spi/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib656/libAdafruit BME280 Library.a
+Indexing .pio/build/sverio_paperboard_spi/lib656/libAdafruit BME280 Library.a
+Compiling .pio/build/sverio_paperboard_spi/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Archiving .pio/build/sverio_paperboard_spi/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/sverio_paperboard_spi/lib00a/libQRCodeGenerator.a
+Archiving .pio/build/sverio_paperboard_spi/liba14/libSparkFun SCD4x Arduino Library.a
+Archiving .pio/build/sverio_paperboard_spi/lib967/libpngle.a
+Indexing .pio/build/sverio_paperboard_spi/liba14/libSparkFun SCD4x Arduino Library.a
+Indexing .pio/build/sverio_paperboard_spi/lib967/libpngle.a
+Compiling .pio/build/sverio_paperboard_spi/liba5c/WiFiClientSecure/ssl_client.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib709/libSensirion I2C STCC4.a
+Indexing .pio/build/sverio_paperboard_spi/lib709/libSensirion I2C STCC4.a
+Compiling .pio/build/sverio_paperboard_spi/lib7f9/HTTPClient/HTTPClient.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib1ba/Update/HttpsOTAUpdate.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib1ba/Update/Updater.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/liba5c/libWiFiClientSecure.a
+Indexing .pio/build/sverio_paperboard_spi/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/sverio_paperboard_spi/lib2e4/Preferences/Preferences.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib1ba/libUpdate.a
+Indexing .pio/build/sverio_paperboard_spi/lib1ba/libUpdate.a
+Compiling .pio/build/sverio_paperboard_spi/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/libdf8/FS/FS.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib2e4/libPreferences.a
+Archiving .pio/build/sverio_paperboard_spi/lib394/libHTTPUpdate.a
+Archiving .pio/build/sverio_paperboard_spi/lib7f9/libHTTPClient.a
+Indexing .pio/build/sverio_paperboard_spi/lib394/libHTTPUpdate.a
+Indexing .pio/build/sverio_paperboard_spi/lib2e4/libPreferences.a
+Indexing .pio/build/sverio_paperboard_spi/lib7f9/libHTTPClient.a
+Compiling .pio/build/sverio_paperboard_spi/libdf8/FS/vfs_api.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib2b3/libDNSServer.a
+Indexing .pio/build/sverio_paperboard_spi/lib2b3/libDNSServer.a
+Compiling .pio/build/sverio_paperboard_spi/lib25e/WebServer/Parsing.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib25e/WebServer/WebServer.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib25e/WebServer/detail/mimetable.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib6c4/libESPmDNS.a
+Indexing .pio/build/sverio_paperboard_spi/lib6c4/libESPmDNS.a
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/FirmwareMSC.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/libdf8/libFS.a
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/FunctionalInterrupt.cpp.o
+Indexing .pio/build/sverio_paperboard_spi/libdf8/libFS.a
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/USBCDC.cpp.o
+Archiving .pio/build/sverio_paperboard_spi/lib25e/libWebServer.a
+Indexing .pio/build/sverio_paperboard_spi/lib25e/libWebServer.a
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/main.cpp.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/sverio_paperboard_spi/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/sverio_paperboard_spi/libFrameworkArduino.a
+Indexing .pio/build/sverio_paperboard_spi/libFrameworkArduino.a
+Archiving .pio/build/sverio_paperboard_spi/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/sverio_paperboard_spi/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/sverio_paperboard_spi/firmware.elf
+Retrieving maximum program size .pio/build/sverio_paperboard_spi/firmware.elf
+Checking size .pio/build/sverio_paperboard_spi/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  15.8% (used 51636 bytes from 327680 bytes)
+Flash: [========= ]  88.6% (used 1161061 bytes from 1310720 bytes)
+Building .pio/build/sverio_paperboard_spi/firmware.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 17.83 seconds =========================
+
+Processing sverio_paperboard_epdiy (board: esp32-s3-devkitc-1; framework: arduino; platform: espressif32)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32-s3-devkitc-1.html
+PLATFORM: Espressif 32 (6.11.0) > Espressif ESP32-S3-DevKitC-1-N8 (8 MB QD, No PSRAM)
+HARDWARE: ESP32S3 240MHz, 320KB RAM, 8MB Flash
+DEBUG: Current (esp-builtin) On-board (esp-builtin) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-riscv32-esp @ 8.4.0+2021r2-patch5 
+ - toolchain-xtensa-esp32s3 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 47 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- epdiy @ 2.0.0+sha.d7c7838
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/sverio_paperboard_epdiy/src/board.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/display.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/epdiy_gxepd2_bridge.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/http_client.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/image_handler.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/improv_handler.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/logger.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/main.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/pixel_packer.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/sensor.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/server_config.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/state_manager.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/streaming_handler.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/utils.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/src/wireless.cpp.o
+Building .pio/build/sverio_paperboard_epdiy/bootloader.bin
+Generating partitions .pio/build/sverio_paperboard_epdiy/partitions.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 1 ELF section
+Successfully created esp32s3 image.
+Compiling .pio/build/sverio_paperboard_epdiy/libe04/SPI/SPI.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libcda/Wire/Wire.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFi.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/libe04/libSPI.a
+Indexing .pio/build/sverio_paperboard_epdiy/libe04/libSPI.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiAP.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib98d/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libf21/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/libcda/libWire.a
+Indexing .pio/build/sverio_paperboard_epdiy/libcda/libWire.a
+Compiling .pio/build/sverio_paperboard_epdiy/libf21/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libb4a/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libb4a/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libb4a/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libb4a/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib090/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib090/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib090/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib090/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libf25/Sensirion Core/SensirionCrc.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libf25/Sensirion Core/SensirionErrors.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib98d/libWiFi.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib98d/libWiFi.a
+Compiling .pio/build/sverio_paperboard_epdiy/libf25/Sensirion Core/SensirionI2CCommunication.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libf25/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libf25/Sensirion Core/SensirionRxFrame.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libf25/Sensirion Core/SensirionShdlcCommunication.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libf25/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib477/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/libf21/libImprov WiFi Library.a
+Archiving .pio/build/sverio_paperboard_epdiy/libb4a/libAdafruit BusIO.a
+Indexing .pio/build/sverio_paperboard_epdiy/libf21/libImprov WiFi Library.a
+Indexing .pio/build/sverio_paperboard_epdiy/libb4a/libAdafruit BusIO.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib8ec/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/libf25/libSensirion Core.a
+Indexing .pio/build/sverio_paperboard_epdiy/libf25/libSensirion Core.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib7ee/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib090/libAdafruit GFX Library.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib090/libAdafruit GFX Library.a
+Archiving .pio/build/sverio_paperboard_epdiy/lib477/libSensirion I2C SHT4x.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib477/libSensirion I2C SHT4x.a
+Compiling .pio/build/sverio_paperboard_epdiy/libc17/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib8ec/libAdafruit Unified Sensor.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib8ec/libAdafruit Unified Sensor.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib473/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib7b3/pngle/miniz.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib7b3/pngle/pngle.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_common.c.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib7ee/libAdafruit BME280 Library.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib7ee/libAdafruit BME280 Library.a
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_lilygo_t5_47.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_v2_v3.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_v4.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_v5.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_v6.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_v7.c.o
+Archiving .pio/build/sverio_paperboard_epdiy/libc17/libSparkFun SCD4x Arduino Library.a
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_v7_103.c.o
+Indexing .pio/build/sverio_paperboard_epdiy/libc17/libSparkFun SCD4x Arduino Library.a
+Archiving .pio/build/sverio_paperboard_epdiy/lib7b3/libpngle.a
+Archiving .pio/build/sverio_paperboard_epdiy/lib473/libSensirion I2C STCC4.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib7b3/libpngle.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib473/libSensirion I2C STCC4.a
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/epd_board_v7_raw.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/lilygo_board_s3.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/pca9555.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/sverio_paperboard_v1.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board/tps65185.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/board_specific.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/builtin_waveforms.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/diff.S.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/displays.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/epdiy.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/font.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/highlevel.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_common/line_queue.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_common/lut.S.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_common/lut.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_common/render_context.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_common/render_method.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_i2s/i2s_data_bus.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_i2s/render_i2s.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_i2s/rmt_pulse.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_lcd/lcd_driver.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/output_lcd/render_lcd.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/libd4f/epdiy/render.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/libd4f/libepdiy.a
+Compiling .pio/build/sverio_paperboard_epdiy/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Indexing .pio/build/sverio_paperboard_epdiy/libd4f/libepdiy.a
+Compiling .pio/build/sverio_paperboard_epdiy/liba5c/WiFiClientSecure/ssl_client.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib00a/libQRCodeGenerator.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib7f9/HTTPClient/HTTPClient.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib1ba/Update/HttpsOTAUpdate.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib1ba/Update/Updater.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/liba5c/libWiFiClientSecure.a
+Indexing .pio/build/sverio_paperboard_epdiy/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib2e4/Preferences/Preferences.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib1ba/libUpdate.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib1ba/libUpdate.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/libdf8/FS/FS.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib2e4/libPreferences.a
+Archiving .pio/build/sverio_paperboard_epdiy/lib394/libHTTPUpdate.a
+Archiving .pio/build/sverio_paperboard_epdiy/lib7f9/libHTTPClient.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib2e4/libPreferences.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib394/libHTTPUpdate.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib7f9/libHTTPClient.a
+Compiling .pio/build/sverio_paperboard_epdiy/libdf8/FS/vfs_api.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib2b3/libDNSServer.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib2b3/libDNSServer.a
+Compiling .pio/build/sverio_paperboard_epdiy/lib25e/WebServer/Parsing.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib25e/WebServer/WebServer.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib25e/WebServer/detail/mimetable.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib6c4/libESPmDNS.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib6c4/libESPmDNS.a
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/FirmwareMSC.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/libdf8/libFS.a
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/FunctionalInterrupt.cpp.o
+Indexing .pio/build/sverio_paperboard_epdiy/libdf8/libFS.a
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/USBCDC.cpp.o
+Archiving .pio/build/sverio_paperboard_epdiy/lib25e/libWebServer.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib25e/libWebServer.a
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/base64.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/main.cpp.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/sverio_paperboard_epdiy/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/sverio_paperboard_epdiy/libFrameworkArduino.a
+Indexing .pio/build/sverio_paperboard_epdiy/libFrameworkArduino.a
+Archiving .pio/build/sverio_paperboard_epdiy/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/sverio_paperboard_epdiy/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/sverio_paperboard_epdiy/firmware.elf
+Retrieving maximum program size .pio/build/sverio_paperboard_epdiy/firmware.elf
+Checking size .pio/build/sverio_paperboard_epdiy/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [==        ]  15.1% (used 49324 bytes from 327680 bytes)
+Flash: [========= ]  91.7% (used 1201725 bytes from 1310720 bytes)
+Building .pio/build/sverio_paperboard_epdiy/firmware.bin
+esptool.py v4.5.1
+Creating esp32s3 image...
+Merged 3 ELF sections
+Successfully created esp32s3 image.
+========================= [SUCCESS] Took 12.44 seconds =========================
+
+Environment               Status    Duration
+------------------------  --------  ------------
+espink                    SUCCESS   00:00:14.588
+espink_v3                 SUCCESS   00:00:15.543
+es3ink                    SUCCESS   00:00:15.646
+MakerBadge                SUCCESS   00:00:15.080
+seeedstudio_xiao_esp32c3  SUCCESS   00:00:12.966
+sverio_paperboard_spi     SUCCESS   00:00:17.827
+sverio_paperboard_epdiy   SUCCESS   00:00:12.435
+========================= 7 succeeded in 00:01:44.085 =========================

@@ -1,0 +1,138 @@
+Processing espink_local_3c (platform: espressif32@6.10.0; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (6.10.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - tool-mkfatfs @ 2.0.1 
+ - tool-mklittlefs @ 1.203.210628 (2.3) 
+ - tool-mkspiffs @ 2.230.0 (2.30) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 47 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Retrieving maximum program size .pio/build/espink_local_3c/firmware.elf
+Checking size .pio/build/espink_local_3c/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [===       ]  30.1% (used 98724 bytes from 327680 bytes)
+Flash: [========= ]  92.9% (used 1217033 bytes from 1310720 bytes)
+Configuring upload protocol...
+AVAILABLE: cmsis-dap, esp-bridge, esp-prog, espota, esptool, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa
+CURRENT: upload_protocol = esptool
+Looking for upload port...
+Using manually specified: /dev/ttyACM0
+Uploading .pio/build/espink_local_3c/firmware.bin
+esptool.py v4.5.1
+Serial port /dev/ttyACM0
+Connecting....
+Chip is ESP32-D0WD-V3 (revision v3.0)
+Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+Crystal is 40MHz
+[redacted private configuration line]
+Uploading stub...
+Running stub...
+Stub running...
+Changing baud rate to 460800
+Changed.
+Configuring flash size...
+Flash will be erased from 0x00001000 to 0x00005fff...
+Flash will be erased from 0x00008000 to 0x00008fff...
+Flash will be erased from 0x0000e000 to 0x0000ffff...
+Flash will be erased from 0x00010000 to 0x0013afff...
+Compressed 17536 bytes to 12202...
+Writing at 0x00001000... (100 %)
+Wrote 17536 bytes (12202 compressed) at 0x00001000 in 0.5 seconds (effective 266.3 kbit/s)...
+Hash of data verified.
+Compressed 3072 bytes to 146...
+Writing at 0x00008000... (100 %)
+Wrote 3072 bytes (146 compressed) at 0x00008000 in 0.0 seconds (effective 503.6 kbit/s)...
+Hash of data verified.
+Compressed 8192 bytes to 47...
+Writing at 0x0000e000... (100 %)
+Wrote 8192 bytes (47 compressed) at 0x0000e000 in 0.1 seconds (effective 683.1 kbit/s)...
+Hash of data verified.
+Compressed 1223776 bytes to 765450...
+Writing at 0x00010000... (2 %)
+Writing at 0x00018003... (4 %)
+Writing at 0x00023485... (6 %)
+Writing at 0x000301f0... (8 %)
+Writing at 0x000397ff... (10 %)
+Writing at 0x00043a89... (12 %)
+Writing at 0x000525e0... (14 %)
+Writing at 0x0005869a... (17 %)
+Writing at 0x0005f171... (19 %)
+Writing at 0x000646f3... (21 %)
+Writing at 0x0006992a... (23 %)
+Writing at 0x00070508... (25 %)
+Writing at 0x00076e39... (27 %)
+Writing at 0x0007c9fc... (29 %)
+Writing at 0x000825d8... (31 %)
+Writing at 0x00088191... (34 %)
+Writing at 0x0008d5dc... (36 %)
+Writing at 0x00093182... (38 %)
+Writing at 0x000981f1... (40 %)
+Writing at 0x0009d6ca... (42 %)
+Writing at 0x000a285f... (44 %)
+Writing at 0x000a7b19... (46 %)
+Writing at 0x000ad08c... (48 %)
+Writing at 0x000b2276... (51 %)
+Writing at 0x000b72e0... (53 %)
+Writing at 0x000bc4ee... (55 %)
+Writing at 0x000c239e... (57 %)
+Writing at 0x000c78c9... (59 %)
+Writing at 0x000cccf2... (61 %)
+Writing at 0x000d2216... (63 %)
+Writing at 0x000d7473... (65 %)
+Writing at 0x000dc878... (68 %)
+Writing at 0x000e1c78... (70 %)
+Writing at 0x000e726b... (72 %)
+Writing at 0x000eca42... (74 %)
+Writing at 0x000f284d... (76 %)
+Writing at 0x000f8158... (78 %)
+Writing at 0x000fdab5... (80 %)
+Writing at 0x00103c2a... (82 %)
+Writing at 0x0010a18b... (85 %)
+Writing at 0x00112ae9... (87 %)
+Writing at 0x0011ab9b... (89 %)
+Writing at 0x0011fc6f... (91 %)
+Writing at 0x0012679e... (93 %)
+Writing at 0x0012be26... (95 %)
+Writing at 0x0013120b... (97 %)
+Writing at 0x00136945... (100 %)
+Wrote 1223776 bytes (765450 compressed) at 0x00010000 in 17.8 seconds (effective 548.9 kbit/s)...
+Hash of data verified.
+
+Leaving...
+Hard resetting via RTS pin...
+========================= [SUCCESS] Took 26.46 seconds =========================
+
+Environment      Status    Duration
+---------------  --------  ------------
+espink_local_3c  SUCCESS   00:00:26.457
+========================= 1 succeeded in 00:00:26.457 =========================

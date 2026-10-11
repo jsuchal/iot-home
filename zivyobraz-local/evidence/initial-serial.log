@@ -1,0 +1,102 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+[INFO   ][SYSTEM ] Starting firmware for Zivy Obraz service
+[INFO   ][SENSOR ] Fresh boot - resetting detection
+[redacted private configuration line]
+[INFO   ][SENSOR ] Detected and cached: SHT4X
+[redacted private configuration line]
+[WARNING][WIFI   ] Fast connect failed after 4001 ms, invalidating cache
+E (4248) wifi:wifi deinit internal: wifi not stop
+E (4250) wifi_init: Failed to deinit Wi-Fi driver (0x3003)
+Guru Meditation Error: Core  0 panic'ed (LoadProhibited). Exception was unhandled.
+
+Core  0 register dump:
+PC      : 0x4015f07d  PS      : 0x00060030  A0      : 0x801619b0  A1      : 0x3ffd7790  
+A2      : 0x3ffaf19c  A3      : 0x3ffd7820  A4      : 0x00000000  A5      : 0x00000000  
+A6      : 0x3ffaf214  A7      : 0x00000000  A8      : 0x00000000  A9      : 0x3ffd4654  
+A10     : 0x3ffd4798  A11     : 0x00000050  A12     : 0x00000050  A13     : 0x3ffaf2de  
+A14     : 0x00000016  A15     : 0x00000008  SAR     : 0x00000010  EXCCAUSE: 0x0000001c  
+EXCVADDR: 0x00000050  LBEG    : 0x4008abe8  LEND    : 0x4008abf3  LCOUNT  : 0x00000000  
+
+
+Backtrace: 0x4015f07a:0x3ffd7790 0x401619ad:0x3ffd7810 0x4019cadd:0x3ffd7900 0x4019cb85:0x3ffd7950 0x4019ea15:0x3ffd7970 0x4019b7d8:0x3ffd7990
+
+
+
+
+ELF file SHA256: d8423bbbfb7af84c
+
+Rebooting...
+ets Jul 29 2019 12:21:46
+
+rst:0xc (SW_CPU_RESET),boot:0x12 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:2
+load:0x3fff0030,len:1184
+load:0x40078000,len:13232
+load:0x40080400,len:3028
+entry 0x400805e4
+[INFO   ][SYSTEM ] Starting firmware for Zivy Obraz service
+[redacted private configuration line]
+[INFO   ][SENSOR ] Detected and cached: SHT4X
+[redacted private configuration line]
+[INFO   ][WIFI   ] Connecting...
+*wm:AutoConnect 
+*wm:Connect Wifi, ATTEMPT # 1 of 5
+[redacted private configuration line]
+*wm:AutoConnect: SUCCESS 
+*wm:STA IP Address: 192.168.1.111
+[INFO   ][WIFI   ] Connected to WiFi
+[INFO   ][HTTP   ] JSON Payload:
+{
+  "fwVersion": "3.2",
+  "apiVersion": "3.2",
+  "buildDate": "20260504",
+  "board": "ESPink_V2",
+  "system": {
+    "cpuTemp": 33.33333,
+    "resetReason": "panic",
+    "vccVoltage": 4.234986
+  },
+  "network": {
+[redacted private configuration line]
+    "rssi": -60,
+[redacted private configuration line]
+    "apRetries": 0,
+    "ipAddress": "192.168.1.111"
+  },
+  "display": {
+    "type": "GDEY075Z08",
+    "width": 800,
+    "height": 480,
+    "colorType": "3C"
+  },
+  "sensors": [
+    {
+      "type": "SHT4X",
+      "temp": 21.6247,
+      "hum": 51
+    }
+  ]
+}
+[INFO   ][HTTP   ] Request sent
+[INFO   ][HEADER ] Precise Sleep in seconds: 360
+[INFO   ][HEADER ] Timestamp now: 101108
+[INFO   ][HTTP   ] Headers received
+[INFO   ][IMAGE  ] Update available, downloading...
+[INFO   ][IMAGE  ] Using direct streaming mode
+[INFO   ][STREAM ] Manager initialized in direct mode
+[INFO   ][IMAGE  ] Processing Z2 (direct streaming mode)
+[INFO   ][HTTP   ] Bytes read 22817, pixels processed 384000
+[INFO   ][HTTP   ] Loaded in 1102 ms
+[INFO   ][WIFI   ] WiFi turned off
+[INFO   ][SYSTEM ] Going to sleep for (seconds): 342 (compensated by 18 seconds)

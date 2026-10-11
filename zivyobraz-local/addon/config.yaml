@@ -1,0 +1,31 @@
+name: Živý obraz Local
+version: "0.1.0"
+slug: zivyobraz_local
+description: Local HTTPS image endpoint for Živý obraz firmware 3.2
+arch:
+  - amd64
+  - aarch64
+  - armv7
+startup: application
+boot: auto
+init: false
+ports:
+  8443/tcp: 8443
+ports_description:
+  8443/tcp: HTTPS endpoint for the frame (LAN only)
+map:
+  - share:ro
+options:
+  api_key: ""
+  image_source: test
+  image_url: ""
+  image_file: /share/zivyobraz/image.png
+  accent: red
+  sleep_seconds: 360
+schema:
+  api_key: password
+  image_source: list(test|url|file)
+  image_url: str
+  image_file: str
+  accent: list(red|yellow)
+  sleep_seconds: int(60,86400)

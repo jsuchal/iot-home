@@ -1,0 +1,407 @@
+#include "pixel_packer.h"
+
+namespace PixelPacker
+{
+
+size_t getRowBufferSize(uint16_t width, DisplayFormat format)
+{
+  switch (format)
+  {
+    case DisplayFormat::BW:
+      return (width + 7) / 8; // 1bpp: 8 pixels per byte
+    case DisplayFormat::GRAYSCALE:
+      return (width + 3) / 4; // 2bpp: 4 pixels per byte
+    case DisplayFormat::COLOR_3C:
+      return (width + 7) / 8; // 1bpp per plane (need 2 buffers)
+    case DisplayFormat::COLOR_4C:
+      return (width + 3) / 4; // 2bpp: 4 pixels per byte
+    case DisplayFormat::COLOR_7C:
+      return (width + 1) / 2; // 4bpp: 2 pixels per byte
+    default:
+      return (width + 7) / 8;
+  }
+}
+
+uint8_t getBitsPerPixel(DisplayFormat format)
+{
+  switch (format)
+  {
+    case DisplayFormat::BW:
+      return 1;
+    case DisplayFormat::GRAYSCALE:
+      return 2;
+    case DisplayFormat::COLOR_3C:
+      return 1; // Per plane
+    case DisplayFormat::COLOR_4C:
+      return 2;
+    case DisplayFormat::COLOR_7C:
+      return 4;
+    default:
+      return 1;
+  }
+}
+
+void packPixelBW(uint8_t *buffer, uint16_t x, bool isBlack)
+{
+  uint16_t byteIndex = x / 8;
+  uint8_t bitPosition = 7 - (x % 8); // MSB first
+
+  if (isBlack)
+  {
+    buffer[byteIndex] &= ~(1 << bitPosition); // Clear bit for black
+  }
+  else
+  {
+    buffer[byteIndex] |= (1 << bitPosition); // Set bit for white
+  }
+}
+
+void packPixel4G(uint8_t *buffer, uint16_t x, uint8_t grey)
+{
+  uint16_t byteIndex = x / 4;
+  uint8_t pixelInByte = x % 4;
+
+  // Convert 8-bit grey to 2-bit value (0-3)
+  uint8_t value = grey >> 6; // Top 2 bits
+
+  // Clear existing bits and set new value
+  // Pixel order: pixel 0 in bits 7-6, pixel 1 in bits 5-4, etc.
+  uint8_t shift = (3 - pixelInByte) * 2;
+  buffer[byteIndex] = (buffer[byteIndex] & ~(0x03 << shift)) | (value << shift);
+}
+
+void packPixel3C(uint8_t *blackBuffer, uint8_t *colorBuffer, uint16_t x, uint16_t color)
+{
+  uint16_t byteIndex = x / 8;
+  uint8_t bitPosition = 7 - (x % 8); // MSB first
+
+  // 3C encoding:
+  // WHITE:  black=1, color=1 (both bits set)
+  // BLACK:  black=0, color=1 (black bit cleared)
+  // RED/YELLOW: black=1, color=0 (color bit cleared)
+
+  switch (color)
+  {
+    case static_cast<uint16_t>(GxEPDColor::BLACK):
+      blackBuffer[byteIndex] &= ~(1 << bitPosition); // Clear black bit
+      colorBuffer[byteIndex] |= (1 << bitPosition);  // Set color bit
+      break;
+    case static_cast<uint16_t>(GxEPDColor::RED):
+    case static_cast<uint16_t>(GxEPDColor::YELLOW):
+      blackBuffer[byteIndex] |= (1 << bitPosition);  // Set black bit
+      colorBuffer[byteIndex] &= ~(1 << bitPosition); // Clear color bit
+      break;
+    default:                                        // WHITE and others
+      blackBuffer[byteIndex] |= (1 << bitPosition); // Set black bit
+      colorBuffer[byteIndex] |= (1 << bitPosition); // Set color bit
+      break;
+  }
+}
+
+void packPixel4C(uint8_t *buffer, uint16_t x, uint8_t color4)
+{
+  uint16_t byteIndex = x / 4;
+  uint8_t pixelInByte = x % 4;
+
+  // Pixel order: pixel 0 in bits 7-6, pixel 1 in bits 5-4, etc. (MSB first)
+  uint8_t shift = (3 - pixelInByte) * 2;
+  buffer[byteIndex] = (buffer[byteIndex] & ~(0x03 << shift)) | ((color4 & 0x03) << shift);
+}
+
+void packPixel7C(uint8_t *buffer, uint16_t x, uint8_t color7)
+{
+  uint16_t byteIndex = x / 2;
+
+  if (x & 1)
+    buffer[byteIndex] = (buffer[byteIndex] & 0xF0) | (color7 & 0x0F); // Odd pixel: low nibble
+  else
+    buffer[byteIndex] = (buffer[byteIndex] & 0x0F) | ((color7 & 0x0F) << 4); // Even pixel: high nibble
+}
+
+// ---------------------------------------------------------------------------
+// Bulk fill functions – write a run of identical pixels using memset where
+// possible, which is much faster than per-pixel bit manipulation.
+// ---------------------------------------------------------------------------
+
+// BW (1bpp, 8 pixels/byte, MSB first): pixel x → bit (7 - x%8) in byte x/8
+void fillPixelRunBW(uint8_t *buffer, uint16_t startX, uint16_t count, bool isBlack)
+{
+  if (count == 0)
+    return;
+
+  const uint16_t endX = startX + count; // exclusive
+  const uint16_t startByte = startX >> 3u;
+  const uint16_t endByte = (uint16_t)((endX - 1u) >> 3u); // inclusive
+
+  // highBit = MSB position of first pixel, lowBit = MSB position of last pixel.
+  const uint8_t highBit = 7u - (uint8_t)(startX & 7u);
+  const uint8_t lowBit = 7u - (uint8_t)((endX - 1u) & 7u);
+
+  if (startByte == endByte)
+  {
+    // All pixels fit in one byte.
+    const uint8_t mask = (uint8_t)(((1u << (highBit - lowBit + 1u)) - 1u) << lowBit);
+    if (isBlack)
+      buffer[startByte] &= ~mask;
+    else
+      buffer[startByte] |= mask;
+    return;
+  }
+
+  // First partial byte: pixels startX ..(startByte+1)*8 - 1
+  {
+    const uint8_t mask = (uint8_t)((1u << (highBit + 1u)) - 1u); // bits 0..highBit
+    if (isBlack)
+      buffer[startByte] &= ~mask;
+    else
+      buffer[startByte] |= mask;
+  }
+
+  // Full middle bytes
+  if (endByte > startByte + 1u)
+    memset(buffer + startByte + 1u, isBlack ? 0x00 : 0xFF, endByte - startByte - 1u);
+
+  // Last partial byte: pixels endByte*8 .. endX-1
+  {
+    const uint8_t mask = (uint8_t)(0xFFu << lowBit); // bits lowBit..7
+    if (isBlack)
+      buffer[endByte] &= ~mask;
+    else
+      buffer[endByte] |= mask;
+  }
+}
+
+// 2bpp helper (4 pixels/byte, MSB first) used by GRAYSCALE and 4C fills.
+// `value` is the 2-bit pixel value (0..3). Pixel 0 occupies bits 7-6, etc.
+static void fillPixelRun2bpp(uint8_t *buffer, uint16_t startX, uint16_t count, uint8_t value)
+{
+  if (count == 0)
+    return;
+
+  value &= 0x03u;
+  const uint8_t pattern = (uint8_t)((value << 6u) | (value << 4u) | (value << 2u) | value);
+  const uint16_t endX = startX + count;
+
+  const uint16_t startByte = startX / 4u;
+  const uint16_t endByte = (endX - 1u) / 4u;
+
+  auto writePartial = [buffer, value](uint16_t fromX, uint16_t toX)
+  {
+    for (uint16_t x = fromX; x < toX; x++)
+    {
+      const uint16_t byteIndex = x / 4u;
+      const uint8_t shift = (uint8_t)((3u - (x & 3u)) * 2u);
+      buffer[byteIndex] = (uint8_t)((buffer[byteIndex] & ~(0x03u << shift)) | (value << shift));
+    }
+  };
+
+  if (startByte == endByte)
+  {
+    writePartial(startX, endX);
+    return;
+  }
+
+  // Leading partial pixels (up to the next 4-pixel aligned boundary)
+  const uint16_t firstFullPx = (startByte + 1u) * 4u;
+  writePartial(startX, firstFullPx);
+
+  // Full bytes in the middle
+  if (endByte > startByte + 1u)
+    memset(buffer + startByte + 1u, pattern, endByte - startByte - 1u);
+
+  // Trailing partial pixels
+  const uint16_t lastFullPx = endByte * 4u;
+  writePartial(lastFullPx, endX);
+}
+
+void fillPixelRunGrayscale(uint8_t *buffer, uint16_t startX, uint16_t count, uint8_t grey)
+{
+  fillPixelRun2bpp(buffer, startX, count, grey >> 6u);
+}
+
+// 3C (dual 1bpp planes): delegate to fillPixelRunBW for each plane
+void fillPixelRun3C(uint8_t *blackBuffer, uint8_t *colorBuffer, uint16_t startX, uint16_t count, uint16_t color)
+{
+  if (count == 0)
+    return;
+
+  bool drawOnBlackPlane, drawOnColorPlane;
+  switch (color)
+  {
+    case static_cast<uint16_t>(GxEPDColor::BLACK):
+      drawOnBlackPlane = true;
+      drawOnColorPlane = false;
+      break;
+    case static_cast<uint16_t>(GxEPDColor::RED):
+    case static_cast<uint16_t>(GxEPDColor::YELLOW):
+      drawOnBlackPlane = false;
+      drawOnColorPlane = true;
+      break;
+    default: // WHITE and others
+      drawOnBlackPlane = false;
+      drawOnColorPlane = false;
+      break;
+  }
+  fillPixelRunBW(blackBuffer, startX, count, drawOnBlackPlane);
+  fillPixelRunBW(colorBuffer, startX, count, drawOnColorPlane);
+}
+
+// 4C (2bpp, 4 pixels/byte, MSB first): same layout as GRAYSCALE
+void fillPixelRun4C(uint8_t *buffer, uint16_t startX, uint16_t count, uint8_t color4)
+{
+  fillPixelRun2bpp(buffer, startX, count, color4 & 0x03);
+}
+
+// 7C (4bpp, 2 pixels/byte): even pixel → high nibble, odd pixel → low nibble
+void fillPixelRun7C(uint8_t *buffer, uint16_t startX, uint16_t count, uint8_t color7)
+{
+  if (count == 0)
+    return;
+
+  const uint8_t c = color7 & 0x0Fu;
+  const uint8_t pattern = (uint8_t)((c << 4u) | c); // both nibbles
+  const uint16_t endX = startX + count;
+
+  uint16_t x = startX;
+
+  // Handle odd-aligned start: write single pixel into low nibble
+  if (x & 1u)
+  {
+    buffer[x / 2u] = (buffer[x / 2u] & 0xF0u) | c;
+    x++;
+  }
+
+  // Full bytes (even-aligned pairs)
+  const uint16_t fullBytes = (endX - x) / 2u;
+  if (fullBytes > 0u)
+  {
+    memset(buffer + x / 2u, pattern, fullBytes);
+    x += fullBytes * 2u;
+  }
+
+  // Trailing odd pixel: write into high nibble
+  if (x < endX)
+    buffer[x / 2u] = (buffer[x / 2u] & 0x0Fu) | (uint8_t)(c << 4u);
+}
+
+size_t convertGrayscaleToBW(uint8_t *buffer, uint16_t width, uint16_t rowCount)
+{
+  uint16_t srcBytesPerRow = (width + 3) / 4; // 2bpp = 4 pixels per byte
+  uint16_t dstBytesPerRow = (width + 7) / 8; // 1bpp = 8 pixels per byte
+
+  size_t srcOffset = 0;
+  size_t dstOffset = 0;
+
+  for (uint16_t row = 0; row < rowCount; row++)
+  {
+    for (uint16_t dstByte = 0; dstByte < dstBytesPerRow; dstByte++)
+    {
+      uint8_t outByte = 0;
+
+      for (uint8_t bit = 0; bit < 8; bit++)
+      {
+        uint16_t pixelIndex = dstByte * 8 + bit;
+        if (pixelIndex >= width)
+          break;
+
+        // Extract 2-bit grayscale value (0=black, 1=dark gray, 2=light gray, 3=white)
+        uint16_t srcByteIndex = srcOffset + (pixelIndex / 4);
+        uint8_t srcBitOffset = (3 - (pixelIndex % 4)) * 2; // MSB first
+        uint8_t grayValue = (buffer[srcByteIndex] >> srcBitOffset) & 0x03;
+
+        // Only white (3) stays white, everything else becomes black
+        // In e-paper: 1 = white, 0 = black
+        if (grayValue == 3)
+        {
+          outByte |= (0x80 >> bit); // Set bit for white
+        }
+      }
+      buffer[dstOffset + dstByte] = outByte;
+    }
+    srcOffset += srcBytesPerRow;
+    dstOffset += dstBytesPerRow;
+  }
+
+  return dstOffset; // Return new size (1bpp)
+}
+
+uint8_t gxepdTo4CColor(uint16_t color)
+{
+  switch (color)
+  {
+    case static_cast<uint16_t>(GxEPDColor::BLACK):
+      return 0;
+    case static_cast<uint16_t>(GxEPDColor::YELLOW):
+      return 2;
+    case static_cast<uint16_t>(GxEPDColor::RED):
+      return 3;
+    case static_cast<uint16_t>(GxEPDColor::WHITE):
+    default:
+      return 1;
+  }
+}
+
+uint8_t gxepdTo7CColor(uint16_t color)
+{
+  switch (color)
+  {
+    case static_cast<uint16_t>(GxEPDColor::BLACK):
+      return 0;
+    case static_cast<uint16_t>(GxEPDColor::WHITE):
+      return 1;
+    case static_cast<uint16_t>(GxEPDColor::GREEN):
+      return 2;
+    case static_cast<uint16_t>(GxEPDColor::BLUE):
+      return 3;
+    case static_cast<uint16_t>(GxEPDColor::RED):
+      return 4;
+    case static_cast<uint16_t>(GxEPDColor::YELLOW):
+      return 5;
+    case static_cast<uint16_t>(GxEPDColor::ORANGE):
+      return 6;
+    default:
+      return 1; // Default to white
+  }
+}
+
+uint8_t gxepdToGrey(uint16_t color)
+{
+  switch (color)
+  {
+    case static_cast<uint16_t>(GxEPDColor::BLACK):
+      return 0x00; // Black (2-bit: 00)
+    case static_cast<uint16_t>(GxEPDColor::DARKGREY):
+      return 0x40; // Dark grey (2-bit: 01)
+    case static_cast<uint16_t>(GxEPDColor::LIGHTGREY):
+      return 0x80; // Light grey (2-bit: 10)
+    case static_cast<uint16_t>(GxEPDColor::WHITE):
+      return 0xC0; // White (2-bit: 11)
+    default:
+      return 0xC0; // Default to white
+  }
+}
+
+void initRowBuffer(uint8_t *buffer, size_t size, DisplayFormat format)
+{
+  switch (format)
+  {
+    case DisplayFormat::BW:
+    case DisplayFormat::COLOR_3C:
+      memset(buffer, WHITE_BYTE_1BPP, size);
+      break;
+    case DisplayFormat::GRAYSCALE:
+      memset(buffer, WHITE_BYTE_2BPP, size);
+      break;
+    case DisplayFormat::COLOR_7C:
+      memset(buffer, WHITE_BYTE_4BPP, size);
+      break;
+    case DisplayFormat::COLOR_4C:
+      memset(buffer, WHITE_BYTE_4C, size);
+      break;
+    default:
+      memset(buffer, WHITE_BYTE_1BPP, size);
+      break;
+  }
+}
+
+} // namespace PixelPacker

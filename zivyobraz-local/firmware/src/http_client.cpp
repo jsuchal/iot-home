@@ -1,0 +1,437 @@
+#include "http_client.h"
+
+#include "board.h"
+#include "sensor.h"
+#include "display.h"
+#include "logger.h"
+#include "state_manager.h"
+#include "wireless.h"
+#include "server_config.h"
+
+#include <HTTPUpdate.h>
+
+// External configuration
+extern const char *firmware;
+
+// Timeouts for HTTP operations
+static constexpr uint32_t TOTAL_TIMEOUT_MS = 30000;
+static constexpr uint32_t IDLE_TIMEOUT_MS = 5000;
+
+HttpClient::HttpClient()
+    : m_sleepDuration(StateManager::DEFAULT_SLEEP_SECONDS),
+      m_serverTimestamp(0),
+      m_displayRotation(0),
+      m_hasRotation(false),
+      m_partialRefresh(false),
+      m_otaRequired(false),
+      m_otaUrl(""),
+      m_imageDataReady(false),
+      m_jsonPayload("")
+{
+#ifdef USE_CLIENT_HTTPS
+  // Configure secure connection - only once in constructor
+  m_client.setInsecure();
+  m_client.setTimeout(15); // Timeout for TLS handshake and read operations
+#endif
+}
+
+void HttpClient::buildJsonPayload()
+{
+  // Only build once - if already built, skip
+  if (m_jsonPayload.length() > 0)
+    return;
+
+  // API and firmware info
+  m_jsonDoc["fwVersion"] = firmware;
+  m_jsonDoc["apiVersion"] = firmware;  // tells server what are firmware capabilities, same as fwVersion in our case
+  m_jsonDoc["buildDate"] = BUILD_DATE; // got from scripts/set_build_date.py before build
+  m_jsonDoc["board"] = Board::getBoardType();
+
+  // System info
+  JsonObject system = m_jsonDoc["system"].to<JsonObject>();
+  system["cpuTemp"] = Board::getCPUTemperature();
+  system["resetReason"] = Board::getResetReasonString();
+  system["vccVoltage"] = Board::getBatteryVoltage();
+
+  // Network info
+  JsonObject network = m_jsonDoc["network"].to<JsonObject>();
+  network["ssid"] = WiFi.SSID();
+  network["rssi"] = Wireless::getStrength();
+  network["mac"] = Wireless::getMacAddress();
+  network["apRetries"] = StateManager::getFailureCount();
+  network["ipAddress"] = Wireless::getIPAddress();
+  // Add last download duration if available from previous run (in milliseconds)
+  if (StateManager::getLastDownloadDuration() > 0)
+    network["lastDownloadDuration"] = StateManager::getLastDownloadDuration();
+
+  // Display info
+  JsonObject display = m_jsonDoc["display"].to<JsonObject>();
+  display["type"] = Display::getDisplayType();
+  display["width"] = Display::getResolutionX();
+  display["height"] = Display::getResolutionY();
+  display["colorType"] = Display::getColorType();
+  // Add last refresh duration if available from previous run (in milliseconds)
+  if (StateManager::getLastRefreshDuration() > 0)
+    display["lastRefreshDuration"] = StateManager::getLastRefreshDuration();
+
+#ifdef SENSOR
+  // Add sensor data if available
+  SensorData sensorData = Sensor::getInstance().getSensorData();
+  if (sensorData.isValid)
+  {
+    JsonArray sensors = m_jsonDoc["sensors"].to<JsonArray>();
+    sensorData.toJson(sensors);
+  }
+#endif
+
+  serializeJson(m_jsonDoc, m_jsonPayload);
+}
+
+bool HttpClient::sendRequest(bool timestampCheck)
+{
+  // Build JSON payload (only built once, cached for subsequent requests)
+  buildJsonPayload();
+
+  String host = ServerConfig::getHost();
+  uint16_t port = ServerConfig::getPort(CONNECTION_PORT);
+  Logger::log<Logger::Level::INFO, Logger::Topic::HTTP>("Connecting to: {}{}:{}\n", CONNECTION_URL_PREFIX, host, port);
+
+  // Try to connect with retries
+  for (uint8_t attempt = 0; attempt < 3; attempt++)
+  {
+    if (m_client.connect(host.c_str(), port))
+      break;
+
+    Logger::log<Logger::Level::ERROR, Logger::Topic::HTTP>("Connection failed, retrying... {}/3\n", attempt + 1);
+    if (attempt == 2)
+    {
+      m_sleepDuration = StateManager::DEFAULT_SLEEP_SECONDS;
+      if (!timestampCheck)
+        return false; // For image download, fail immediately
+      delay(500);
+    }
+    if (!timestampCheck)
+      delay(200);
+  }
+
+  // Send HTTP/HTTPS POST request with JSON body
+  Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("Sending POST to: {}{}/index.php\n", CONNECTION_URL_PREFIX,
+                                                         host);
+
+  // Pretty print JSON payload for device info
+  String prettyJson;
+  serializeJsonPretty(m_jsonDoc, prettyJson);
+  Logger::log<Logger::Level::INFO, Logger::Topic::HTTP>("JSON Payload:\n{}\n", prettyJson);
+
+  // Build URL with timestampCheck query parameter
+  String url = "/index.php?timestampCheck=";
+  url += timestampCheck ? "1" : "0";
+
+  // Send HTTP request using multiple print() calls to avoid allocating one large heap String
+  m_client.print("POST ");
+  m_client.print(url);
+  m_client.print(" HTTP/1.1\r\nHost: ");
+  m_client.print(ServerConfig::getAuthority());
+  m_client.print("\r\nX-API-Key: ");
+  m_client.print(Utils::getStoredAPIKey());
+  m_client.print("\r\nContent-Type: application/json\r\nContent-Length: ");
+  m_client.print(m_jsonPayload.length());
+  m_client.print("\r\nConnection: close\r\n\r\n");
+  m_client.print(m_jsonPayload);
+
+  Logger::log<Logger::Topic::HTTP>("Request sent\n");
+
+  // Wait for response with timeout
+  uint32_t timeout = millis();
+  while (m_client.available() == 0)
+  {
+    if (millis() - timeout > 10000)
+    {
+      Logger::log<Logger::Level::WARNING, Logger::Topic::HTTP>(">>> Client Timeout!\n");
+      m_client.stop();
+      if (timestampCheck)
+        m_sleepDuration = StateManager::DEFAULT_SLEEP_SECONDS;
+      return false;
+    }
+  }
+
+  return true;
+}
+
+bool HttpClient::parseHeaders(bool checkTimestampOnly, uint64_t storedTimestamp)
+{
+  bool connectionOk = false;
+  bool foundTimestamp = false;
+  m_hasRotation = false;
+  m_partialRefresh = false;
+  m_otaRequired = false;
+  m_otaUrl = "";
+
+  while (m_client.connected() || m_client.available())
+  {
+    String line = m_client.readStringUntil('\n');
+
+    // Parse headers only when checking timestamp
+    if (checkTimestampOnly)
+    {
+      // Parse X-OTA-Update header for firmware update
+      if (line.startsWith("X-OTA-Update"))
+      {
+        m_otaUrl = line.substring(14); // Skip "X-OTA-Update: "
+        m_otaUrl.trim();               // Remove whitespace and \r
+        m_otaRequired = true;
+        Logger::log<Logger::Topic::HEADER>("OTA Update requested: {}\n", m_otaUrl);
+      }
+
+      // Parse Timestamp header
+      if (line.startsWith("Timestamp"))
+      {
+        foundTimestamp = true;
+        // Skipping also colon and space - also in following code for sleep, rotate, ...
+        m_serverTimestamp = line.substring(11).toInt();
+        Logger::log<Logger::Topic::HEADER>("Timestamp now: {}\n", m_serverTimestamp);
+      }
+
+      // Is there another header (after the Sleep one) with sleep in Seconds?
+      if (line.startsWith("PreciseSleep"))
+      {
+        m_sleepDuration = line.substring(14).toInt();
+        Logger::log<Logger::Topic::HEADER>("Precise Sleep in seconds: {}\n", m_sleepDuration);
+      }
+
+      // Do we want to rotate display? (IE. upside down)
+      if (line.startsWith("Rotate"))
+      {
+        m_displayRotation = line.substring(8).toInt();
+        m_hasRotation = true;
+        Logger::log<Logger::Topic::HEADER>("Rotation: {}\n", m_displayRotation);
+      }
+
+      // Partial refresh request from server (only if this line exists)
+      if (line.startsWith("PartialRefresh"))
+      {
+        m_partialRefresh = true;
+        Logger::log<Logger::Topic::HEADER>("Partial refresh requested\n");
+      }
+
+      // ShowNoWifiError setting (1 = show error on display, 0 = keep existing content)
+      if (line.startsWith("ShowNoWifiError"))
+      {
+        uint8_t showNoWifiError = line.substring(17).toInt(); // Skip "ShowNoWifiError: "
+        StateManager::setShowNoWifiError(showNoWifiError);
+        Logger::log<Logger::Topic::HEADER>("ShowNoWifiError: {}\n", showNoWifiError);
+      }
+    }
+
+    // Check for successful HTTP response (always check)
+    if (!connectionOk)
+    {
+      // Support both HTTP/1.0 and HTTP/1.1
+      connectionOk = line.startsWith("HTTP/1.1 200 OK") || line.startsWith("HTTP/1.0 200 OK");
+      Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("{}\n", line);
+    }
+
+    // End of headers
+    if (line == "\r")
+    {
+      Logger::log<Logger::Topic::HTTP>("Headers received\n");
+      break;
+    }
+  }
+
+  // Is there a problem? Fallback to default deep sleep time to try again soon
+  if (!connectionOk)
+  {
+    m_sleepDuration = StateManager::DEFAULT_SLEEP_SECONDS;
+    return false;
+  }
+
+  // For debug purposes - print out the whole response
+  /*
+  String data = "";
+  while (m_client.connected() || m_client.available()) {
+    if (m_client.available()) {
+      data += m_client.read();  // Read one byte
+    }
+  }
+  m_client.stop();
+  Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("Byte by byte:{}\n", data);
+  /* */
+
+  // If checking timestamp, see if content changed
+  if (checkTimestampOnly)
+  {
+    // Always save sleep duration from server, even if no update is needed
+    StateManager::setSleepDuration(m_sleepDuration);
+
+    if (foundTimestamp && (m_serverTimestamp == storedTimestamp))
+    {
+      Logger::log<Logger::Topic::HTTP>("No screen reload, still at current timestamp: {}\n", storedTimestamp);
+
+      StateManager::setLastRefreshDuration(0);
+
+      return false;
+    }
+
+    // Set timestamp to actual one
+    StateManager::setTimestamp(m_serverTimestamp);
+  }
+
+  return true;
+}
+
+bool HttpClient::checkForUpdate(bool timestampCheck, bool keepConnectionOpen)
+{
+  m_imageDataReady = false;
+
+  if (!sendRequest(timestampCheck))
+    return false;
+
+  if (!parseHeaders(true, StateManager::getTimestamp()))
+  {
+    m_client.stop();
+    return false;
+  }
+
+  // Update sleep duration from headers
+  StateManager::setSleepDuration(m_sleepDuration);
+
+  // If keepConnectionOpen is requested, don't close - image data is ready to read
+  if (keepConnectionOpen)
+  {
+    m_imageDataReady = true;
+    Logger::log<Logger::Level::DEBUG, Logger::Topic::HTTP>("Connection kept open, image data ready\n");
+    return true; // Update available, connection open
+  }
+
+  m_client.stop();
+  return true; // Update available
+}
+
+bool HttpClient::startImageDownload()
+{
+  if (!sendRequest(false))
+    return false;
+
+  if (!parseHeaders(false, 0))
+  {
+    m_client.stop();
+    return false;
+  }
+
+  // Client stays open for image data
+  return true;
+}
+
+bool HttpClient::isConnected() { return m_client.connected() || m_client.available(); }
+
+int HttpClient::available() { return m_client.available(); }
+
+void HttpClient::stop()
+{
+  m_client.stop();
+  m_imageDataReady = false;
+}
+
+uint32_t HttpClient::readBytes(uint8_t *buf, int32_t bytes)
+{
+  int32_t remaining = bytes;
+  uint32_t startTime = millis();
+  uint32_t lastDataTime = startTime;
+
+  while ((m_client.connected() || m_client.available()) && remaining > 0)
+  {
+    if (m_client.available())
+    {
+      int16_t val = m_client.read();
+      if (buf)
+        *buf++ = (uint8_t)val;
+      remaining--;
+      lastDataTime = millis(); // Reset idle timeout on data received
+    }
+    else
+    {
+      delay(1);
+    }
+
+    uint32_t now = millis();
+    // Check idle timeout (no data for too long)
+    if (now - lastDataTime > IDLE_TIMEOUT_MS)
+    {
+      Logger::log<Logger::Level::WARNING, Logger::Topic::HTTP>("Idle timeout after {} ms without data\n",
+                                                               now - lastDataTime);
+      break;
+    }
+    // Check total timeout
+    if (now - startTime > TOTAL_TIMEOUT_MS)
+    {
+      Logger::log<Logger::Level::WARNING, Logger::Topic::HTTP>("Total timeout after {} ms\n", now - startTime);
+      break;
+    }
+  }
+
+  return bytes - remaining;
+}
+
+uint8_t HttpClient::readByte()
+{
+  uint8_t result;
+  readBytes(&result, 1);
+  return result;
+}
+
+uint8_t HttpClient::readByteValid(bool *valid)
+{
+  uint8_t result;
+  *valid = readBytes(&result, 1) == 1;
+  return result;
+}
+
+uint16_t HttpClient::read16()
+{
+  uint16_t result;
+  ((uint8_t *)&result)[0] = readByte(); // LSB
+  ((uint8_t *)&result)[1] = readByte(); // MSB
+  return result;
+}
+
+bool HttpClient::performOTAUpdate()
+{
+  if (!m_otaRequired || m_otaUrl.length() == 0)
+  {
+    Logger::log<Logger::Level::WARNING, Logger::Topic::SYSTEM>("No OTA update URL available\n");
+    return false;
+  }
+
+  // Close any existing connection before OTA
+  stop();
+
+  Logger::log<Logger::Level::INFO, Logger::Topic::SYSTEM>("Starting OTA update from: {}\n", m_otaUrl);
+
+  // Configure HTTPUpdate
+  httpUpdate.setFollowRedirects(HTTPC_STRICT_FOLLOW_REDIRECTS);
+  httpUpdate.rebootOnUpdate(true); // Automatically restart on success
+
+  t_httpUpdate_return result = httpUpdate.update(m_client, m_otaUrl);
+
+  switch (result)
+  {
+    case HTTP_UPDATE_OK:
+      Logger::log<Logger::Level::INFO, Logger::Topic::SYSTEM>("OTA update successful, restarting...\n");
+      // Device will restart automatically due to rebootOnUpdate(true)
+      return true;
+
+    case HTTP_UPDATE_FAILED:
+      Logger::log<Logger::Level::ERROR, Logger::Topic::SYSTEM>(
+        "OTA update failed: {} ({})\n", httpUpdate.getLastErrorString(), httpUpdate.getLastError());
+      return false;
+
+    case HTTP_UPDATE_NO_UPDATES:
+      Logger::log<Logger::Level::WARNING, Logger::Topic::SYSTEM>("OTA: No updates available\n");
+      return false;
+
+    default:
+      Logger::log<Logger::Level::ERROR, Logger::Topic::SYSTEM>("OTA: Unknown result\n");
+      return false;
+  }
+}

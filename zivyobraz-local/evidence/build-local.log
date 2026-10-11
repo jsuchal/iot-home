@@ -1,0 +1,328 @@
+Processing espink_local_3c (platform: espressif32@6.10.0; board: esp32dev; framework: arduino)
+--------------------------------------------------------------------------------
+Verbose mode can be enabled via `-v, --verbose` option
+Warning: /home/johno/projects/iot-home/zivyobraz-local/firmware/.vscode/c_cpp_properties.json not found (skipping .clangd generation)
+CONFIGURATION: https://docs.platformio.org/page/boards/espressif32/esp32dev.html
+PLATFORM: Espressif 32 (6.10.0) > Espressif ESP32 Dev Module
+HARDWARE: ESP32 240MHz, 320KB RAM, 4MB Flash
+DEBUG: Current (cmsis-dap) External (cmsis-dap, esp-bridge, esp-prog, iot-bus-jtag, jlink, minimodule, olimex-arm-usb-ocd, olimex-arm-usb-ocd-h, olimex-arm-usb-tiny-h, olimex-jtag-tiny, tumpa)
+PACKAGES: 
+ - framework-arduinoespressif32 @ 3.20017.241212+sha.dcc1105b 
+ - tool-esptoolpy @ 1.40501.0 (4.5.1) 
+ - toolchain-xtensa-esp32 @ 8.4.0+2021r2-patch5
+LDF: Library Dependency Finder -> https://bit.ly/configure-pio-ldf
+LDF Modes: Finder ~ chain, Compatibility ~ soft
+Found 47 compatible libraries
+Scanning dependencies...
+Dependency Graph
+|-- SPI @ 2.0.0
+|-- Wire @ 2.0.0
+|-- GxEPD2 @ 1.6.9
+|-- Improv WiFi Library @ 0.0.4
+|-- ArduinoJson @ 7.4.3
+|-- Adafruit GFX Library @ 1.12.6
+|-- Sensirion I2C SHT4x @ 1.1.2
+|-- Adafruit BME280 Library @ 2.3.0
+|-- SparkFun SCD4x Arduino Library @ 1.1.2
+|-- Sensirion I2C STCC4 @ 1.1.0
+|-- pngle @ 1.1.0
+|-- QRCode @ 0.0.1
+|-- HTTPUpdate @ 2.0.0
+|-- WiFi @ 2.0.0
+|-- Adafruit Unified Sensor @ 1.1.15
+|-- Preferences @ 2.0.0
+|-- WiFiManager @ 2.0.17
+|-- WiFiClientSecure @ 2.0.0
+Building in release mode
+Compiling .pio/build/espink_local_3c/src/board.cpp.o
+Compiling .pio/build/espink_local_3c/src/display.cpp.o
+Compiling .pio/build/espink_local_3c/src/epdiy_gxepd2_bridge.cpp.o
+Compiling .pio/build/espink_local_3c/src/http_client.cpp.o
+Compiling .pio/build/espink_local_3c/src/image_handler.cpp.o
+Compiling .pio/build/espink_local_3c/src/improv_handler.cpp.o
+Compiling .pio/build/espink_local_3c/src/logger.cpp.o
+Compiling .pio/build/espink_local_3c/src/main.cpp.o
+Compiling .pio/build/espink_local_3c/src/pixel_packer.cpp.o
+Compiling .pio/build/espink_local_3c/src/sensor.cpp.o
+Compiling .pio/build/espink_local_3c/src/server_config.cpp.o
+Compiling .pio/build/espink_local_3c/src/state_manager.cpp.o
+Compiling .pio/build/espink_local_3c/src/streaming_handler.cpp.o
+Compiling .pio/build/espink_local_3c/src/utils.cpp.o
+Compiling .pio/build/espink_local_3c/src/wireless.cpp.o
+Building .pio/build/espink_local_3c/bootloader.bin
+Generating partitions .pio/build/espink_local_3c/partitions.bin
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 1 ELF section
+Successfully created esp32 image.
+Compiling .pio/build/espink_local_3c/libe04/SPI/SPI.cpp.o
+Compiling .pio/build/espink_local_3c/libcda/Wire/Wire.cpp.o
+Compiling .pio/build/espink_local_3c/libe28/Adafruit BusIO/Adafruit_BusIO_Register.cpp.o
+Compiling .pio/build/espink_local_3c/libe28/Adafruit BusIO/Adafruit_GenericDevice.cpp.o
+Compiling .pio/build/espink_local_3c/libe28/Adafruit BusIO/Adafruit_I2CDevice.cpp.o
+Archiving .pio/build/espink_local_3c/libe04/libSPI.a
+Indexing .pio/build/espink_local_3c/libe04/libSPI.a
+Compiling .pio/build/espink_local_3c/libe28/Adafruit BusIO/Adafruit_SPIDevice.cpp.o
+Compiling .pio/build/espink_local_3c/libf15/Adafruit GFX Library/Adafruit_GFX.cpp.o
+Compiling .pio/build/espink_local_3c/libf15/Adafruit GFX Library/Adafruit_GrayOLED.cpp.o
+Archiving .pio/build/espink_local_3c/libcda/libWire.a
+Indexing .pio/build/espink_local_3c/libcda/libWire.a
+Compiling .pio/build/espink_local_3c/libf15/Adafruit GFX Library/Adafruit_SPITFT.cpp.o
+Compiling .pio/build/espink_local_3c/libf15/Adafruit GFX Library/glcdfont.c.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/GxEPD2_EPD.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_102.cpp.o
+Archiving .pio/build/espink_local_3c/libe28/libAdafruit BusIO.a
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_1160_T91.cpp.o
+Indexing .pio/build/espink_local_3c/libe28/libAdafruit BusIO.a
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_1248.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_150_BN.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_154.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_154_D67.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_154_M09.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_154_M10.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_154_T8.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213_B72.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213_B73.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213_B74.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213_BN.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213_M21.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213_T5D.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_213_flex.cpp.o
+Archiving .pio/build/espink_local_3c/libf15/libAdafruit GFX Library.a
+Indexing .pio/build/espink_local_3c/libf15/libAdafruit GFX Library.a
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_260.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_260_M01.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_266_BN.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_270.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290_BS.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290_I6FD.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290_M06.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290_T5.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290_T5D.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290_T94.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_290_T94_V2.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_370_TC1.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_371.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_420.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_420_M01.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_583.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_583_T8.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_750.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd/GxEPD2_750_T7.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_1248c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_154_Z90c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_154c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_213_Z19c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_213_Z98c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_213c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_266c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_270c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_290_C90c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_290_Z13c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_290c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_420c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_420c_Z21.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_583c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_583c_Z83.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_750c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_750c_GDEW075Z08.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_750c_Z08.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd3c/GxEPD2_750c_Z90.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_1160c_GDEY116F51.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_154c_GDEM0154F51H.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_213c_GDEY0213F51.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_266c_GDEY0266F51H.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_290c_GDEY029F51H.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_300c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_350c_GDEM035F51.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_397c_GDEM0397F81.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_420c_GDEY0420F51.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_437c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_579c_GDEY0579F51.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd4c/GxEPD2_750c_GDEM075F52.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd7c/GxEPD2_565c.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd7c/GxEPD2_565c_GDEP0565D90.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd7c/GxEPD2_730c_ACeP_730.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd7c/GxEPD2_730c_GDEP073E01.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/epd7c/GxEPD2_730c_GDEY073D46.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdeh/GxEPD2_576_GDEH0576T81.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdem/GxEPD2_1020_GDEM102T91.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdem/GxEPD2_1085_GDEM1085T51.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdem/GxEPD2_1330_GDEM133T91.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdem/GxEPD2_397_GDEM0397T81.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdem3c/GxEPD2_1330c_GDEM133Z91.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdeq/GxEPD2_310_GDEQ031T10.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdeq/GxEPD2_426_GDEQ0426T82.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdeq/GxEPD2_583_GDEQ0583T31.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdeq3c/GxEPD2_583c_GDEQ0583Z31.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_154_GDEY0154D67.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_213_GDEY0213B74.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_266_GDEY0266T90.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_270_GDEY027T91.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_290_GDEY029T71H.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_290_GDEY029T94.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_370_GDEY037T03.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_420_GDEY042T81.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_579_GDEY0579T93.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey/GxEPD2_750_GDEY075T7.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey3c/GxEPD2_1160c_GDEY116Z91.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey3c/GxEPD2_420c_GDEY042Z98.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey3c/GxEPD2_579c_GDEY0579Z93.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/gdey3c/GxEPD2_750c_GDEY075Z08.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/it8951/GxEPD2_it103_1872x1404.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/it8951/GxEPD2_it60.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/it8951/GxEPD2_it60_1448x1072.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/it8951/GxEPD2_it78_1872x1404.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/other/GxEPD2_420_GYE042A87.cpp.o
+Compiling .pio/build/espink_local_3c/libff7/GxEPD2/other/GxEPD2_420_SE0420NQ04.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFi.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiAP.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiClient.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiGeneric.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiMulti.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiSTA.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiScan.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiServer.cpp.o
+Compiling .pio/build/espink_local_3c/lib98d/WiFi/WiFiUdp.cpp.o
+Compiling .pio/build/espink_local_3c/lib580/Improv WiFi Library/ImprovWiFiBLE.cpp.o
+Archiving .pio/build/espink_local_3c/libff7/libGxEPD2.a
+Compiling .pio/build/espink_local_3c/lib580/Improv WiFi Library/ImprovWiFiLibrary.cpp.o
+Compiling .pio/build/espink_local_3c/lib5d6/Sensirion Core/SensirionCrc.cpp.o
+Indexing .pio/build/espink_local_3c/libff7/libGxEPD2.a
+Compiling .pio/build/espink_local_3c/lib5d6/Sensirion Core/SensirionErrors.cpp.o
+Compiling .pio/build/espink_local_3c/lib5d6/Sensirion Core/SensirionI2CCommunication.cpp.o
+Compiling .pio/build/espink_local_3c/lib5d6/Sensirion Core/SensirionI2CTxFrame.cpp.o
+Archiving .pio/build/espink_local_3c/lib98d/libWiFi.a
+Compiling .pio/build/espink_local_3c/lib5d6/Sensirion Core/SensirionRxFrame.cpp.o
+Indexing .pio/build/espink_local_3c/lib98d/libWiFi.a
+Compiling .pio/build/espink_local_3c/lib5d6/Sensirion Core/SensirionShdlcCommunication.cpp.o
+Compiling .pio/build/espink_local_3c/lib5d6/Sensirion Core/SensirionShdlcTxFrame.cpp.o
+Compiling .pio/build/espink_local_3c/lib326/Sensirion I2C SHT4x/SensirionI2cSht4x.cpp.o
+Compiling .pio/build/espink_local_3c/libef4/Adafruit Unified Sensor/Adafruit_Sensor.cpp.o
+Compiling .pio/build/espink_local_3c/lib27a/Adafruit BME280 Library/Adafruit_BME280.cpp.o
+Archiving .pio/build/espink_local_3c/lib5d6/libSensirion Core.a
+Indexing .pio/build/espink_local_3c/lib5d6/libSensirion Core.a
+Archiving .pio/build/espink_local_3c/lib580/libImprov WiFi Library.a
+Indexing .pio/build/espink_local_3c/lib580/libImprov WiFi Library.a
+Compiling .pio/build/espink_local_3c/lib5fe/SparkFun SCD4x Arduino Library/SparkFun_SCD4x_Arduino_Library.cpp.o
+Archiving .pio/build/espink_local_3c/libef4/libAdafruit Unified Sensor.a
+Archiving .pio/build/espink_local_3c/lib326/libSensirion I2C SHT4x.a
+Indexing .pio/build/espink_local_3c/libef4/libAdafruit Unified Sensor.a
+Indexing .pio/build/espink_local_3c/lib326/libSensirion I2C SHT4x.a
+Compiling .pio/build/espink_local_3c/lib96b/Sensirion I2C STCC4/SensirionI2cStcc4.cpp.o
+Compiling .pio/build/espink_local_3c/lib53a/pngle/miniz.c.o
+Compiling .pio/build/espink_local_3c/lib53a/pngle/pngle.c.o
+Compiling .pio/build/espink_local_3c/lib00a/QRCodeGenerator/QRCodeGenerator.c.o
+Compiling .pio/build/espink_local_3c/liba5c/WiFiClientSecure/WiFiClientSecure.cpp.o
+Archiving .pio/build/espink_local_3c/lib27a/libAdafruit BME280 Library.a
+Indexing .pio/build/espink_local_3c/lib27a/libAdafruit BME280 Library.a
+Compiling .pio/build/espink_local_3c/liba5c/WiFiClientSecure/esp_crt_bundle.c.o
+Compiling .pio/build/espink_local_3c/liba5c/WiFiClientSecure/ssl_client.cpp.o
+Archiving .pio/build/espink_local_3c/lib00a/libQRCodeGenerator.a
+Archiving .pio/build/espink_local_3c/lib5fe/libSparkFun SCD4x Arduino Library.a
+Indexing .pio/build/espink_local_3c/lib00a/libQRCodeGenerator.a
+Indexing .pio/build/espink_local_3c/lib5fe/libSparkFun SCD4x Arduino Library.a
+Compiling .pio/build/espink_local_3c/lib7f9/HTTPClient/HTTPClient.cpp.o
+Archiving .pio/build/espink_local_3c/lib53a/libpngle.a
+Archiving .pio/build/espink_local_3c/lib96b/libSensirion I2C STCC4.a
+Indexing .pio/build/espink_local_3c/lib53a/libpngle.a
+Indexing .pio/build/espink_local_3c/lib96b/libSensirion I2C STCC4.a
+Compiling .pio/build/espink_local_3c/lib1ba/Update/HttpsOTAUpdate.cpp.o
+Compiling .pio/build/espink_local_3c/lib1ba/Update/Updater.cpp.o
+Compiling .pio/build/espink_local_3c/lib394/HTTPUpdate/HTTPUpdate.cpp.o
+Archiving .pio/build/espink_local_3c/liba5c/libWiFiClientSecure.a
+Indexing .pio/build/espink_local_3c/liba5c/libWiFiClientSecure.a
+Compiling .pio/build/espink_local_3c/lib2e4/Preferences/Preferences.cpp.o
+Compiling .pio/build/espink_local_3c/lib2b3/DNSServer/DNSServer.cpp.o
+Archiving .pio/build/espink_local_3c/lib1ba/libUpdate.a
+Indexing .pio/build/espink_local_3c/lib1ba/libUpdate.a
+Compiling .pio/build/espink_local_3c/lib6c4/ESPmDNS/ESPmDNS.cpp.o
+Compiling .pio/build/espink_local_3c/libdf8/FS/FS.cpp.o
+Archiving .pio/build/espink_local_3c/lib394/libHTTPUpdate.a
+Archiving .pio/build/espink_local_3c/lib7f9/libHTTPClient.a
+Indexing .pio/build/espink_local_3c/lib394/libHTTPUpdate.a
+Archiving .pio/build/espink_local_3c/lib2e4/libPreferences.a
+Indexing .pio/build/espink_local_3c/lib7f9/libHTTPClient.a
+Indexing .pio/build/espink_local_3c/lib2e4/libPreferences.a
+Compiling .pio/build/espink_local_3c/libdf8/FS/vfs_api.cpp.o
+Archiving .pio/build/espink_local_3c/lib2b3/libDNSServer.a
+Indexing .pio/build/espink_local_3c/lib2b3/libDNSServer.a
+Compiling .pio/build/espink_local_3c/lib25e/WebServer/Parsing.cpp.o
+Compiling .pio/build/espink_local_3c/lib25e/WebServer/WebServer.cpp.o
+Compiling .pio/build/espink_local_3c/lib25e/WebServer/detail/mimetable.cpp.o
+Compiling .pio/build/espink_local_3c/lib888/WiFiManager-2.0.17/WiFiManager.cpp.o
+Archiving .pio/build/espink_local_3c/lib6c4/libESPmDNS.a
+Indexing .pio/build/espink_local_3c/lib6c4/libESPmDNS.a
+Compiling .pio/build/espink_local_3c/FrameworkArduino/Esp.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/FirmwareMSC.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/FunctionalInterrupt.cpp.o
+Archiving .pio/build/espink_local_3c/libdf8/libFS.a
+Indexing .pio/build/espink_local_3c/libdf8/libFS.a
+Compiling .pio/build/espink_local_3c/FrameworkArduino/HWCDC.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/HardwareSerial.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/IPAddress.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/IPv6Address.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/MD5Builder.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/Print.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/Stream.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/StreamString.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/Tone.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/USB.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/USBCDC.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/USBMSC.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/WMath.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/WString.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/base64.cpp.o
+Archiving .pio/build/espink_local_3c/lib25e/libWebServer.a
+Indexing .pio/build/espink_local_3c/lib25e/libWebServer.a
+Compiling .pio/build/espink_local_3c/FrameworkArduino/cbuf.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-adc.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-bt.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-cpu.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-dac.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-gpio.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-i2c-slave.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-i2c.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-ledc.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-matrix.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-misc.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-psram.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-rgb-led.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-rmt.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-sigmadelta.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-spi.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-time.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-timer.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-tinyusb.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-touch.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/esp32-hal-uart.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/firmware_msc_fat.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/libb64/cdecode.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/libb64/cencode.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/main.cpp.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/stdlib_noniso.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/wiring_pulse.c.o
+Compiling .pio/build/espink_local_3c/FrameworkArduino/wiring_shift.c.o
+Archiving .pio/build/espink_local_3c/libFrameworkArduino.a
+Indexing .pio/build/espink_local_3c/libFrameworkArduino.a
+Archiving .pio/build/espink_local_3c/lib888/libWiFiManager-2.0.17.a
+Indexing .pio/build/espink_local_3c/lib888/libWiFiManager-2.0.17.a
+Linking .pio/build/espink_local_3c/firmware.elf
+Retrieving maximum program size .pio/build/espink_local_3c/firmware.elf
+Checking size .pio/build/espink_local_3c/firmware.elf
+Advanced Memory Usage is available via "PlatformIO Home > Project Inspect"
+RAM:   [===       ]  30.1% (used 98724 bytes from 327680 bytes)
+Flash: [========= ]  92.9% (used 1217033 bytes from 1310720 bytes)
+Building .pio/build/espink_local_3c/firmware.bin
+esptool.py v4.5.1
+Creating esp32 image...
+Merged 27 ELF sections
+Successfully created esp32 image.
+========================= [SUCCESS] Took 14.94 seconds =========================
+
+Environment      Status    Duration
+---------------  --------  ------------
+espink_local_3c  SUCCESS   00:00:14.936
+========================= 1 succeeded in 00:00:14.936 =========================

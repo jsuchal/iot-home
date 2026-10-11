@@ -1,0 +1,17 @@
+{
+  "demo": true,
+  "heading": "DNES VONKU",
+  "date": "Nedeľa · 11. október",
+  "weather": {"temperature": "12°", "description": "Oblačno", "detail": "Pocitovo 10° · vietor 8 km/h", "icon": "cloud"},
+  "forecast": [
+    {"label": "TERAZ", "temperature": "12°", "detail": "Bez dažďa", "icon": "cloud"},
+    {"label": "POOBEDE", "temperature": "16°", "detail": "Polojasno", "icon": "sun"},
+    {"label": "VEČER", "temperature": "10°", "detail": "Slabý dážď", "icon": "rain"}
+  ],
+  "metrics": [
+    {"label": "VIETOR", "value": "8", "unit": "km/h"},
+    {"label": "DÁŽĎ", "value": "20", "unit": "% pravdepodobnosť"}
+  ],
+  "notice": {"title": "VEČER DÁŽĎ", "text": "Pribaľ si dáždnik.", "warning": true},
+  "updated": "08:30"
+}

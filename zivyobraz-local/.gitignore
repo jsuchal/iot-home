@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.bin
+*.elf
+*.pem
+options.json
+private/
+firmware/.pio/
+firmware/compile_commands.json
+firmware/.clangd

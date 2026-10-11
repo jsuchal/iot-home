@@ -1,0 +1,7 @@
+test_demo_geometry_and_palette (test_render.DesignTests) ... ok
+test_missing_and_long_values_render_without_failure (test_render.DesignTests) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.274s
+
+OK
