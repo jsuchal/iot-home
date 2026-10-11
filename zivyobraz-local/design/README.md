@@ -28,10 +28,13 @@ PNG možno použiť ako súborový zdroj existujúceho add-onu. Renderer zatiaľ
 nie je zapojený do jeho runtime: v1 zostáva statický obrázok/URL/test.
 Pred napojením na živé dáta treba zvoliť konkrétne HA entity, zdroj predpovede,
 miesto, časové pásmo a pravidlá zastaraných/nedostupných údajov.
-Používateľ vybral ako prvú živú verziu **počasie + predpoveď**. Pri priamom
+Používateľ vybral ako prvú živú verziu **počasie + predpoveď**. Pri prvom priamom
 MCP dotaze `GetLiveContext(domain="weather")` nebola sprístupnená žiadna
-weather entita. Je potrebné existujúcu entitu sprístupniť cez Assist alebo
-poskytnúť entity_id/prístup k jej predpovedi; neznamená to, že v HA neexistuje.
+weather entita. Používateľ ju následne sprístupnil: MCP už vracia **Forecast Home**
+a aktuálny stav/teplotu/vlhkosť. Presné entity_id ani hodinová/denná predpoveď
+v tomto výsledku nie sú; MCP neponúka nástroj na `weather.get_forecasts`.
+Živý renderer bude potrebovať read-only prístup k tejto HA službe (napr. cez
+HA add-on API), nie vymyslené hodnoty alebo odhadnuté entity_id.
 Údaj o čase musí znamenať čas **zdrojových dát**, nie každý HTTP request,
 inak by sa timestamp menil a displej zbytočne prekresľoval.
 

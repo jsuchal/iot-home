@@ -28,6 +28,9 @@ Práca je na vetve `zivyobraz-local`; `main` nebol upravovaný.
   palety/škálovania, transparentnosti, zmien súboru, URL cache a chyby zdroja).
 - Dočasný kontajner rovnakého add-on servera beží na **pracovnom počítači**,
   `https://192.168.1.196:8443`, nie na HA.
+  Po testoch bol jeho interval v privátnych options obnovený zo 60 na 360 s
+  a kontajner reštartovaný; rámik stále smeruje na tento dočasný lokálny server.
+  Kým sa nenainštaluje HA add-on, tento počítač musí byť dostupný na LAN.
 - Host bol nastavený cez skutočné pole WiFiManager `/param` → POST `/paramsave`.
   PIN aj Wi-Fi boli zachované. NVS hodnota prežila reštart.
 - Sériové logy lokálneho prenosu: `Connecting to: https://192.168.1.196:8443`,
@@ -109,7 +112,10 @@ predpoveď, domáce merania a upozornenie. **Nie je napojený na živé dáta HA
 všetky ukážkové hodnoty sú explicitne označené. Používateľ vybral počasie a
 predpoveď; náhľad má vpravo vietor a pravdepodobnosť dažďa namiesto domáceho
 CO₂/teploty. Prešli 2 testy renderera (paleta/rozmery a chýbajúce/dlhé hodnoty).
-Priamy MCP dotaz `GetLiveContext(domain="weather")` vrátil
+Prvý priamy MCP dotaz `GetLiveContext(domain="weather")` vrátil
 `No exposed entities found in domain(s): weather`; weather entitu treba
-sprístupniť alebo poskytnúť iný zdroj. Zostáva vybrať miesto/zdroj, časové
-pásmo a frekvenciu aktualizácie. Žiadna HA konfigurácia nebola zmenená.
+bolo sprístupniť. Používateľ ju následne sprístupnil a opakovaný dotaz už
+vrátil **Forecast Home** s aktuálnym stavom/teplotou/vlhkosťou. Hodinová/denná
+predpoveď ani presné entity_id nie sú v MCP výsledku a nástroj pre
+`weather.get_forecasts` nie je dostupný. Na živú predpoveď teda treba read-only
+prístup k tejto HA službe. Agent žiadnu HA konfiguráciu nemenil.
